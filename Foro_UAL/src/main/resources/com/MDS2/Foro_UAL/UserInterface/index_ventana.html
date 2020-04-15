@@ -7,15 +7,38 @@
  </head>
  <body>
   <vaadin-absolute-layout>
-   <vaadin-panel width="1442px" height="48px" _id="panelSuperior" :top="0px" :left="0px"></vaadin-panel>
-   <vaadin-panel width="209px" height="791px" _id="barraHerramientas" :top="54px" :left="0px">
-    <vaadin-vertical-layout width="194px" height="776px" _id="barraHerramientasLayout"></vaadin-vertical-layout>
+   <vaadin-panel height="5%" _id="panelSuperior" :top="0px" :left="0px">
+    <vaadin-absolute-layout>
+     <vaadin-horizontal-layout style-name="card" width="75%" height-full :top="0px" :left="5%">
+      <vaadin-horizontal-layout spacing="false" _id="direcciones" :middle></vaadin-horizontal-layout>
+     </vaadin-horizontal-layout>
+     <vaadin-horizontal-layout size-full :top="0px" :left="83%">
+      <vaadin-button style-name="borderless" plain-text :middle :center>
+        Iniciar Sesión 
+      </vaadin-button>
+      <vaadin-button style-name="borderless" plain-text :middle :center>
+        Registrarse 
+      </vaadin-button>
+     </vaadin-horizontal-layout>
+    </vaadin-absolute-layout>
    </vaadin-panel>
-   <vaadin-panel width="952px" height="828px" _id="panelCentral" :top="73px" :left="243px"></vaadin-panel>
-   <vaadin-panel width="209px" height="795px" _id="barraAmigos" :top="54px" :left="1230px"></vaadin-panel>
-   <vaadin-button plain-text :top="850px" :left="16px">
-     Button 
+   <vaadin-panel width="14.5%" height="93%" _id="barraHerramientas" :top="6%" :left="0%">
+    <vaadin-vertical-layout _id="barraHerramientasLayout"></vaadin-vertical-layout>
+   </vaadin-panel>
+   <vaadin-panel width="80%" height="98%" _id="panelCentral" :top="99px" :left="17%">
+    <vaadin-vertical-layout responsive _id="panelCentralLayaut"></vaadin-vertical-layout>
+   </vaadin-panel>
+   <vaadin-panel height="93%" _id="barraAmigos" :top="6%" :left="85%"></vaadin-panel>
+   <vaadin-button plain-text _id="mostrarHerramientas" :top="95%" :left="1%">
+     Mostrar 
    </vaadin-button>
+   <vaadin-panel width="80%" height="4.5%" :top="6%" :left="17%">
+    <vaadin-horizontal-layout size-full>
+     <vaadin-label plain-text _id="localizacion_" :middle :center>
+       Localizacion 
+     </vaadin-label>
+    </vaadin-horizontal-layout>
+   </vaadin-panel>
   </vaadin-absolute-layout>
  </body>
 </html>

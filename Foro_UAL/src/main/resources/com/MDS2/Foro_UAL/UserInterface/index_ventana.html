@@ -28,7 +28,13 @@
    <vaadin-panel width="80%" height="98%" _id="panelCentral" :top="99px" :left="17%">
     <vaadin-vertical-layout responsive _id="panelCentralLayaut"></vaadin-vertical-layout>
    </vaadin-panel>
-   <vaadin-panel height="93%" _id="barraAmigos" :top="6%" :left="85%"></vaadin-panel>
+   <vaadin-panel height="93%" _id="barraAmigos" :top="6%" :left="85%">
+    <vaadin-vertical-layout _id="listaAmigosLayout">
+     <vaadin-label style-name="h2" width-full plain-text :center>
+       Lista de amigos 
+     </vaadin-label>
+    </vaadin-vertical-layout>
+   </vaadin-panel>
    <vaadin-button plain-text _id="mostrarHerramientas" :top="95%" :left="1%">
      Mostrar 
    </vaadin-button>

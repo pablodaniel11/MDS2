@@ -29,6 +29,7 @@ public class index_ventana extends AbsoluteLayout {
 	protected Panel panelCentral;
 	protected VerticalLayout panelCentralLayaut;
 	protected Panel barraAmigos;
+	protected VerticalLayout listaAmigosLayout;
 	protected Button mostrarHerramientas;
 	protected Label localizacion_;
 

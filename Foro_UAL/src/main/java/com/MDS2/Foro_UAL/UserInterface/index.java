@@ -33,7 +33,7 @@ public class index extends UI{
 	 * 
 	 */
 	public static Ventana view = Ventana.Perfil;
-	public static nivelPrivilegios userPrivilegies = nivelPrivilegios.Administrador;
+	public static nivelPrivilegios userPrivilegies = nivelPrivilegios.Usuario;
 	
 	private static final long serialVersionUID = -4901308892766115013L;
 
@@ -57,8 +57,13 @@ public class index extends UI{
 	}
 	
 	public void Test(index_ventana iv) {
-		for (int i = 0; i < 10; i++)
-			iv.barraHerramientasLayout.addComponent(new tool("Herramienta "+ i, new DemoTool(), nivelPrivilegios.Moderador));
+		for (int i = 0; i < 5; i++)
+			iv.barraHerramientasLayout.addComponent(new tool("Herramienta Usu. "+ (i+1), new DemoTool(),nivelPrivilegios.Usuario));
+		for (int i = 0; i < 3; i++)
+			iv.barraHerramientasLayout.addComponent(new tool("Herramienta Mod. "+ (i+1), new DemoTool(), nivelPrivilegios.Moderador));
+		for (int i = 0; i < 2; i++)
+			iv.barraHerramientasLayout.addComponent(new tool("Herramienta Adm. "+ (i+1), new DemoTool(), nivelPrivilegios.Administrador));
+		
 			
 		if(view == Ventana.Raiz) {
 			SetDireccion("Raiz",iv.direcciones);
@@ -89,6 +94,13 @@ public class index extends UI{
 			SetDireccion("Raiz/Perfil",iv.direcciones);
 			
 			iv.panelCentralLayaut.addComponent(new DatosUsuario("T3cn0 Hack3r", "Rodrigo Diaz de Vivar", "elcidcampeador@inlumine.ual.es", "Un gran guerrero y blogista apasionado al mismo tiempo","https://campoy5.files.wordpress.com/2010/04/elcid.jpg").visualizateComplete());
+			
+			iv.listaAmigosLayout.addComponent(new DatosUsuario("Amigo 1", "Rodrigo Diaz de Vivar", "elcidcampeador@inlumine.ual.es", "Un gran guerrero y blogista apasionado al mismo tiempo","https://campoy5.files.wordpress.com/2010/04/elcid.jpg").visualizateReduce());
+			iv.listaAmigosLayout.addComponent(new DatosUsuario("Amigo 2", "Rodrigo Diaz de Vivar", "elcidcampeador@inlumine.ual.es", "Un gran guerrero y blogista apasionado al mismo tiempo","https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png").visualizateReduce());
+			iv.listaAmigosLayout.addComponent(new DatosUsuario("Amigo 3", "Rodrigo Diaz de Vivar", "elcidcampeador@inlumine.ual.es", "Un gran guerrero y blogista apasionado al mismo tiempo","https://campoy5.files.wordpress.com/2010/04/elcid.jpg").visualizateReduce());
+			iv.listaAmigosLayout.addComponent(new DatosUsuario("Amigo 4", "Rodrigo Diaz de Vivar", "elcidcampeador@inlumine.ual.es", "Un gran guerrero y blogista apasionado al mismo tiempo","https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png").visualizateReduce());
+			iv.listaAmigosLayout.addComponent(new DatosUsuario("Amigo 5", "Rodrigo Diaz de Vivar", "elcidcampeador@inlumine.ual.es", "Un gran guerrero y blogista apasionado al mismo tiempo","https://campoy5.files.wordpress.com/2010/04/elcid.jpg").visualizateReduce());
+
 		}
 
 	}
@@ -113,7 +125,6 @@ public class index extends UI{
 		else {
 			iv.localizacion_.setValue("Perfil");
 		}
-		iv.barraHerramientasLayout.setHeight(45*iv.barraHerramientasLayout.getComponentCount(),Unit.PIXELS);
 		
 		 iv.mostrarHerramientas.addClickListener(e -> {
 	        	iv.barraHerramientas.setVisible(!iv.barraHerramientas.isVisible());});

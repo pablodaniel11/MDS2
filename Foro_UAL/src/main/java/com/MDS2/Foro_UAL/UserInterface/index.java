@@ -20,9 +20,6 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
-
-import Ventanas.Datos_Usuario;
-
 import com.MDS2.Foro_UAL.Tools.*;
 import com.MDS2.Foro_UAL.MainPanel.*;
 /**

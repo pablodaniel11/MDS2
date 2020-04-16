@@ -36,5 +36,10 @@ public class DatosUsuario {
 		
 		return v;
 	}
-	public void visualizateReduce() {}
+	public Ver_Amigo visualizateReduce() {
+		Ver_Amigo v = new Ver_Amigo();
+		v.name.setValue(nombreUsuario);
+		v.photo.setSource(new ExternalResource(foto));
+		return v;
+	}
 }

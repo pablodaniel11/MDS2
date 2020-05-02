@@ -32,7 +32,7 @@ public class index extends UI{
 	/**
 	 * 
 	 */
-	public static Ventana view = Ventana.Perfil;
+	public static Ventana view = Ventana.Seccion;
 	public static nivelPrivilegios userPrivilegies = nivelPrivilegios.Usuario;
 	
 	private static final long serialVersionUID = -4901308892766115013L;

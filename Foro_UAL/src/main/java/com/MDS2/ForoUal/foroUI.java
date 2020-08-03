@@ -1,5 +1,6 @@
 package com.MDS2.ForoUal;
 
+import com.MDS2.ForoUal.Interfaz.*;
 import javax.servlet.annotation.WebServlet;
 
 import com.vaadin.annotations.Theme;
@@ -24,6 +25,9 @@ public class foroUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
+    	Visualizar_Raiz__No_Reg_ ad = new Visualizar_Raiz__No_Reg_();
+    	setContent(ad);
+    	/*
         final VerticalLayout layout = new VerticalLayout();
         
         final TextField name = new TextField();
@@ -37,7 +41,7 @@ public class foroUI extends UI {
         
         layout.addComponents(name, button);
         
-        setContent(layout);
+        setContent(layout);*/
     }
 
     @WebServlet(urlPatterns = "/*", name = "foroUIServlet", asyncSupported = true)

@@ -1,6 +1,6 @@
 package com.MDS2.ForoUal.Interfaz;
 
-public class Panel_Superior {
+public class Panel_Superior extends Panel_Superior_Ventana{
 	private Pantallas_navegacion _ventanas;
 	public Usuario_no_Logueado _unnamed_Usuario_no_Logueado_;
 	public Registrarse _registrarse;

@@ -4,6 +4,12 @@ public class Visualizar_Secciones_Administrador extends Visualizar_Secciones_Reg
 	public Administrador _administrador;
 	public Opciones_Secciones _opciones_Secciones;
 
+	public Visualizar_Secciones_Administrador() {
+		super();
+		panelOpciones.setVisible(false);
+		_opciones_Secciones = new Opciones_Secciones();
+		panelOpciones.setContent(_opciones_Secciones);
+	}
 	public void cargarSecciones() {
 		throw new UnsupportedOperationException();
 	}

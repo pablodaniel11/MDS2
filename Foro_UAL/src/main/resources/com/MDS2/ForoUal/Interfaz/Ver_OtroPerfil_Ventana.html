@@ -7,7 +7,27 @@
  </head>
  <body>
   <vaadin-absolute-layout>
-   <vaadin-panel width="80%" height="70%" _id="perfil" :top="11%" :left="20%"></vaadin-panel>
+   <vaadin-panel width="80%" height="70%" _id="perfil" :top="11%" :left="20%">
+    <vaadin-vertical-layout size-full>
+     <vaadin-horizontal-layout>
+      <vaadin-image source="https://www.spica-siam.com/wp-content/uploads/2017/12/user-demo.png" width="250px" height="250px" _id="fotoPerfil" :middle :center></vaadin-image>
+      <vaadin-vertical-layout size-auto>
+       <vaadin-label style-name="h2" plain-text _id="userName">
+         MiUsuarioDePruebas 
+       </vaadin-label>
+       <vaadin-label plain-text _id="realName">
+         MiUsuario Pruebas Martinez 
+       </vaadin-label>
+       <vaadin-label plain-text _id="email">
+         prueba@yopmail.com 
+       </vaadin-label>
+       <vaadin-label plain-text _id="descpription">
+         Esta es una descripcion de usuario de pruebas, es para comprobar que todo está bien configurado, por favor ignorar este mensaje 
+       </vaadin-label>
+      </vaadin-vertical-layout>
+     </vaadin-horizontal-layout>
+    </vaadin-vertical-layout>
+   </vaadin-panel>
    <vaadin-panel height="10%" _id="panelSuperior"></vaadin-panel>
    <vaadin-panel width="19.5%" height="99%" _id="panelOpciones" :top="11%" :left="0%"></vaadin-panel>
    <vaadin-panel width="80%" height="97%" _id="ultimosMensajes" :top="74%" :left="20%"></vaadin-panel>

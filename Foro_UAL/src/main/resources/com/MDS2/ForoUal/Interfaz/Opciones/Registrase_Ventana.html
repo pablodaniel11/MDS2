@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;foroTheme&quot;}">
+  <meta name="vaadin-version" content="8.1.5">
+ </head>
+ <body>
+  <vaadin-absolute-layout width="600px" height="700px">
+   <vaadin-absolute-layout style-name="card" height="90%">
+    <vaadin-text-field width-full value="URL foto Perfil" _id="photo" :top="85%" :right="15%" :left="15%"></vaadin-text-field>
+    <vaadin-text-area width-full height="120px" _id="description" :top="60%" :right="15%" :left="15%">
+      Descripción 
+    </vaadin-text-area>
+    <vaadin-absolute-layout height="14%" :top="50%" :right="15%" :left="15%">
+     <vaadin-password-field width-full _id="password" :left="30%"></vaadin-password-field>
+     <vaadin-label plain-text :top="10%">
+       Contraseña 
+     </vaadin-label>
+    </vaadin-absolute-layout>
+    <vaadin-absolute-layout height="12%" :top="40%" :right="15%" :left="15%">
+     <vaadin-text-field width-full _id="userName" :left="30%"></vaadin-text-field>
+     <vaadin-label plain-text :top="10%">
+       Nombre Usuario 
+     </vaadin-label>
+    </vaadin-absolute-layout>
+    <vaadin-absolute-layout height="9%" :top="30%" :right="15%" :left="15%">
+     <vaadin-text-field width-full _id="email" :left="30%"></vaadin-text-field>
+     <vaadin-label plain-text :top="15%">
+       Email 
+     </vaadin-label>
+    </vaadin-absolute-layout>
+   </vaadin-absolute-layout>
+   <vaadin-horizontal-layout width-full height="80%" :top="88%">
+    <vaadin-button width="60%" height="60%" plain-text _id="cancelar" :middle :center>
+      Cancelar 
+    </vaadin-button>
+    <vaadin-button width="60%" height="60%" plain-text _id="continuar" :middle :center>
+      Continuar 
+    </vaadin-button>
+   </vaadin-horizontal-layout>
+   <vaadin-label width-full :right="40%" :left="40%">
+    <h2><b>Registrase</b></h2>
+   </vaadin-label>
+   <vaadin-image source="http://virtualdor.com/things/line.png" width-full height="3%" :top="13%" :right="10%" :left="10%"></vaadin-image>
+  </vaadin-absolute-layout>
+ </body>
+</html>

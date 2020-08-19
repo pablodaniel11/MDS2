@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;foroTheme&quot;}">
+  <meta name="vaadin-version" content="8.1.5">
+ </head>
+ <body>
+  <vaadin-absolute-layout>
+   <vaadin-label width-full :right="35%" :left="35%">
+    <h2><b>Buscar Amigos</b></h2>
+   </vaadin-label>
+   <vaadin-text-field width-full value="Nombre" :top="11%" :right="15%" :left="15%"></vaadin-text-field>
+   <vaadin-image source="http://virtualdor.com/things/line.png" width-full :top="17%" :right="20%" :left="20%"></vaadin-image>
+   <vaadin-vertical-layout style-name="card" width="98%" height="88%" :top="20%" :left="2%"></vaadin-vertical-layout>
+   <vaadin-horizontal-layout size-full :top="90%">
+    <vaadin-button width="60%" height="60%" plain-text _id="cancelar" :middle :center>
+      Cancelar 
+    </vaadin-button>
+    <vaadin-button width="60%" height="60%" plain-text _id="continuar" :middle :center>
+      Continuar 
+    </vaadin-button>
+   </vaadin-horizontal-layout>
+  </vaadin-absolute-layout>
+ </body>
+</html>

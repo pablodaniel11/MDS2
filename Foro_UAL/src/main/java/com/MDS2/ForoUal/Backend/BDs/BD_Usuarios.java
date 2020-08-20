@@ -1,4 +1,12 @@
+package com.MDS2.ForoUal.Backend.BDs;
+
 import java.util.Vector;
+
+import com.MDS2.ForoUal.Backend.ORM.src.Imagen;
+import com.MDS2.ForoUal.Backend.ORM.src.Mensaje;
+import com.MDS2.ForoUal.Backend.ORM.src.Usuario;
+
+import antlr.collections.List;
 
 public class BD_Usuarios {
 	public BD_Principal _unnamed_BD_Principal_;

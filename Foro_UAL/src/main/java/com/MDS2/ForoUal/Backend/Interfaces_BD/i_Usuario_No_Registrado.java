@@ -1,3 +1,11 @@
+package com.MDS2.ForoUal.Backend.Interfaces_BD;
+
+import com.MDS2.ForoUal.Backend.ORM.src.Mensaje;
+import com.MDS2.ForoUal.Backend.ORM.src.Seccion;
+import com.MDS2.ForoUal.Backend.ORM.src.Tema;
+
+import antlr.collections.List;
+
 public interface i_Usuario_No_Registrado {
 
 	public boolean Iniciar_Sesion(String aNombre, String aContrasenia);
@@ -12,9 +20,9 @@ public interface i_Usuario_No_Registrado {
 
 	public Mensaje[] Cargar_Ultimos_Mensajes(String aNombre);
 
-	public Secciones[] Cargar_Secciones_No_Registrado();
+	public Seccion[] Cargar_Secciones_No_Registrado();
 
-	public Temas[] Cargar_Temas_No_Registrado(String aSeccion);
+	public Tema[] Cargar_Temas_No_Registrado(String aSeccion);
 
 	public Mensaje[] Cargar_Mensajes_NoRegistrado();
 

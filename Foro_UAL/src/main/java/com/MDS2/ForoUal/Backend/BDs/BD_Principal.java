@@ -1,11 +1,25 @@
-public class BD_Principal implements i_Usuario_No_Registrado, Cargar_Secciones_Registrado {
-	private DB_Media _medias = new BD_Media();
-	private BD_Reporte _reportes = new  BD_Reporte();
+package com.MDS2.ForoUal.Backend.BDs;
+
+import javax.print.attribute.standard.Media;
+
+import com.MDS2.ForoUal.Backend.Interfaces_BD.i_Usuario_No_Registrado;
+import com.MDS2.ForoUal.Backend.ORM.src.Imagen;
+import com.MDS2.ForoUal.Backend.ORM.src.Mensaje;
+import com.MDS2.ForoUal.Backend.ORM.src.Reporte;
+import com.MDS2.ForoUal.Backend.ORM.src.Seccion;
+import com.MDS2.ForoUal.Backend.ORM.src.Tema;
+import com.MDS2.ForoUal.Backend.ORM.src.Ticket;
+
+import antlr.collections.List;
+
+public class BD_Principal implements i_Usuario_No_Registrado {
+	private BD_Medias _medias = new BD_Medias();
+	private BD_Reportes _reportes = new  BD_Reportes();
 	private BD_Usuarios _usuarios = new BD_Usuarios();
 	private BD_Mensajes _mensajes = new BD_Mensajes();
 	private BD_Temas _temas = new BD_Temas();
 	private BD_Secciones _seccioness = new BD_Secciones();
-	private BD_Notificaciones _tickets = new BD_Tickets();
+	private BD_Notificaciones _tickets = new BD_Notificaciones();
 	public BD_Usuarios _bd_usuarios;
 	public BD_Medias _bd_medias;
 	public BD_Reportes _bd_reportes;
@@ -116,23 +130,23 @@ public class BD_Principal implements i_Usuario_No_Registrado, Cargar_Secciones_R
 		throw new UnsupportedOperationException();
 	}
 
-	public Secciones[] Cargar_Secciones_Administrador() {
+	public Seccion[] Cargar_Secciones_Administrador() {
 		throw new UnsupportedOperationException();
 	}
 
-	public Secciones[] Cargar_Secciones_Registrado() {
+	public Seccion[] Cargar_Secciones_Registrado() {
 		throw new UnsupportedOperationException();
 	}
 
-	public Secciones[] Cargar_Secciones_No_Registrado() {
+	public Seccion[] Cargar_Secciones_No_Registrado() {
 		throw new UnsupportedOperationException();
 	}
 
-	public Temas[] Cargar_Temas_No_Registrado(String aSeccion) {
+	public Tema[] Cargar_Temas_No_Registrado(String aSeccion) {
 		throw new UnsupportedOperationException();
 	}
 
-	public Temas[] Cargar_Temas_Registrado(String aSeccion) {
+	public Tema[] Cargar_Temas_Registrado(String aSeccion) {
 		throw new UnsupportedOperationException();
 	}
 
@@ -140,7 +154,7 @@ public class BD_Principal implements i_Usuario_No_Registrado, Cargar_Secciones_R
 		throw new UnsupportedOperationException();
 	}
 
-	public Temas[] Cargar_Temas_Moderador(String aSeccion) {
+	public Tema[] Cargar_Temas_Moderador(String aSeccion) {
 		throw new UnsupportedOperationException();
 	}
 
@@ -164,7 +178,7 @@ public class BD_Principal implements i_Usuario_No_Registrado, Cargar_Secciones_R
 		throw new UnsupportedOperationException();
 	}
 
-	public void Eliminar_Mensaje(idMensaje aId) {
+	public void Eliminar_Mensaje(Long aId) {
 		throw new UnsupportedOperationException();
 	}
 

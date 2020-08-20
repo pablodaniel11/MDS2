@@ -1,3 +1,15 @@
+package com.MDS2.ForoUal.Backend.Interfaces_BD;
+
+import javax.print.attribute.standard.Media;
+
+import com.MDS2.ForoUal.Backend.ORM.src.Imagen;
+import com.MDS2.ForoUal.Backend.ORM.src.Mensaje;
+import com.MDS2.ForoUal.Backend.ORM.src.Reporte;
+import com.MDS2.ForoUal.Backend.ORM.src.Seccion;
+import com.MDS2.ForoUal.Backend.ORM.src.Tema;
+
+import antlr.collections.List;
+
 public interface i_Usuario_Registrado {
 
 	public List Cargar_Usuarios_Busqueda();
@@ -20,9 +32,9 @@ public interface i_Usuario_Registrado {
 
 	public void Dar_Megusta_Mensaje(Long aId);
 
-	public Secciones[] Cargar_Secciones_Registrado();
+	public Seccion[] Cargar_Secciones_Registrado();
 
-	public Temas[] Cargar_Temas_Registrado(String aSeccion);
+	public Tema[] Cargar_Temas_Registrado(String aSeccion);
 
 	public Mensaje[] Cargar_Mensajes_Registrado();
 

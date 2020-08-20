@@ -1,4 +1,4 @@
-epackage com.MDS2.ForoUal.Interfaz;
+package com.MDS2.ForoUal.Interfaz;
 
 
 public class Opciones_Mensajes extends Opciones_Mensajes_Ventana{

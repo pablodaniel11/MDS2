@@ -1,4 +1,9 @@
+package com.MDS2.ForoUal.Backend.BDs;
+
 import java.util.Vector;
+
+import com.MDS2.ForoUal.Backend.ORM.src.Media_;
+import com.MDS2.ForoUal.Backend.ORM.src.Mensaje;
 
 public class BD_Mensajes {
 	public BD_Principal _bd_main_mensajes;
@@ -20,19 +25,19 @@ public class BD_Mensajes {
 		throw new UnsupportedOperationException();
 	}
 
-	public Mensaje Crear_Mensaje(String aTexto, Media aMedia) {
+	public Mensaje Crear_Mensaje(String aTexto, Media_ aMedia) {
 		throw new UnsupportedOperationException();
 	}
 
-	public void Dar_Megusta_Mensaje(idMensaje aId) {
+	public void Dar_Megusta_Mensaje(Long aId) {
 		throw new UnsupportedOperationException();
 	}
 
-	public void Eliminar_Mensaje(idMensaje aId) {
+	public void Eliminar_Mensaje(Long aId) {
 		throw new UnsupportedOperationException();
 	}
 
-	public void Ocultar_Mensaje(idMensaje aId) {
+	public void Ocultar_Mensaje(Long aId) {
 		throw new UnsupportedOperationException();
 	}
 

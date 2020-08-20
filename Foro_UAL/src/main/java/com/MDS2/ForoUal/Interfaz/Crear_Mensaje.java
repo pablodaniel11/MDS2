@@ -11,7 +11,6 @@ public class Crear_Mensaje {
 	private Image _imagen;
 	private Video _video;
 	public Opciones_Mensajes _opciones_Mensajes;
-	public Adijuntar_Archivo _adijuntar_Archivo;
 
 	public void crear() {
 		throw new UnsupportedOperationException();

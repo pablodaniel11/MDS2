@@ -1,3 +1,5 @@
+package com.MDS2.ForoUal.Backend.ORM.src;
+
 /**
  * Licensee: PABLO DANIEL(University of Almeria)
  * License Type: Academic

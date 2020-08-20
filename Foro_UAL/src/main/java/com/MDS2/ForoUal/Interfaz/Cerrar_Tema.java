@@ -1,5 +1,6 @@
 package com.MDS2.ForoUal.Interfaz;
 
+import com.MDS2.ForoUal.Backend.ORM.src.Tema;
 import com.vaadin.ui.Component.Event;
 import com.vaadin.ui.Label;
 public class Cerrar_Tema {

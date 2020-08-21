@@ -15,6 +15,7 @@ package com.MDS2.ForoUal.Backend.ORM.src;
  */
 import java.io.Serializable;
 import javax.persistence.*;
+@SuppressWarnings("serial")
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
 @Table(name="`Administrador`")
@@ -22,8 +23,10 @@ public class Administrador implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-
+	@Id
+	@Column(name = "id", unique = true, nullable = false)
+	private long id;
+	
 	public Administrador() {
 	}
 	

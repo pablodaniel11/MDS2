@@ -19,6 +19,7 @@ import org.hibernate.*;
 import java.util.Properties;
 import org.hibernate.cfg.*;
 import org.hibernate.boot.MetadataSources;
+import com.MDS2.ForoUal.*;
 
 public class MDS1PersistentManager extends PersistentManager {
 	private static final String PROJECT_NAME = "MDS1";
@@ -27,7 +28,7 @@ public class MDS1PersistentManager extends PersistentManager {
 	private static int _timeToAlive = 60000;
 	private static JDBCConnectionSetting _connectionSetting = null;
 	private static Properties _extraProperties = null;
-	private static String _configurationFile = null;
+	private static String _configurationFile = "MDS1.cfg.xml";
 	
 	private MDS1PersistentManager() throws PersistentException {
 		super(_connectionSetting, _sessionType, _timeToAlive, new String[] {}, _extraProperties, _configurationFile);

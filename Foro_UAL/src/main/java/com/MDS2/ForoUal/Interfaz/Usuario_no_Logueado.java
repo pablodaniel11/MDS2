@@ -11,7 +11,6 @@ public class Usuario_no_Logueado extends Usuario_no_Logueado_Ventana{
 	public Ver_OtroPerfil _unnamed_Ver_OtroPerfil_;
 	
 	public Usuario_no_Logueado () {
-		Panel_Superior ps = new Panel_Superior();
-		addComponent(ps);
+	
 	}
 }

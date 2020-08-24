@@ -2,6 +2,7 @@ package com.MDS2.ForoUal.Interfaz;
 
 import org.orm.PersistentException;
 
+import com.MDS2.ForoUal.Backend.ORM.src.MDS1PersistentManager;
 import com.MDS2.ForoUal.Backend.ORM.src.Usuario;
 import com.MDS2.ForoUal.Backend.ORM.src.UsuarioDAO;
 import com.MDS2.ForoUal.Interfaz.Opciones.Registrase_Ventana;
@@ -19,6 +20,13 @@ public class Registrarse extends Registrase_Ventana{
 			return "Todos los datos son obligatorios";
 		if(aUsuario.length() < 5 || aUsuario.length() > 15)
 			return "El nombre ha de tener entre 5 y 15 caracteres";
+		 for (Usuario u : UsuarioDAO.listUsuarioByCriteria(null)) {
+			 if(u.getNombreUsuario() == aUsuario)
+				 return "El nombre de usuario ya existe";
+			 else if(u.getEmail() == aEmail)
+				 return "El correo ya eiste";
+		 }
+			 
 		
 		//if(NombreUsuario no existe ya) return "El nombre de usuario ya existe";
 		//if(email no existe ya) return "El correo ya eiste";
@@ -32,6 +40,13 @@ public class Registrarse extends Registrase_Ventana{
 			@Override
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
+				try {
+					MDS1PersistentManager.instance();
+				} catch (PersistentException e) {
+					// TODO Auto-generated catch block
+					System.out.println("Probleeeeeeeeeeeeeeeeeeeemas");
+				}
+				System.out.println("Mooooooooo Probleeeeeeeeeeeeeeeeeeeemas");
 				UI c = UI.getCurrent();
 				Window w = (Window)c.getWindows().toArray()[c.getWindows().size()-1];
 				c.removeWindow(w);
@@ -50,6 +65,10 @@ public class Registrarse extends Registrase_Ventana{
 					u.setEmail(email.getValue().trim());
 					u.setDescripcion(nombreCompleto.getValue()+" </n> "+description.getValue().trim());
 					u.setContrasenia(password.getValue());
+					u.setIDusuario(1);
+					u.setBaneado(false);
+					u.setEmail(photo.getValue());
+					u.setMarcado(false);
 					try {
 						UsuarioDAO.save(u);
 						UI c = UI.getCurrent();

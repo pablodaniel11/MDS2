@@ -28,7 +28,7 @@ public class MDS1PersistentManager extends PersistentManager {
 	private static int _timeToAlive = 60000;
 	private static JDBCConnectionSetting _connectionSetting = null;
 	private static Properties _extraProperties = null;
-	private static String _configurationFile = "MDS1.cfg.xml";
+	private static String _configurationFile = null;
 	
 	private MDS1PersistentManager() throws PersistentException {
 		super(_connectionSetting, _sessionType, _timeToAlive, new String[] {}, _extraProperties, _configurationFile);

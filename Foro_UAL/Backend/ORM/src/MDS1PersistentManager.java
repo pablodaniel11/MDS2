@@ -29,6 +29,7 @@ public class MDS1PersistentManager extends PersistentManager {
 	
 	private MDS1PersistentManager() throws PersistentException {
 		super(_connectionSetting, _sessionType, _timeToAlive, new String[] {}, _extraProperties, _configurationFile);
+		print("Hola");
 		setFlushMode(FlushMode.AUTO);
 	}
 	
@@ -55,10 +56,11 @@ public class MDS1PersistentManager extends PersistentManager {
 	}
 	
 	public static synchronized final PersistentManager instance() throws PersistentException {
+		System.out.println("Hola2");
 		if (_instance == null) {
 			_instance = new MDS1PersistentManager();
 		}
-		
+		print("PersistentManager Instanced!");
 		return _instance;
 	}
 	

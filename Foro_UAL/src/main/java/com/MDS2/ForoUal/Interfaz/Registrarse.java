@@ -2,8 +2,10 @@ package com.MDS2.ForoUal.Interfaz;
 
 import org.orm.PersistentException;
 
+import com.MDS2.ForoUal.foroUI;
 import com.MDS2.ForoUal.Backend.ORM.src.MDS1PersistentManager;
 import com.MDS2.ForoUal.Backend.ORM.src.Usuario;
+import com.MDS2.ForoUal.Backend.ORM.src.UsuarioCriteria;
 import com.MDS2.ForoUal.Backend.ORM.src.UsuarioDAO;
 import com.MDS2.ForoUal.Interfaz.Opciones.Registrase_Ventana;
 import com.vaadin.ui.UI;
@@ -23,12 +25,20 @@ public class Registrarse extends Registrase_Ventana{
 			return "Todos los datos son obligatorios";
 		if(aUsuario.length() < 5 || aUsuario.length() > 15)
 			return "El nombre ha de tener entre 5 y 15 caracteres";
-		/* for (Usuario u : UsuarioDAO.listUsuarioByCriteria(null)) {
-			 if(u.getNombreUsuario() == aUsuario)
-				 return "El nombre de usuario ya existe";
-			 else if(u.getEmail() == aEmail)
-				 return "El correo ya eiste";
-		 }*/
+		if(!aEmail.contains("@")) {
+			return "Introduce un email real";
+		}
+		 try {
+			for (Usuario u : UsuarioDAO.listUsuarioByCriteria(new UsuarioCriteria())) {
+				 if(u.getNombreUsuario() == aUsuario)
+					 return "El nombre de usuario ya existe";
+				 else if(u.getEmail() == aEmail)
+					 return "El correo ya eiste";
+			 }
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 			 
 		
 		//if(NombreUsuario no existe ya) return "El nombre de usuario ya existe";
@@ -54,32 +64,13 @@ public class Registrarse extends Registrase_Ventana{
 
 			@Override
 			public void buttonClick(ClickEvent event) {
-				String s = Validar_datos_Registras(userName.getValue(),email.getValue(),nombreCompleto.getValue(),password.getValue(),description.getValue());
+				String s = Validar_datos_Registras(userName.getValue().trim(),email.getValue().trim(),nombreCompleto.getValue().trim(),password.getValue(),description.getValue().trim());
 				if(s=="")
 				{
-					Usuario u = UsuarioDAO.createUsuario();
-					u.setNombreUsuario(userName.getValue().trim());
-					u.setEmail(email.getValue().trim());
-					u.setDescripcion(nombreCompleto.getValue()+" </n> "+description.getValue().trim());
-					u.setContrasenia(password.getValue());
-					u.setIDusuario(1);
-					u.setBaneado(false);
-					u.setEmail(photo.getValue());
-					u.setMarcado(false);
-					try {
-						UsuarioDAO.save(u);
+					foroUI.db.Registrar_Usuario(email.getValue().trim(), userName.getValue().trim(), password.getValue(), nombreCompleto.getValue().trim(), photo.getValue().trim(), description.getValue().trim());
 						UI c = UI.getCurrent();
 						Window w = (Window)c.getWindows().toArray()[c.getWindows().size()-1];
 						c.removeWindow(w);
-					} catch (PersistentException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-						error.setVisible(true);
-						error.setValue("Error BD001: " + e.getMessage());
-						
-						
-						
-					}
 				}
 				else {
 					error.setVisible(true);

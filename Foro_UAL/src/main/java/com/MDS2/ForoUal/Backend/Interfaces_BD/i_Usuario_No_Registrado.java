@@ -10,7 +10,7 @@ public interface i_Usuario_No_Registrado {
 
 	public boolean Iniciar_Sesion(String aNombre, String aContrasenia);
 
-	public boolean Registrar_Usuario(String aEmail, String aNombre, String aContrasenia, String aRepetirContrasenia);
+	public boolean Registrar_Usuario(String aEmail, String aNombre, String aContrasenia, String aNombre_completo, String aFoto_perfil, String aDescripcion);
 
 	public List Cargar_Usuario(String aNombre);
 

@@ -50,8 +50,10 @@ public class BD_Principal implements i_Usuario_No_Registrado {
 		throw new UnsupportedOperationException();
 	}
 
-	public boolean Registrar_Usuario(String aEmail, String aNombre, String aContrasenia, String aRepetirContrasenia) {
-		if(_usuarios.Registrar_Usuario(aEmail, aNombre, aContrasenia, aRepetirContrasenia)) return true;
+	public boolean Registrar_Usuario(String aEmail, String aNombre, String aContrasenia, String aNombre_completo, String aFoto_perfil, String aDescripcion) {
+		int i = _medias.Insertar_Media(aFoto_perfil);
+		if(i==-1) return false;
+		if(_usuarios.Registrar_Usuario(aEmail, aNombre, aContrasenia, aNombre_completo, i, aDescripcion)) return true;
 		return false;
 	}
 

@@ -63,7 +63,7 @@ public class Usuario implements Serializable {
 	
 	@Column(name="`ID`", nullable=false, length=20)	
 	@Id	
-	@GeneratedValue(generator="USUARIO_ID_GENERATOR")	
+	@GeneratedValue(generator="USUARIO_ID_GENERATOR", strategy = GenerationType.IDENTITY)	
 	@org.hibernate.annotations.GenericGenerator(name="USUARIO_ID_GENERATOR", strategy="identity")	
 	private long ID;
 	

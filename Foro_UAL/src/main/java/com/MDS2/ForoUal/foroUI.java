@@ -1,5 +1,6 @@
 package com.MDS2.ForoUal;
 
+import com.MDS2.ForoUal.Backend.BDs.BD_Principal;
 import com.MDS2.ForoUal.Interfaz.*;
 import javax.servlet.annotation.WebServlet;
 
@@ -22,6 +23,7 @@ import com.vaadin.ui.VerticalLayout;
  */
 @Theme("foroTheme")
 public class foroUI extends UI {
+	static public BD_Principal db = new BD_Principal();
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {

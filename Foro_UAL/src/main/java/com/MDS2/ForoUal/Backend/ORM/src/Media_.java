@@ -25,7 +25,7 @@ public class Media_ implements Serializable {
 	
 	@Column(name="`ID`", nullable=false, length=10)	
 	@Id	
-	@GeneratedValue(generator="MEDIA__IDMEDIA_GENERATOR")	
+	@GeneratedValue(generator="MEDIA__IDMEDIA_GENERATOR", strategy = GenerationType.IDENTITY)	
 	@org.hibernate.annotations.GenericGenerator(name="MEDIA__IDMEDIA_GENERATOR", strategy="identity")	
 	private int IDmedia;
 	

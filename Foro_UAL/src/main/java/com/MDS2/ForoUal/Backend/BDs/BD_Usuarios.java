@@ -75,11 +75,13 @@ public class BD_Usuarios {
 		throw new UnsupportedOperationException();
 	}
 
-	public boolean Registrar_Usuario(String aEmail, String aNombre, String aContrasenia, String aRepetirContrasenia) {
+	public boolean Registrar_Usuario(String aEmail, String aNombre, String aContrasenia, String aNombre_completo, int aFoto_perfil, String aDescripcion) {
 		Usuario u = UsuarioDAO.createUsuario();
 		u.setEmail(aEmail);
 		u.setNombreUsuario(aNombre);
 		u.setContrasenia(aContrasenia);
+		u.setDescripcion(aNombre_completo+"|"+aDescripcion);
+		u.setFotoPerfil(aFoto_perfil);
 		try {
 			UsuarioDAO.save(u);
 			return true;

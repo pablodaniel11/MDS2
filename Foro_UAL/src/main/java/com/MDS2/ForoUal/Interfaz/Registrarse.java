@@ -23,12 +23,12 @@ public class Registrarse extends Registrase_Ventana{
 			return "Todos los datos son obligatorios";
 		if(aUsuario.length() < 5 || aUsuario.length() > 15)
 			return "El nombre ha de tener entre 5 y 15 caracteres";
-		 for (Usuario u : UsuarioDAO.listUsuarioByCriteria(null)) {
+		/* for (Usuario u : UsuarioDAO.listUsuarioByCriteria(null)) {
 			 if(u.getNombreUsuario() == aUsuario)
 				 return "El nombre de usuario ya existe";
 			 else if(u.getEmail() == aEmail)
 				 return "El correo ya eiste";
-		 }
+		 }*/
 			 
 		
 		//if(NombreUsuario no existe ya) return "El nombre de usuario ya existe";
@@ -66,7 +66,7 @@ public class Registrarse extends Registrase_Ventana{
 					u.setBaneado(false);
 					u.setEmail(photo.getValue());
 					u.setMarcado(false);
-				/*	try {
+					try {
 						UsuarioDAO.save(u);
 						UI c = UI.getCurrent();
 						Window w = (Window)c.getWindows().toArray()[c.getWindows().size()-1];
@@ -79,7 +79,7 @@ public class Registrarse extends Registrase_Ventana{
 						
 						
 						
-					}*/
+					}
 				}
 				else {
 					error.setVisible(true);

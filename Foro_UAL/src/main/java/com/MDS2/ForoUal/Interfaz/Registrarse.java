@@ -6,13 +6,16 @@ import com.MDS2.ForoUal.Backend.ORM.src.MDS1PersistentManager;
 import com.MDS2.ForoUal.Backend.ORM.src.Usuario;
 import com.MDS2.ForoUal.Backend.ORM.src.UsuarioDAO;
 import com.MDS2.ForoUal.Interfaz.Opciones.Registrase_Ventana;
-import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.Window;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 
 public class Registrarse extends Registrase_Ventana{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2795991294979556391L;
 	public Panel_Superior _panel_Superior;
 
 	public String Validar_datos_Registras(String aUsuario, String aEmail, String aNombreCompleto, String aContrasena, String aDescripcion) {
@@ -36,17 +39,10 @@ public class Registrarse extends Registrase_Ventana{
 	public Registrarse() {
 		
 		cancelar.addClickListener(new Button.ClickListener() {
-			
+			private static final long serialVersionUID = 2411752154015008999L;
+
 			@Override
 			public void buttonClick(ClickEvent event) {
-				// TODO Auto-generated method stub
-				try {
-					MDS1PersistentManager.instance();
-				} catch (PersistentException e) {
-					// TODO Auto-generated catch block
-					System.out.println("Probleeeeeeeeeeeeeeeeeeeemas");
-				}
-				System.out.println("Mooooooooo Probleeeeeeeeeeeeeeeeeeeemas");
 				UI c = UI.getCurrent();
 				Window w = (Window)c.getWindows().toArray()[c.getWindows().size()-1];
 				c.removeWindow(w);
@@ -54,7 +50,8 @@ public class Registrarse extends Registrase_Ventana{
 			}
 		});
 		continuar.addClickListener(new Button.ClickListener() {
-			
+			private static final long serialVersionUID = 4865963736755932057L;
+
 			@Override
 			public void buttonClick(ClickEvent event) {
 				String s = Validar_datos_Registras(userName.getValue(),email.getValue(),nombreCompleto.getValue(),password.getValue(),description.getValue());
@@ -69,7 +66,7 @@ public class Registrarse extends Registrase_Ventana{
 					u.setBaneado(false);
 					u.setEmail(photo.getValue());
 					u.setMarcado(false);
-					try {
+				/*	try {
 						UsuarioDAO.save(u);
 						UI c = UI.getCurrent();
 						Window w = (Window)c.getWindows().toArray()[c.getWindows().size()-1];
@@ -82,7 +79,7 @@ public class Registrarse extends Registrase_Ventana{
 						
 						
 						
-					}
+					}*/
 				}
 				else {
 					error.setVisible(true);

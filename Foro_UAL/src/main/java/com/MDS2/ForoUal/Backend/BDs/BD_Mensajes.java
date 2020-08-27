@@ -4,10 +4,11 @@ import java.util.Vector;
 
 import com.MDS2.ForoUal.Backend.ORM.src.Media_;
 import com.MDS2.ForoUal.Backend.ORM.src.Mensaje;
+import com.MDS2.ForoUal.Backend.ORM.src.MensajeDAO;
 
 public class BD_Mensajes {
 	public BD_Principal _bd_main_mensajes;
-	public Vector<Mensaje> _unnamed_Mensaje_ = new Vector<Mensaje>();
+	public Vector<MensajeDAO> _unnamed_Mensaje_ = new Vector<MensajeDAO>();
 
 	public Mensaje[] Cargar_Mensajes_NoRegistrado() {
 		throw new UnsupportedOperationException();

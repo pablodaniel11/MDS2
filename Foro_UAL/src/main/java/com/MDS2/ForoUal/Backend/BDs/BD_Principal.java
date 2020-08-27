@@ -51,7 +51,8 @@ public class BD_Principal implements i_Usuario_No_Registrado {
 	}
 
 	public boolean Registrar_Usuario(String aEmail, String aNombre, String aContrasenia, String aRepetirContrasenia) {
-		throw new UnsupportedOperationException();
+		if(_usuarios.Registrar_Usuario(aEmail, aNombre, aContrasenia, aRepetirContrasenia)) return true;
+		return false;
 	}
 
 	public Mensaje[] Devolver_Ultimos_Mensajes(Long aIduser, int aNummensajes) {

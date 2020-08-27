@@ -3,10 +3,11 @@ package com.MDS2.ForoUal.Backend.BDs;
 import java.util.Vector;
 
 import com.MDS2.ForoUal.Backend.ORM.src.Tema;
+import com.MDS2.ForoUal.Backend.ORM.src.TemaDAO;
 
 public class BD_Temas {
 	public BD_Principal _bd_main_temas;
-	public Vector<Tema> _unnamed_Temas_ = new Vector<Tema>();
+	public Vector<TemaDAO> _unnamed_Temas_ = new Vector<TemaDAO>();
 
 	public Tema Crear_Tema(String aTitulo, String aSubtitulo) {
 		throw new UnsupportedOperationException();

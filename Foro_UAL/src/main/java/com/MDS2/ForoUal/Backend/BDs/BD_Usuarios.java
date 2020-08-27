@@ -2,15 +2,18 @@ package com.MDS2.ForoUal.Backend.BDs;
 
 import java.util.Vector;
 
+import org.orm.PersistentException;
+
 import com.MDS2.ForoUal.Backend.ORM.src.Imagen;
 import com.MDS2.ForoUal.Backend.ORM.src.Mensaje;
 import com.MDS2.ForoUal.Backend.ORM.src.Usuario;
+import com.MDS2.ForoUal.Backend.ORM.src.UsuarioDAO;
 
 import antlr.collections.List;
 
 public class BD_Usuarios {
 	public BD_Principal _unnamed_BD_Principal_;
-	public Vector<Usuario> _unnamed_Usuario_ = new Vector<Usuario>();
+	public Vector<UsuarioDAO> _unnamed_Usuario_ = new Vector<UsuarioDAO>();
 
 	public void Banear(String aNombre) {
 		throw new UnsupportedOperationException();
@@ -73,6 +76,17 @@ public class BD_Usuarios {
 	}
 
 	public boolean Registrar_Usuario(String aEmail, String aNombre, String aContrasenia, String aRepetirContrasenia) {
-		throw new UnsupportedOperationException();
+		Usuario u = UsuarioDAO.createUsuario();
+		u.setEmail(aEmail);
+		u.setNombreUsuario(aNombre);
+		u.setContrasenia(aContrasenia);
+		try {
+			UsuarioDAO.save(u);
+			return true;
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	}
 }

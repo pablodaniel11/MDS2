@@ -55,15 +55,10 @@ public class foroUI extends UI {
     	if(user == null)
     		setContent(new Visualizar_Raiz__No_Reg_());
     	else {
-    		switch (privilegios) {
-    		case usuario:
-    		case moderador:
-    			setContent(new Visualizar_Secciones_Registrado());
-    			break;
-    		case administrador:
+    		if(privilegios == Privilegios.administrador)
     			setContent(new Visualizar_Secciones_Administrador());
-    			break;
-    		}
+    		else
+    			setContent(new Visualizar_Secciones_Registrado());
     	}	
     }
     public void VisualizarPerfil() {

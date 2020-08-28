@@ -9,7 +9,7 @@ public class Visualizar_Secciones_Registrado extends Visualizar_Secciones_Regist
 		throw new UnsupportedOperationException();
 	}
 	public Visualizar_Secciones_Registrado() {
-		panel_Superior_Registrado ps = new panel_Superior_Registrado();
+		panel_Superior_Registrado ps = new panel_Superior_Registrado(false);
 		panelSuperior.setContent(ps);
 		_visualizar_Secciones = new Visualizar_Secciones();
 		listaSubForos.setContent(_visualizar_Secciones);

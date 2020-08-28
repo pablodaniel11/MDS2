@@ -14,7 +14,7 @@ public class Opciones_Perfil extends Opciones_Perfil_Ventana{
 	public Opciones_Perfil_Usuario _opciones_Perfil_OtroUsuario;
 	
 	public Opciones_Perfil (Usuario u) {
-		panelSuperior.setContent(new panel_Superior_Registrado());
+		panelSuperior.setContent(new panel_Superior_Registrado(true));
 		panelOpciones.setContent(new Opciones_Perfil_Usuario());
 		panelAmigos.setContent(new Ver_Amigos());
 		

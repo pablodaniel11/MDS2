@@ -6,7 +6,7 @@ public class Visualizar_Mensajes_Registrado extends Visualizar_Mensajes_Registra
 	public Visualizar_Mensajes _visualizar_Mensajes;
 
 	public Visualizar_Mensajes_Registrado () {
-		panel_Superior_Registrado ps = new panel_Superior_Registrado();
+		panel_Superior_Registrado ps = new panel_Superior_Registrado(false);
 		panelSuperior.setContent(ps);
 		_visualizar_Mensajes = new Visualizar_Mensajes();
 		listaMensajes.setContent(_visualizar_Mensajes);

@@ -7,7 +7,7 @@ public class Visualizar_Temas_Registrado extends Visualizar_Temas_Registrado_Ven
 	public Opciones_Temas _opciones_Temas;
 
 	public Visualizar_Temas_Registrado () {
-		panel_Superior_Registrado ps = new panel_Superior_Registrado();
+		panel_Superior_Registrado ps = new panel_Superior_Registrado(false);
 		panelSuperior.setContent(ps);
 		_visualizar_Temas = new Ver_Temas();
 		listaTemas.setContent(_visualizar_Temas);

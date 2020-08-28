@@ -75,9 +75,32 @@ public class BD_Usuarios {
 		try {
 			Usuario u = UsuarioDAO.loadUsuarioByQuery(String.format("Email = '%s' AND Contrasenia = '%s'",aNombre,aContrasenia), "Email");
 			foroUI.user = u;
+			
+			//Privilegios
+			try {
+			Moderadores mod = ModeradoresDAO.getModeradoresByORMID(u.getID());
+			if(mod != null) foroUI.privilegios = foroUI.Privilegios.moderador;
+			}
+			catch (Exception e)
+			{
+				
+			}
+			
+			try {
+			Administradores ad = AdministradoresDAO.getAdministradoresByORMID(u.getID());
+			if(ad != null) foroUI.privilegios = foroUI.Privilegios.administrador;
+			}
+			catch (Exception e)
+			{
+				
+			}
+			
+			//Visualizar
 			foroUI.singleton.VisualizarRaiz();
 			
+			System.out.println("Login as: " + foroUI.privilegios);
 			return u != null;
+			
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

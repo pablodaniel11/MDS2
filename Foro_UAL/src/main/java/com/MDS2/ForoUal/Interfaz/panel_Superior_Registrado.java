@@ -15,7 +15,7 @@ public class panel_Superior_Registrado extends panel_Superior_Registrado_Ventana
 	public Visualizar_Temas_Registrado _visualizar_Temas_Registrado;
 	public Pantallas_navegacion _unnamed_Pantallas_navegacion_;
 	
-	public panel_Superior_Registrado () {
+	public panel_Superior_Registrado (boolean isPerfil) {
 		cerrarSesion.addClickListener(new Button.ClickListener() {
 			
 			@Override
@@ -26,11 +26,16 @@ public class panel_Superior_Registrado extends panel_Superior_Registrado_Ventana
 				
 			}
 		});
+		if(isPerfil)perfil.setCaption("Volver");
+		
 		perfil.addClickListener(new Button.ClickListener() {
 			
 			@Override
 			public void buttonClick(ClickEvent event) {
+				if (!isPerfil)
 				foroUI.singleton.VisualizarPerfil();
+				else 
+					foroUI.singleton.VisualizarRaiz();
 				
 			}
 		});

@@ -6,7 +6,7 @@ public class Visualizar_Secciones_Administrador extends Visualizar_Secciones_Reg
 
 	public Visualizar_Secciones_Administrador() {
 		super();
-		panelOpciones.setVisible(false);
+		panelOpciones.setVisible(true);
 		_opciones_Secciones = new Opciones_Secciones();
 		panelOpciones.setContent(_opciones_Secciones);
 	}

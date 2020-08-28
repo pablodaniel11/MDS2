@@ -12,7 +12,7 @@ public class Usuario_Logueado extends Usuario_Logueado_Ventana{
 	public Ver_OtroPerfil _unnamed_Ver_OtroPerfil_;
 	
 	public Usuario_Logueado (){
-		panel_Superior_Registrado ps = new panel_Superior_Registrado();
+		panel_Superior_Registrado ps = new panel_Superior_Registrado(false);
 		addComponent(ps);
 	}
 }

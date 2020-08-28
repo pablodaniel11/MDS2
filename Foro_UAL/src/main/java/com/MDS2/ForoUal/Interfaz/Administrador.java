@@ -10,7 +10,7 @@ public class Administrador extends Administrador_Ventana {
 	public Visualizar_Mensajes_Administrador _visualizar_Mensajes_Administrador;
 	
 	public Administrador () {
-		panel_Superior_Registrado ps = new panel_Superior_Registrado();
+		panel_Superior_Registrado ps = new panel_Superior_Registrado(false);
 		addComponent(ps);
 	}
 }

@@ -9,7 +9,7 @@ public class Moderador extends Moderador_Ventana{
 	public Visualizar_OtroUsuario_Moderador _visualizar_Perfil_Mod;
 	public Visualizar_Mensajes_Mod _visualizar_Mensajes_Mod;
 	public Moderador () {
-		panel_Superior_Registrado ps = new panel_Superior_Registrado();
+		panel_Superior_Registrado ps = new panel_Superior_Registrado(false);
 		addComponent(ps);
 	}
 }

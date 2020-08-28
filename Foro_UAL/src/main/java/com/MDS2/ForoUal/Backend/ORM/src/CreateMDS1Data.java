@@ -9,44 +9,20 @@ public class CreateMDS1Data {
 	public void createTestData() throws PersistentException {
 		PersistentTransaction t = MDS1PersistentManager.instance().getSession().beginTransaction();
 		try {
-			Reporte reporte = ReporteDAO.createReporte();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : usuario
-			ReporteDAO.save(reporte);
-			Tema tema = TemaDAO.createTema();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : compone, oculta, numMensjes, numeroMeGusta, crea_temas
-			TemaDAO.save(tema);
-			Seccion seccion = SeccionDAO.createSeccion();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : crea, numMensajes
-			SeccionDAO.save(seccion);
-			Mensaje mensaje = MensajeDAO.createMensaje();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : mensajes, respondido_por, imagen, marcado, numeroMeGusta, mensaje_, envia
-			MensajeDAO.save(mensaje);
+
 			Usuario usuario = UsuarioDAO.createUsuario();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : es_creado, usuarios, pertenece, amigo_de, reportes, baneado, marcado
+			usuario.setNombreUsuario("Administrador");
+			usuario.setEmail("Administrador");
+			usuario.setContrasenia("K/9U+4TkxY8XxvNOV2Jb6jIE82JO22dNX4eGcXr4arY=");
+			usuario.setDescripcion("Administrador /// Administrador del sistema");
+			usuario.setFotoPerfil(1);
 			UsuarioDAO.save(usuario);
 			Media_ media_ = Media_DAO.createMedia_();
+			media_.setUrl("https://ih1.redbubble.net/image.508671606.9093/st,small,507x507-pad,600x600,f8f8f8.jpg");
 			// Initialize the properties of the persistent object here
 			Media_DAO.save(media_);
-			Video video = VideoDAO.createVideo();
-			// Initialize the properties of the persistent object here
-			VideoDAO.save(video);
-			Imagen imagen = ImagenDAO.createImagen();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : contiene_imagen, tamanoKB
-			ImagenDAO.save(imagen);
-			Ticket ticket = TicketDAO.createTicket();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : recibe, envia
-			TicketDAO.save(ticket);
-			Administrador administrador = AdministradorDAO.createAdministrador();
-			// Initialize the properties of the persistent object here
-			AdministradorDAO.save(administrador);
-			Moderadores moderadores = ModeradoresDAO.createModeradores();
-			// Initialize the properties of the persistent object here
-			ModeradoresDAO.save(moderadores);
-			Moderador moderador = ModeradorDAO.createModerador();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : es_enviado, temas
-			ModeradorDAO.save(moderador);
 			Administradores administradores = AdministradoresDAO.createAdministradores();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : es_creada, son_recibidos
+			administradores.setIDusuario(0);
 			AdministradoresDAO.save(administradores);
 			t.commit();
 		}

@@ -99,6 +99,9 @@ public class Mensaje implements Serializable {
 	@Column(name="`Marcado`", nullable=false, length=1)	
 	private boolean marcado;
 	
+	@Column(name="`Fecha`", nullable=true)	
+	private date fecha;
+	
 	@OneToMany(mappedBy="es_reportado", targetEntity=Reporte.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
@@ -167,6 +170,14 @@ public class Mensaje implements Serializable {
 	
 	public boolean getMarcado() {
 		return marcado;
+	}
+	
+	public void setFecha(date value) {
+		this.fecha = value;
+	}
+	
+	public date getFecha() {
+		return fecha;
 	}
 	
 	public void setEnvia(Usuario value) {

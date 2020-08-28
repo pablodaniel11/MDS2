@@ -76,6 +76,7 @@ public class TemaSetCollection extends org.orm.util.ORMSet {
 	 * <li>subtitulo</li>
 	 * <li>fechaCreacion</li>
 	 * <li>numMensjes</li>
+	 * <li>fecha</li>
 	 * </ul>
 	 * @return The persistent objects sorted array
 	 */
@@ -94,6 +95,7 @@ public class TemaSetCollection extends org.orm.util.ORMSet {
 	 * <li>subtitulo</li>
 	 * <li>fechaCreacion</li>
 	 * <li>numMensjes</li>
+	 * <li>fecha</li>
 	 * </ul>
 	 * @param ascending true for ascending, false for descending
 	 * @return The persistent objects sorted array

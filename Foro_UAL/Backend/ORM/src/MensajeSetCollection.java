@@ -73,6 +73,7 @@ public class MensajeSetCollection extends org.orm.util.ORMSet {
 	 * <li>numeroMeGusta</li>
 	 * <li>nombreUsuario</li>
 	 * <li>marcado</li>
+	 * <li>fecha</li>
 	 * </ul>
 	 * @return The persistent objects sorted array
 	 */
@@ -88,6 +89,7 @@ public class MensajeSetCollection extends org.orm.util.ORMSet {
 	 * <li>numeroMeGusta</li>
 	 * <li>nombreUsuario</li>
 	 * <li>marcado</li>
+	 * <li>fecha</li>
 	 * </ul>
 	 * @param ascending true for ascending, false for descending
 	 * @return The persistent objects sorted array

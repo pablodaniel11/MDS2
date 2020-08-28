@@ -100,6 +100,9 @@ public class Tema implements Serializable {
 	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
 	private Moderador oculta;
 	
+	@Column(name="`Fecha`", nullable=true)	
+	private date fecha;
+	
 	@OneToMany(mappedBy="mensaje_", targetEntity=Mensaje.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
@@ -179,6 +182,14 @@ public class Tema implements Serializable {
 	
 	public int getNumMensjes() {
 		return numMensjes;
+	}
+	
+	public void setFecha(date value) {
+		this.fecha = value;
+	}
+	
+	public date getFecha() {
+		return fecha;
 	}
 	
 	private void setORM_Compone(java.util.Set value) {

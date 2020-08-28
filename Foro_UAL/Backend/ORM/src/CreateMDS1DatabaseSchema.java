@@ -4,7 +4,6 @@
  */
 import org.orm.*;
 public class CreateMDS1DatabaseSchema {
-	
 	public static void main(String[] args) {
 		try {
 			ORMDatabaseInitiator.createSchema(MDS1PersistentManager.instance());

@@ -71,6 +71,9 @@ public class Seccion implements Serializable {
 	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
 	private Administradores crea;
 	
+	@Column(name="`Fecha`", nullable=true)	
+	private date fecha;
+	
 	@OneToMany(mappedBy="seccion", targetEntity=Tema.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
@@ -122,6 +125,14 @@ public class Seccion implements Serializable {
 	
 	public int getNumMensajes() {
 		return numMensajes;
+	}
+	
+	public void setFecha(date value) {
+		this.fecha = value;
+	}
+	
+	public date getFecha() {
+		return fecha;
 	}
 	
 	private void setORM_Temas(java.util.Set value) {

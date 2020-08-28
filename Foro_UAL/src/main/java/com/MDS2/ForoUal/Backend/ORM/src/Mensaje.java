@@ -19,6 +19,7 @@ import javax.persistence.*;
 @org.hibernate.annotations.Proxy(lazy=false)
 @Table(name="`Mensaje`")
 public class Mensaje implements Serializable {
+	
 	public Mensaje() {
 	}
 	

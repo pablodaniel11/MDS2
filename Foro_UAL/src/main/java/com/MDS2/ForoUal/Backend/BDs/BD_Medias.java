@@ -2,32 +2,33 @@ package com.MDS2.ForoUal.Backend.BDs;
 
 import java.util.Vector;
 
-import org.orm.PersistentException;
+import javax.print.attribute.standard.Media;
 
+import org.orm.PersistentException;
+import org.orm.PersistentSession;
+import org.orm.PersistentTransaction;
+
+import com.MDS2.ForoUal.Backend.ORM.src.MDS1PersistentManager;
 import com.MDS2.ForoUal.Backend.ORM.src.Media_;
-import com.MDS2.ForoUal.Backend.ORM.src.Media_Criteria;
 import com.MDS2.ForoUal.Backend.ORM.src.Media_DAO;
 
 public class BD_Medias {
 	public BD_Principal _bd_main_medias;
-	public Vector<Media_DAO> _unnamed_Media_ = new Vector<Media_DAO>();
+	public Vector<Media_> _unnamed_Media_ = new Vector<Media_>();
 
-	public int Insertar_Media(String aUrl) {
-		Media_ m = Media_DAO.createMedia_();
-		m.setUrl(aUrl);
+	public void Insertar_Media(String aUrl) throws PersistentException {
+		PersistentTransaction t = MDS1PersistentManager.instance().getSession().beginTransaction();
+		Media_ m = null;
+		
 		try {
+			m = new Media_();
+			m.setUrl(aUrl);
 			Media_DAO.save(m);
-			return Media_DAO.listMedia_ByCriteria(new Media_Criteria()).length;
-		} catch (PersistentException e) {
-			return -1;
-		}
-	}
-	public Media_ Cargar_Media(int aMedia) {
-		try {
-			return(Media_DAO.loadMedia_ByORMID(aMedia));
+			t.commit();
 			
-		} catch (PersistentException e) {
-			return null;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new PersistentException(e);
 		}
 	}
 }

@@ -33,5 +33,13 @@ public class Administrador implements Serializable {
 	public String toString() {
 		return super.toString();
 	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 	
 }

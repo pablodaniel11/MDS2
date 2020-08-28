@@ -1,6 +1,13 @@
 package com.MDS2.ForoUal.Backend.BDs;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Vector;
+
+import com.MDS2.ForoUal.foroUI;
+import com.MDS2.ForoUal.Backend.ORM.src.*;
 
 import org.orm.PersistentException;
 
@@ -8,6 +15,7 @@ import com.MDS2.ForoUal.Backend.ORM.src.Imagen;
 import com.MDS2.ForoUal.Backend.ORM.src.Mensaje;
 import com.MDS2.ForoUal.Backend.ORM.src.Usuario;
 import com.MDS2.ForoUal.Backend.ORM.src.UsuarioDAO;
+import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
 
 import antlr.collections.List;
 
@@ -60,7 +68,21 @@ public class BD_Usuarios {
 	}
 
 	public boolean Iniciar_Sesion(String aNombre, String aContrasenia) {
-		throw new UnsupportedOperationException();
+		
+		String key = "EqdmPh53c9x33EygXpTpcoJvc4VXLK";
+		aContrasenia = PasswordUtils.generateSecurePassword(aContrasenia, key);
+
+		try {
+			Usuario u = UsuarioDAO.loadUsuarioByQuery(String.format("Email = '%s' AND Contrasenia = '%s'",aNombre,aContrasenia), "Email");
+			foroUI.user = u;
+			foroUI.singleton.VisualizarRaiz();
+			
+			return u != null;
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	public void Insertar_Amigo(String aNombre) {
@@ -76,11 +98,15 @@ public class BD_Usuarios {
 	}
 
 	public boolean Registrar_Usuario(String aEmail, String aNombre, String aContrasenia, String aNombre_completo, int aFoto_perfil, String aDescripcion) {
+		
+		String key = "EqdmPh53c9x33EygXpTpcoJvc4VXLK";
+		aContrasenia = PasswordUtils.generateSecurePassword(aContrasenia, key);
+		
 		Usuario u = UsuarioDAO.createUsuario();
 		u.setEmail(aEmail);
 		u.setNombreUsuario(aNombre);
 		u.setContrasenia(aContrasenia);
-		u.setDescripcion(aNombre_completo+"|"+aDescripcion);
+		u.setDescripcion(aNombre_completo+" /// "+aDescripcion);
 		u.setFotoPerfil(aFoto_perfil);
 		try {
 			UsuarioDAO.save(u);

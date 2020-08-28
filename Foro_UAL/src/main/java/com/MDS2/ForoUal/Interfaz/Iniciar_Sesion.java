@@ -1,5 +1,6 @@
 package com.MDS2.ForoUal.Interfaz;
 
+import com.MDS2.ForoUal.foroUI;
 import com.MDS2.ForoUal.Interfaz.Opciones.Inciar_Sesion_Ventana;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
@@ -29,6 +30,26 @@ public class Iniciar_Sesion extends Inciar_Sesion_Ventana{
 					UI c = UI.getCurrent();
 					Window w = (Window)c.getWindows().toArray()[c.getWindows().size()-1];
 					c.removeWindow(w);
+			}
+			
+		});
+		continuar.addClickListener(new Button.ClickListener() {
+			
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+				if(foroUI.db.Iniciar_Sesion(email.getValue().trim(), contrasena.getValue().trim())) {
+										
+					UI c = UI.getCurrent();
+					Window w = (Window)c.getWindows().toArray()[c.getWindows().size()-1];
+					c.removeWindow(w);
+					
+				}
+				else
+				{
+					error.setVisible(true);
+					error.setValue("Los datos de incio de sesión no son correctos");
+				}
 			}
 		});
 	}

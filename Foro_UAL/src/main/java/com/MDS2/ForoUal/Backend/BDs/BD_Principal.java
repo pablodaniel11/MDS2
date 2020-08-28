@@ -4,6 +4,7 @@ import javax.print.attribute.standard.Media;
 
 import com.MDS2.ForoUal.Backend.Interfaces_BD.i_Usuario_No_Registrado;
 import com.MDS2.ForoUal.Backend.ORM.src.Imagen;
+import com.MDS2.ForoUal.Backend.ORM.src.Media_;
 import com.MDS2.ForoUal.Backend.ORM.src.Mensaje;
 import com.MDS2.ForoUal.Backend.ORM.src.Reporte;
 import com.MDS2.ForoUal.Backend.ORM.src.Seccion;
@@ -53,8 +54,7 @@ public class BD_Principal implements i_Usuario_No_Registrado {
 	public boolean Registrar_Usuario(String aEmail, String aNombre, String aContrasenia, String aNombre_completo, String aFoto_perfil, String aDescripcion) {
 		int i = _medias.Insertar_Media(aFoto_perfil);
 		if(i==-1) return false;
-		if(_usuarios.Registrar_Usuario(aEmail, aNombre, aContrasenia, aNombre_completo, i, aDescripcion)) return true;
-		return false;
+		return _usuarios.Registrar_Usuario(aEmail, aNombre, aContrasenia, aNombre_completo, i, aDescripcion);
 	}
 
 	public Mensaje[] Devolver_Ultimos_Mensajes(Long aIduser, int aNummensajes) {
@@ -130,7 +130,7 @@ public class BD_Principal implements i_Usuario_No_Registrado {
 	}
 
 	public boolean Iniciar_Sesion(String aNombre, String aContrasenia) {
-		throw new UnsupportedOperationException();
+		return _usuarios.Iniciar_Sesion(aNombre, aContrasenia);
 	}
 
 	public Seccion[] Cargar_Secciones_Administrador() {
@@ -211,5 +211,8 @@ public class BD_Principal implements i_Usuario_No_Registrado {
 
 	public Ticket Notificar_Admin(String aNombreUsuario, String aMensaje) {
 		throw new UnsupportedOperationException();
+	}
+	public Media_ Cargar_Media (int aMedia) {
+		return _medias.Cargar_Media(aMedia);
 	}
 }

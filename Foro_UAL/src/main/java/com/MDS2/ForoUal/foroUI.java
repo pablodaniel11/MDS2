@@ -1,6 +1,7 @@
 package com.MDS2.ForoUal;
 
 import com.MDS2.ForoUal.Backend.BDs.BD_Principal;
+import com.MDS2.ForoUal.Backend.ORM.src.Usuario;
 import com.MDS2.ForoUal.Interfaz.*;
 import javax.servlet.annotation.WebServlet;
 
@@ -24,11 +25,16 @@ import com.vaadin.ui.VerticalLayout;
 @Theme("foroTheme")
 public class foroUI extends UI {
 	static public BD_Principal db = new BD_Principal();
+	static public foroUI singleton;
+	public static Usuario user;
+	
+	public static enum Privilegios  {usuario, moderador, administrador};
+	public static Privilegios privilegios = Privilegios.usuario;
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-    	Visualizar_Raiz__No_Reg_ ad = new Visualizar_Raiz__No_Reg_();
-    	setContent(ad);
+    	singleton = this;
+    	VisualizarRaiz();
     	/*
         final VerticalLayout layout = new VerticalLayout();
         
@@ -44,6 +50,24 @@ public class foroUI extends UI {
         layout.addComponents(name, button);
         
         setContent(layout);*/
+    }
+    public void VisualizarRaiz () {
+    	if(user == null)
+    		setContent(new Visualizar_Raiz__No_Reg_());
+    	else {
+    		switch (privilegios) {
+    		case usuario:
+    		case moderador:
+    			setContent(new Visualizar_Secciones_Registrado());
+    			break;
+    		case administrador:
+    			setContent(new Visualizar_Secciones_Administrador());
+    			break;
+    		}
+    	}	
+    }
+    public void VisualizarPerfil() {
+    	setContent(new Opciones_Perfil(user));
     }
 
     @WebServlet(urlPatterns = "/*", name = "foroUIServlet", asyncSupported = true)

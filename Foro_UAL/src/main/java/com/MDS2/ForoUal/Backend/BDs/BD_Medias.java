@@ -17,9 +17,17 @@ public class BD_Medias {
 		m.setUrl(aUrl);
 		try {
 			Media_DAO.save(m);
-			return Media_DAO.listMedia_ByCriteria(new Media_Criteria()).length-1;
+			return Media_DAO.listMedia_ByCriteria(new Media_Criteria()).length;
 		} catch (PersistentException e) {
 			return -1;
+		}
+	}
+	public Media_ Cargar_Media(int aMedia) {
+		try {
+			return(Media_DAO.loadMedia_ByORMID(aMedia));
+			
+		} catch (PersistentException e) {
+			return null;
 		}
 	}
 }

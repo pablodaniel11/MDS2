@@ -25,16 +25,16 @@ public class Registrarse extends Registrase_Ventana{
 			return "Todos los datos son obligatorios";
 		if(aUsuario.length() < 5 || aUsuario.length() > 15)
 			return "El nombre ha de tener entre 5 y 15 caracteres";
-		if(!aEmail.contains("@")) {
+		if(!aEmail.contains("@")) 
 			return "Introduce un email real";
-		}
+		if(aNombreCompleto.contains("|") || aDescripcion.contains("|"))
+			return "Hay carácteres no admitidos";
 		 try {
-			for (Usuario u : UsuarioDAO.listUsuarioByCriteria(new UsuarioCriteria())) {
-				 if(u.getNombreUsuario() == aUsuario)
-					 return "El nombre de usuario ya existe";
-				 else if(u.getEmail() == aEmail)
-					 return "El correo ya eiste";
-			 }
+			 if(UsuarioDAO.loadUsuarioByQuery(String.format("Email = '%s'",aEmail), "Email")!= null)
+				 return "El correo ya eiste";
+			 if(UsuarioDAO.loadUsuarioByQuery(String.format("NombreUsuario = '%s'",aEmail), "NombreUsuario")!= null)
+				 return "El nombre de usuario ya existe";
+					 
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

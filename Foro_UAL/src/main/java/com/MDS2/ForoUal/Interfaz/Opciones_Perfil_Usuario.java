@@ -4,7 +4,7 @@ package com.MDS2.ForoUal.Interfaz;
 import com.vaadin.ui.Component.Event;
 
 
-public class Opciones_Perfil_Usuario {
+public class Opciones_Perfil_Usuario extends Opciones_Perfil_Usuario_Ventana{
 	private Event _cerrar_Sesion;
 	public Opciones_Perfil _opciones_Perfil;
 	public Darse_de_baja _darse_de_baja;

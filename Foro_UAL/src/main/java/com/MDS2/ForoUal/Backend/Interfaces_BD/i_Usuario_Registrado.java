@@ -32,8 +32,6 @@ public interface i_Usuario_Registrado {
 
 	public void Dar_Megusta_Mensaje(Long aId);
 
-	public Seccion[] Cargar_Secciones_Registrado();
-
 	public Tema[] Cargar_Temas_Registrado(String aSeccion);
 
 	public Mensaje[] Cargar_Mensajes_Registrado();

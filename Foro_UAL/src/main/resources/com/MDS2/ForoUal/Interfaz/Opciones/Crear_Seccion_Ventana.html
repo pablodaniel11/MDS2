@@ -11,8 +11,18 @@
     <vaadin-label :middle :center :expand="5">
      <h2><b>Crear Subforo</b></h2>
     </vaadin-label>
-    <vaadin-text-field width="60%" value="Nombre" :middle :center></vaadin-text-field>
-    <vaadin-text-field width="60%" value="Descripcion" :middle :center></vaadin-text-field>
+    <vaadin-horizontal-layout :middle :center>
+     <vaadin-label width="100px" plain-text :middle>
+       Nombre 
+     </vaadin-label>
+     <vaadin-text-field width="300px" _id="nombre"></vaadin-text-field>
+    </vaadin-horizontal-layout>
+    <vaadin-horizontal-layout :middle :center>
+     <vaadin-label width="100px" plain-text :middle>
+       Descripccion 
+     </vaadin-label>
+     <vaadin-text-field width="300px" _id="descripcion"></vaadin-text-field>
+    </vaadin-horizontal-layout>
    </vaadin-vertical-layout>
    <vaadin-horizontal-layout width-full height="55%" :bottom :center>
     <vaadin-button width="60%" height="60%" plain-text _id="cancelar" :bottom :center>

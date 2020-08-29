@@ -20,7 +20,7 @@ public interface i_Usuario_No_Registrado {
 
 	public Mensaje[] Cargar_Ultimos_Mensajes(String aNombre);
 
-	public Seccion[] Cargar_Secciones_No_Registrado();
+	public Seccion[] Cargar_Secciones();
 
 	public Tema[] Cargar_Temas_No_Registrado(String aSeccion);
 

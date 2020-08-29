@@ -67,7 +67,7 @@ public class Mensaje implements Serializable {
 	
 	@Column(name="`ID`", nullable=false, length=20)	
 	@Id	
-	@GeneratedValue(generator="MENSAJE_IDMENSAJE_GENERATOR")	
+	@GeneratedValue(generator="MENSAJE_IDMENSAJE_GENERATOR", strategy = GenerationType.IDENTITY)	
 	@org.hibernate.annotations.GenericGenerator(name="MENSAJE_IDMENSAJE_GENERATOR", strategy="identity")	
 	private Long idMensaje;
 	

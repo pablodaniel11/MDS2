@@ -50,7 +50,7 @@ public class Seccion implements Serializable {
 	
 	@Column(name="`ID`", nullable=false, length=20)	
 	@Id	
-	@GeneratedValue(generator="SECCION_IDSECCION_GENERATOR")	
+	@GeneratedValue(generator="SECCION_IDSECCION_GENERATOR", strategy = GenerationType.IDENTITY)	
 	@org.hibernate.annotations.GenericGenerator(name="SECCION_IDSECCION_GENERATOR", strategy="identity")	
 	private Long IDseccion;
 	

@@ -20,8 +20,6 @@ public interface i_Administrador {
 
 	public Seccion Crear_Seccion(String aTitulo, String aSubtitulo);
 
-	public Seccion[] Cargar_Secciones_Administrador();
-
 	public void Eliminar_Mensaje(Long aId);
 
 	public Mensaje[] Cargar_Mensajes_Administrador();

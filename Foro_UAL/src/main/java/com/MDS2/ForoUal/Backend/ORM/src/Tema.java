@@ -58,7 +58,7 @@ public class Tema implements Serializable {
 	
 	@Column(name="`ID`", nullable=false, length=20)	
 	@Id	
-	@GeneratedValue(generator="TEMA_IDTEMA_GENERATOR")	
+	@GeneratedValue(generator="TEMA_IDTEMA_GENERATOR", strategy = GenerationType.IDENTITY)	
 	@org.hibernate.annotations.GenericGenerator(name="TEMA_IDTEMA_GENERATOR", strategy="identity")	
 	private Long IDtema;
 	

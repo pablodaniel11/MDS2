@@ -114,7 +114,7 @@ public class BD_Principal implements i_Usuario_No_Registrado {
 	}
 
 	public Seccion Crear_Seccion(String aTitulo, String aSubtitulo) {
-		throw new UnsupportedOperationException();
+		return _seccioness.Crear_Seccion(aTitulo, aSubtitulo);
 	}
 
 	public void Recuperar_Contrasenia_Perfil(String aNombre) {
@@ -133,16 +133,8 @@ public class BD_Principal implements i_Usuario_No_Registrado {
 		return _usuarios.Iniciar_Sesion(aNombre, aContrasenia);
 	}
 
-	public Seccion[] Cargar_Secciones_Administrador() {
-		throw new UnsupportedOperationException();
-	}
-
-	public Seccion[] Cargar_Secciones_Registrado() {
-		throw new UnsupportedOperationException();
-	}
-
-	public Seccion[] Cargar_Secciones_No_Registrado() {
-		throw new UnsupportedOperationException();
+	public Seccion[] Cargar_Secciones() {
+		return _seccioness.Cargar_Secciones();
 	}
 
 	public Tema[] Cargar_Temas_No_Registrado(String aSeccion) {

@@ -11,10 +11,6 @@ import com.MDS2.ForoUal.Backend.ORM.src.*;
 
 import org.orm.PersistentException;
 
-import com.MDS2.ForoUal.Backend.ORM.src.Imagen;
-import com.MDS2.ForoUal.Backend.ORM.src.Mensaje;
-import com.MDS2.ForoUal.Backend.ORM.src.Usuario;
-import com.MDS2.ForoUal.Backend.ORM.src.UsuarioDAO;
 import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
 
 import antlr.collections.List;
@@ -56,11 +52,33 @@ public class BD_Usuarios {
 	}
 
 	public boolean Darse_Baja(String aContrasenia, String aNombre) {
-		throw new UnsupportedOperationException();
+		try {
+			UsuarioDAO.deleteAndDissociate(foroUI.user);
+			return true;
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	}
 
-	public void Editar_Perfil(String aDescripcion, String aEmail, Imagen aImagen, String aNombre_completo) {
-		throw new UnsupportedOperationException();
+	public void Editar_Perfil(String aDescripcion, String aEmail, Media_ fotoPerfil, String aNombre_completo) {
+		try {
+			Media_DAO.save(fotoPerfil);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		foroUI.user.setDescripcion(aDescripcion);
+		foroUI.user.setEmail(aEmail);
+		foroUI.user.setNombreReal(aNombre_completo);
+		
+		try {
+			UsuarioDAO.save(foroUI.user);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void Eliminar_Amigo(String aNombre) {

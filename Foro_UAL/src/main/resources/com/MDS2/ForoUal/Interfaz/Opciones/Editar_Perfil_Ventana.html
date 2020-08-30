@@ -6,13 +6,13 @@
   <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
-  <vaadin-vertical-layout spacing="false" width="600px" height="260px" margin-left="false" margin-right="false" margin-top="false">
+  <vaadin-vertical-layout spacing="false" width="600px" margin-left="false" margin-right="false" margin-top="false">
    <vaadin-vertical-layout height="135%" margin="false" :middle :center>
     <vaadin-label :middle :center :expand="5">
      <h2><b>Editar datos de perfil</b></h2>
     </vaadin-label>
     <vaadin-absolute-layout width="80%" height="40px" :center>
-     <vaadin-text-field width-full :left="25%"></vaadin-text-field>
+     <vaadin-text-field width-full _id="descripcion" :left="25%"></vaadin-text-field>
      <vaadin-label width="30%" plain-text>
        descripcion 
      </vaadin-label>
@@ -21,9 +21,22 @@
      <vaadin-label width="30%" height-full plain-text>
        fotoURL 
      </vaadin-label>
-     <vaadin-password-field width-full :left="25%"></vaadin-password-field>
+     <vaadin-text-field width-full _id="foto" :left="25%"></vaadin-text-field>
+    </vaadin-absolute-layout>
+    <vaadin-absolute-layout width="80%" height="40px" :middle :center>
+     <vaadin-label width="30%" height-full plain-text>
+       Nombre Real 
+     </vaadin-label>
+     <vaadin-text-field width-full _id="nombre" :left="25%"></vaadin-text-field>
+    </vaadin-absolute-layout>
+    <vaadin-absolute-layout width="80%" height="40px" :middle :center>
+     <vaadin-label width="30%" height-full plain-text>
+       email 
+     </vaadin-label>
+     <vaadin-text-field width-full _id="email" :left="25%"></vaadin-text-field>
     </vaadin-absolute-layout>
    </vaadin-vertical-layout>
+   <vaadin-panel style-name="borderless" width-auto height="60px"></vaadin-panel>
    <vaadin-horizontal-layout width-full height="55%" :bottom :center>
     <vaadin-button width="60%" height="60%" plain-text _id="cancelar" :bottom :center>
       Cancelar 

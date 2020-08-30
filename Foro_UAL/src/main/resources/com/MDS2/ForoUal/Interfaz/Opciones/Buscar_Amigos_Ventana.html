@@ -6,13 +6,13 @@
   <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
-  <vaadin-absolute-layout>
+  <vaadin-absolute-layout width="600px" height="800px">
    <vaadin-label width-full :right="35%" :left="35%">
     <h2><b>Buscar Amigos</b></h2>
    </vaadin-label>
-   <vaadin-text-field width-full value="Nombre" :top="11%" :right="15%" :left="15%"></vaadin-text-field>
+   <vaadin-text-field width-full value="Nombre" _id="nombre" :top="11%" :right="15%" :left="15%"></vaadin-text-field>
    <vaadin-image source="http://virtualdor.com/things/line.png" width-full :top="17%" :right="20%" :left="20%"></vaadin-image>
-   <vaadin-vertical-layout style-name="card" width="98%" height="88%" :top="20%" :left="2%"></vaadin-vertical-layout>
+   <vaadin-vertical-layout style-name="card" width="98%" height="88%" margin-top="false" margin-bottom="false" _id="amigos" :top="20%" :left="2%"></vaadin-vertical-layout>
    <vaadin-horizontal-layout size-full :top="90%">
     <vaadin-button width="60%" height="60%" plain-text _id="cancelar" :middle :center>
       Cancelar 

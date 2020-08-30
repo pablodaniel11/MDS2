@@ -10,7 +10,7 @@ public class Visualizar_Mensajes_Registrado extends Visualizar_Mensajes_Registra
 	public Visualizar_Mensajes_Registrado (Tema t) {
 		panel_Superior_Registrado ps = new panel_Superior_Registrado(false);
 		panelSuperior.setContent(ps);
-		_visualizar_Mensajes = new Visualizar_Mensajes();
+		_visualizar_Mensajes = new Visualizar_Mensajes(t);
 		listaMensajes.setContent(_visualizar_Mensajes);
 		_opciones_Mensajes = new Opciones_Mensajes();
 		panelOpcionesLayout.addComponent(_opciones_Mensajes);

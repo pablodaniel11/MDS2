@@ -30,4 +30,15 @@ public class BD_Medias {
 			return null;
 		}
 	}
+	public int getType(String m) {
+		String[] formatosImagen = new String[] {".jpg", ".png",".jpeg"};
+		String[] formatoVideo = new String[] {".mp4",".avi",".mov"};
+		
+		for(String s : formatosImagen)
+			if(m.toLowerCase().contains(s)) return 0;
+		for(String s : formatoVideo)
+			if(m.toLowerCase().contains(s)) return 1;
+		return -1;
+		
+	}
 }

@@ -9,7 +9,7 @@ public class Visualizar_Mensaje_NoRegistrado extends Visualizar_Mensajes_NoRegis
 	public Visualizar_Mensaje_NoRegistrado(Tema t) {
 		Panel_Superior ps = new Panel_Superior(this);
 		panelSuperior.setContent(ps);
-		_visualizar_Mensajes = new Visualizar_Mensajes();
+		_visualizar_Mensajes = new Visualizar_Mensajes(t);
 		listaMensajes.setContent(_visualizar_Mensajes);
 		titulo.setValue(t.getTitulo());
 		subtitulo.setValue(t.getSubtitulo());

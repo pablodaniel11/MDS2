@@ -21,6 +21,7 @@ public class Ver_Temas extends Ver_Temas_Ventanas{
 	Seccion s;
 	
 	public Ver_Temas(Seccion s) {
+		temaFuc = 0;
 		this.s = s;
 		Tema[] tnr = foroUI.db.Cargar_Temas_No_Registrado(s.getID()+"");
 		Tema[] tr = new Tema[] {};

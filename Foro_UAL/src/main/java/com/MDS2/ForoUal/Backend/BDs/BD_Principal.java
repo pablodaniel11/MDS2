@@ -62,19 +62,19 @@ public class BD_Principal implements i_Usuario_No_Registrado {
 	}
 
 	public boolean Darse_Baja(String aContrasenia, String aNombre) {
-		throw new UnsupportedOperationException();
+		return _usuarios.Darse_Baja(aContrasenia, aNombre);
 	}
 
-	public void Editar_Perfil(String aDescripcion, String aEmail, Imagen aImagen, String aNombre_completo) {
-		throw new UnsupportedOperationException();
+	public void Editar_Perfil(String aDescripcion, String aEmail, Media_ fotoPerfil, String aNombre_completo) {
+		_usuarios.Editar_Perfil(aDescripcion, aEmail, fotoPerfil, aNombre_completo);
 	}
 
 	public boolean Modificar_Rol(String aNombre) {
 		throw new UnsupportedOperationException();
 	}
 
-	public void Insertar_Media(String aUrl) {
-		throw new UnsupportedOperationException();
+	public int Insertar_Media(String aUrl) {
+		return _medias.Insertar_Media(aUrl);
 	}
 
 	public Reporte Crear_Reporte(int aIdMensaje, String aMensaje) {
@@ -85,16 +85,19 @@ public class BD_Principal implements i_Usuario_No_Registrado {
 		throw new UnsupportedOperationException();
 	}
 
-	public Mensaje Crear_Mensaje(String aTexto, Media aMedia) {
-		throw new UnsupportedOperationException();
+	public Mensaje Crear_Mensaje(String aTexto, Media_ aMedia[],Mensaje respuestaA) {
+		return _mensajes.Crear_Mensaje(aTexto, aMedia, respuestaA);
 	}
 
-	public Mensaje[] Cargar_Mensajes() {
-		throw new UnsupportedOperationException();
+	public Mensaje[] Cargar_Mensajes(Tema t) {
+		return _mensajes.Cargar_Mensajes(t);
+	}
+	public void Denunciar_Mensaje(Long aId) {
+		_mensajes.Denunciar_Mensaje(aId);
 	}
 
 	public void Ocultar_Mensaje(Long aId) {
-		throw new UnsupportedOperationException();
+		_mensajes.Ocultar_Mensaje(aId);
 	}
 
 	public Tema Crear_Tema(String aTitulo, String aSubtitulo) {
@@ -103,14 +106,6 @@ public class BD_Principal implements i_Usuario_No_Registrado {
 
 	public void Cambiar_Estado(Tema t, Long aId) {
 		_temas.Cambiar_Estado(t,aId);
-	}
-
-	public void Cerrar_Tema(Long aId) {
-		throw new UnsupportedOperationException();
-	}
-
-	public void Ocultar_Tema(Tema aTema) {
-		throw new UnsupportedOperationException();
 	}
 
 	public Seccion Crear_Seccion(String aTitulo, String aSubtitulo) {
@@ -174,7 +169,7 @@ public class BD_Principal implements i_Usuario_No_Registrado {
 	}
 
 	public void Eliminar_Mensaje(Long aId) {
-		throw new UnsupportedOperationException();
+		_mensajes.Eliminar_Mensaje(aId);
 	}
 
 	public void Desbanear(String aNombre) {
@@ -206,5 +201,8 @@ public class BD_Principal implements i_Usuario_No_Registrado {
 	}
 	public Media_ Cargar_Media (int aMedia) {
 		return _medias.Cargar_Media(aMedia);
+	}
+	public int GetSourceType (String s) {
+		return _medias.getType(s);
 	}
 }

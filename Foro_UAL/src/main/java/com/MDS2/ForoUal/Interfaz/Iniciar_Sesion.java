@@ -52,5 +52,15 @@ public class Iniciar_Sesion extends Inciar_Sesion_Ventana{
 				}
 			}
 		});
+		olvidarPass.addClickListener(new Button.ClickListener() {
+			
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+					Window pv = new Window("", new recuperar_contrasena());
+					pv.center();
+					UI.getCurrent().addWindow(pv);
+			}
+		});
 	}
 }

@@ -13,7 +13,7 @@ package com.MDS2.ForoUal.Backend.ORM.src;
  * License Type: Academic
  */
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.*;
 @Entity
@@ -186,8 +186,8 @@ public class Mensaje implements Serializable {
 		return marcado;
 	}
 	
-	public void setFechaCreacion(Date value) {
-		this.fechaCreacion = value;
+	public void setFechaCreacion(java.util.Date date) {
+		this.fechaCreacion = date;
 	}
 	
 	public Date getFechaCreacion() {

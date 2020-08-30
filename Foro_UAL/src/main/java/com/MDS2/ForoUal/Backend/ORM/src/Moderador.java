@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -26,11 +25,8 @@ public class Moderador extends Usuario implements Serializable {
 	}
 	
 	private java.util.Set this_getSet (int key) {
-		if (key == ORMConstants.KEY_MODERADOR_TEMAS) {
-			return ORM_temas;
-		}
-		else if (key == ORMConstants.KEY_MODERADOR_ES_ENVIADO) {
-			return ORM_es_enviado;
+		if (key == ORMConstants.KEY_MODERADOR_TICKETS_MODERADOR) {
+			return ORM_tickets_moderador;
 		}
 		
 		return null;
@@ -44,37 +40,36 @@ public class Moderador extends Usuario implements Serializable {
 		
 	};
 	
-	@OneToMany(mappedBy="oculta", targetEntity=Tema.class)	
+	@Column(name="`IdMod`", nullable=true, length=20)	
+	private Long idMod;
+	
+	@OneToMany(mappedBy="moderador", targetEntity=Ticket.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM_temas = new java.util.HashSet();
+	private java.util.Set ORM_tickets_moderador = new java.util.HashSet();
 	
-	@OneToMany(mappedBy="envia", targetEntity=Ticket.class)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM_es_enviado = new java.util.HashSet();
-	
-	private void setORM_Temas(java.util.Set value) {
-		this.ORM_temas = value;
+	public void setIdMod(long value) {
+		setIdMod(new Long(value));
 	}
 	
-	private java.util.Set getORM_Temas() {
-		return ORM_temas;
+	public void setIdMod(Long value) {
+		this.idMod = value;
+	}
+	
+	public Long getIdMod() {
+		return idMod;
+	}
+	
+	private void setORM_Tickets_moderador(java.util.Set value) {
+		this.ORM_tickets_moderador = value;
+	}
+	
+	private java.util.Set getORM_Tickets_moderador() {
+		return ORM_tickets_moderador;
 	}
 	
 	@Transient	
-	public final TemaSetCollection temas = new TemaSetCollection(this, _ormAdapter, ORMConstants.KEY_MODERADOR_TEMAS, ORMConstants.KEY_TEMA_OCULTA, ORMConstants.KEY_MUL_ONE_TO_MANY);
-	
-	private void setORM_Es_enviado(java.util.Set value) {
-		this.ORM_es_enviado = value;
-	}
-	
-	private java.util.Set getORM_Es_enviado() {
-		return ORM_es_enviado;
-	}
-	
-	@Transient	
-	public final TicketSetCollection es_enviado = new TicketSetCollection(this, _ormAdapter, ORMConstants.KEY_MODERADOR_ES_ENVIADO, ORMConstants.KEY_TICKET_ENVIA, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public final TicketSetCollection tickets_moderador = new TicketSetCollection(this, _ormAdapter, ORMConstants.KEY_MODERADOR_TICKETS_MODERADOR, ORMConstants.KEY_TICKET_MODERADOR, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	public String toString() {
 		return super.toString();

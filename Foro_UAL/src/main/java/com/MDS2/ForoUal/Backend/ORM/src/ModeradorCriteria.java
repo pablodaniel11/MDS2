@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -20,8 +19,6 @@ import org.orm.criteria.*;
 
 public class ModeradorCriteria extends AbstractORMCriteria {
 	public final LongExpression ID;
-	public final LongExpression pertenece_aId;
-	public final AssociationExpression pertenece_a;
 	public final StringExpression email;
 	public final StringExpression nombreUsuario;
 	public final IntegerExpression fotoPerfil;
@@ -30,19 +27,19 @@ public class ModeradorCriteria extends AbstractORMCriteria {
 	public final BooleanExpression marcado;
 	public final BooleanExpression baneado;
 	public final LongExpression IDusuario;
-	public final CollectionExpression reportes;
+	public final StringExpression nombreReal;
+	public final CollectionExpression reportes_usuario;
 	public final CollectionExpression amigo_de;
 	public final CollectionExpression pertenece;
 	public final CollectionExpression usuarios;
 	public final CollectionExpression es_creado;
-	public final CollectionExpression temas;
-	public final CollectionExpression es_enviado;
+	public final CollectionExpression tickets_usuario;
+	public final LongExpression idMod;
+	public final CollectionExpression tickets_moderador;
 	
 	public ModeradorCriteria(Criteria criteria) {
 		super(criteria);
 		ID = new LongExpression("ID", this);
-		pertenece_aId = new LongExpression("pertenece_a.idticket", this);
-		pertenece_a = new AssociationExpression("pertenece_a", this);
 		email = new StringExpression("email", this);
 		nombreUsuario = new StringExpression("nombreUsuario", this);
 		fotoPerfil = new IntegerExpression("fotoPerfil", this);
@@ -51,13 +48,15 @@ public class ModeradorCriteria extends AbstractORMCriteria {
 		marcado = new BooleanExpression("marcado", this);
 		baneado = new BooleanExpression("baneado", this);
 		IDusuario = new LongExpression("IDusuario", this);
-		reportes = new CollectionExpression("ORM_reportes", this);
+		nombreReal = new StringExpression("nombreReal", this);
+		reportes_usuario = new CollectionExpression("ORM_reportes_usuario", this);
 		amigo_de = new CollectionExpression("ORM_amigo_de", this);
 		pertenece = new CollectionExpression("ORM_pertenece", this);
 		usuarios = new CollectionExpression("ORM_usuarios", this);
 		es_creado = new CollectionExpression("ORM_es_creado", this);
-		temas = new CollectionExpression("ORM_temas", this);
-		es_enviado = new CollectionExpression("ORM_es_enviado", this);
+		tickets_usuario = new CollectionExpression("ORM_tickets_usuario", this);
+		idMod = new LongExpression("idMod", this);
+		tickets_moderador = new CollectionExpression("ORM_tickets_moderador", this);
 	}
 	
 	public ModeradorCriteria(PersistentSession session) {
@@ -68,20 +67,12 @@ public class ModeradorCriteria extends AbstractORMCriteria {
 		this(MDS1PersistentManager.instance().getSession());
 	}
 	
-	public TemaCriteria createTemasCriteria() {
-		return new TemaCriteria(createCriteria("ORM_temas"));
+	public TicketCriteria createTickets_moderadorCriteria() {
+		return new TicketCriteria(createCriteria("ORM_tickets_moderador"));
 	}
 	
-	public TicketCriteria createEs_enviadoCriteria() {
-		return new TicketCriteria(createCriteria("ORM_es_enviado"));
-	}
-	
-	public TicketCriteria createPertenece_aCriteria() {
-		return new TicketCriteria(createCriteria("pertenece_a"));
-	}
-	
-	public ReporteCriteria createReportesCriteria() {
-		return new ReporteCriteria(createCriteria("ORM_reportes"));
+	public ReporteCriteria createReportes_usuarioCriteria() {
+		return new ReporteCriteria(createCriteria("ORM_reportes_usuario"));
 	}
 	
 	public UsuarioCriteria createAmigo_deCriteria() {
@@ -98,6 +89,10 @@ public class ModeradorCriteria extends AbstractORMCriteria {
 	
 	public TemaCriteria createEs_creadoCriteria() {
 		return new TemaCriteria(createCriteria("ORM_es_creado"));
+	}
+	
+	public TicketCriteria createTickets_usuarioCriteria() {
+		return new TicketCriteria(createCriteria("ORM_tickets_usuario"));
 	}
 	
 	public Moderador uniqueModerador() {

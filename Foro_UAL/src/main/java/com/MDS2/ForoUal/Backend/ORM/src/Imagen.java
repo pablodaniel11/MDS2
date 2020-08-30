@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -20,14 +19,14 @@ import javax.persistence.*;
 @Table(name="`Imagen`")
 @Inheritance(strategy=InheritanceType.JOINED)
 @DiscriminatorValue("Imagen")
-@PrimaryKeyJoinColumn(name="`MediaID`", referencedColumnName="`ID`")
+@PrimaryKeyJoinColumn(name="`Media_IDmedia`", referencedColumnName="`IDmedia`")
 public class Imagen extends Media_ implements Serializable {
 	public Imagen() {
 	}
 	
 	private java.util.Set this_getSet (int key) {
-		if (key == ORMConstants.KEY_IMAGEN_CONTIENE_IMAGEN) {
-			return ORM_contiene_imagen;
+		if (key == ORMConstants.KEY_IMAGEN_MENSAJE_IMAGEN) {
+			return ORM_mensaje_imagen;
 		}
 		
 		return null;
@@ -44,10 +43,10 @@ public class Imagen extends Media_ implements Serializable {
 	@Column(name="`TamanoKB`", nullable=false, length=10)	
 	private int tamanoKB;
 	
-	@ManyToMany(mappedBy="ORM_imagen", targetEntity=Mensaje.class)	
+	@ManyToMany(mappedBy="ORM_imagens", targetEntity=Mensaje.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM_contiene_imagen = new java.util.HashSet();
+	private java.util.Set ORM_mensaje_imagen = new java.util.HashSet();
 	
 	public void setTamanoKB(int value) {
 		this.tamanoKB = value;
@@ -57,16 +56,16 @@ public class Imagen extends Media_ implements Serializable {
 		return tamanoKB;
 	}
 	
-	private void setORM_Contiene_imagen(java.util.Set value) {
-		this.ORM_contiene_imagen = value;
+	private void setORM_Mensaje_imagen(java.util.Set value) {
+		this.ORM_mensaje_imagen = value;
 	}
 	
-	private java.util.Set getORM_Contiene_imagen() {
-		return ORM_contiene_imagen;
+	private java.util.Set getORM_Mensaje_imagen() {
+		return ORM_mensaje_imagen;
 	}
 	
 	@Transient	
-	public final MensajeSetCollection contiene_imagen = new MensajeSetCollection(this, _ormAdapter, ORMConstants.KEY_IMAGEN_CONTIENE_IMAGEN, ORMConstants.KEY_MENSAJE_IMAGEN, ORMConstants.KEY_MUL_MANY_TO_MANY);
+	public final MensajeSetCollection mensaje_imagen = new MensajeSetCollection(this, _ormAdapter, ORMConstants.KEY_IMAGEN_MENSAJE_IMAGEN, ORMConstants.KEY_MENSAJE_IMAGENS, ORMConstants.KEY_MUL_MANY_TO_MANY);
 	
 	public String toString() {
 		return super.toString();

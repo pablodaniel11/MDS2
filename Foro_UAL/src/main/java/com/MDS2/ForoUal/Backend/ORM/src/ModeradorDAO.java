@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -322,26 +321,18 @@ public class ModeradorDAO {
 	}
 	
 	public static boolean deleteAndDissociate(Moderador moderador)throws PersistentException {
-		if (moderador instanceof Administradores) {
-			return AdministradoresDAO.deleteAndDissociate((Administradores) moderador);
+		if (moderador instanceof Administrador) {
+			return AdministradorDAO.deleteAndDissociate((Administrador) moderador);
 		}
 		
 		try {
-			Tema[] lTemass = moderador.temas.toArray();
-			for(int i = 0; i < lTemass.length; i++) {
-				lTemass[i].setOculta(null);
+			Ticket[] lTickets_moderadors = moderador.tickets_moderador.toArray();
+			for(int i = 0; i < lTickets_moderadors.length; i++) {
+				lTickets_moderadors[i].setModerador(null);
 			}
-			Ticket[] lEs_enviados = moderador.es_enviado.toArray();
-			for(int i = 0; i < lEs_enviados.length; i++) {
-				lEs_enviados[i].setEnvia(null);
-			}
-			if (moderador.getPertenece_a() != null) {
-				moderador.getPertenece_a().tiene.remove(moderador);
-			}
-			
-			Reporte[] lReportess = moderador.reportes.toArray();
-			for(int i = 0; i < lReportess.length; i++) {
-				lReportess[i].setUsuario(null);
+			Reporte[] lReportes_usuarios = moderador.reportes_usuario.toArray();
+			for(int i = 0; i < lReportes_usuarios.length; i++) {
+				lReportes_usuarios[i].setUsuario_reporte(null);
 			}
 			Usuario[] lAmigo_des = moderador.amigo_de.toArray();
 			for(int i = 0; i < lAmigo_des.length; i++) {
@@ -349,7 +340,7 @@ public class ModeradorDAO {
 			}
 			Mensaje[] lPerteneces = moderador.pertenece.toArray();
 			for(int i = 0; i < lPerteneces.length; i++) {
-				lPerteneces[i].setEnvia(null);
+				lPerteneces[i].setEnvia_mensaje(null);
 			}
 			Usuario[] lUsuarioss = moderador.usuarios.toArray();
 			for(int i = 0; i < lUsuarioss.length; i++) {
@@ -357,7 +348,11 @@ public class ModeradorDAO {
 			}
 			Tema[] lEs_creados = moderador.es_creado.toArray();
 			for(int i = 0; i < lEs_creados.length; i++) {
-				lEs_creados[i].setCrea_temas(null);
+				lEs_creados[i].setCrea_tema(null);
+			}
+			Ticket[] lTickets_usuarios = moderador.tickets_usuario.toArray();
+			for(int i = 0; i < lTickets_usuarios.length; i++) {
+				lTickets_usuarios[i].setUsuario_ticket(null);
 			}
 			return delete(moderador);
 		}
@@ -368,26 +363,18 @@ public class ModeradorDAO {
 	}
 	
 	public static boolean deleteAndDissociate(Moderador moderador, org.orm.PersistentSession session)throws PersistentException {
-		if (moderador instanceof Administradores) {
-			return AdministradoresDAO.deleteAndDissociate((Administradores) moderador, session);
+		if (moderador instanceof Administrador) {
+			return AdministradorDAO.deleteAndDissociate((Administrador) moderador, session);
 		}
 		
 		try {
-			Tema[] lTemass = moderador.temas.toArray();
-			for(int i = 0; i < lTemass.length; i++) {
-				lTemass[i].setOculta(null);
+			Ticket[] lTickets_moderadors = moderador.tickets_moderador.toArray();
+			for(int i = 0; i < lTickets_moderadors.length; i++) {
+				lTickets_moderadors[i].setModerador(null);
 			}
-			Ticket[] lEs_enviados = moderador.es_enviado.toArray();
-			for(int i = 0; i < lEs_enviados.length; i++) {
-				lEs_enviados[i].setEnvia(null);
-			}
-			if (moderador.getPertenece_a() != null) {
-				moderador.getPertenece_a().tiene.remove(moderador);
-			}
-			
-			Reporte[] lReportess = moderador.reportes.toArray();
-			for(int i = 0; i < lReportess.length; i++) {
-				lReportess[i].setUsuario(null);
+			Reporte[] lReportes_usuarios = moderador.reportes_usuario.toArray();
+			for(int i = 0; i < lReportes_usuarios.length; i++) {
+				lReportes_usuarios[i].setUsuario_reporte(null);
 			}
 			Usuario[] lAmigo_des = moderador.amigo_de.toArray();
 			for(int i = 0; i < lAmigo_des.length; i++) {
@@ -395,7 +382,7 @@ public class ModeradorDAO {
 			}
 			Mensaje[] lPerteneces = moderador.pertenece.toArray();
 			for(int i = 0; i < lPerteneces.length; i++) {
-				lPerteneces[i].setEnvia(null);
+				lPerteneces[i].setEnvia_mensaje(null);
 			}
 			Usuario[] lUsuarioss = moderador.usuarios.toArray();
 			for(int i = 0; i < lUsuarioss.length; i++) {
@@ -403,7 +390,11 @@ public class ModeradorDAO {
 			}
 			Tema[] lEs_creados = moderador.es_creado.toArray();
 			for(int i = 0; i < lEs_creados.length; i++) {
-				lEs_creados[i].setCrea_temas(null);
+				lEs_creados[i].setCrea_tema(null);
+			}
+			Ticket[] lTickets_usuarios = moderador.tickets_usuario.toArray();
+			for(int i = 0; i < lTickets_usuarios.length; i++) {
+				lTickets_usuarios[i].setUsuario_ticket(null);
 			}
 			try {
 				session.delete(moderador);

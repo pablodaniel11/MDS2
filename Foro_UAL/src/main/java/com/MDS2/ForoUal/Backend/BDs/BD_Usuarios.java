@@ -78,7 +78,7 @@ public class BD_Usuarios {
 			
 			//Privilegios
 			try {
-			Moderadores mod = ModeradoresDAO.getModeradoresByORMID(u.getID());
+			Moderador mod = ModeradorDAO.getModeradorByORMID(u.getID());
 			if(mod != null) foroUI.privilegios = foroUI.Privilegios.moderador;
 			}
 			catch (Exception e)
@@ -87,7 +87,7 @@ public class BD_Usuarios {
 			}
 			
 			try {
-			Administradores ad = AdministradoresDAO.getAdministradoresByORMID(u.getID());
+			Administrador ad = AdministradorDAO.getAdministradorByORMID(u.getID());
 			if(ad != null) foroUI.privilegios = foroUI.Privilegios.administrador;
 			}
 			catch (Exception e)
@@ -129,7 +129,8 @@ public class BD_Usuarios {
 		u.setEmail(aEmail);
 		u.setNombreUsuario(aNombre);
 		u.setContrasenia(aContrasenia);
-		u.setDescripcion(aNombre_completo+" /// "+aDescripcion);
+		u.setDescripcion(aDescripcion);
+		u.setNombreReal(aNombre_completo);
 		u.setFotoPerfil(aFoto_perfil);
 		try {
 			UsuarioDAO.save(u);

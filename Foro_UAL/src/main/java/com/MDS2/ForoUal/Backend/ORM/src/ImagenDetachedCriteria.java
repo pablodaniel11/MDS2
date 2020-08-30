@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -22,14 +21,14 @@ public class ImagenDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression IDmedia;
 	public final StringExpression url;
 	public final IntegerExpression tamanoKB;
-	public final CollectionExpression contiene_imagen;
+	public final CollectionExpression mensaje_imagen;
 	
 	public ImagenDetachedCriteria() {
 		super(Imagen.class, ImagenCriteria.class);
 		IDmedia = new IntegerExpression("IDmedia", this.getDetachedCriteria());
 		url = new StringExpression("url", this.getDetachedCriteria());
 		tamanoKB = new IntegerExpression("tamanoKB", this.getDetachedCriteria());
-		contiene_imagen = new CollectionExpression("ORM_contiene_imagen", this.getDetachedCriteria());
+		mensaje_imagen = new CollectionExpression("ORM_mensaje_imagen", this.getDetachedCriteria());
 	}
 	
 	public ImagenDetachedCriteria(DetachedCriteria aDetachedCriteria) {
@@ -37,11 +36,11 @@ public class ImagenDetachedCriteria extends AbstractORMDetachedCriteria {
 		IDmedia = new IntegerExpression("IDmedia", this.getDetachedCriteria());
 		url = new StringExpression("url", this.getDetachedCriteria());
 		tamanoKB = new IntegerExpression("tamanoKB", this.getDetachedCriteria());
-		contiene_imagen = new CollectionExpression("ORM_contiene_imagen", this.getDetachedCriteria());
+		mensaje_imagen = new CollectionExpression("ORM_mensaje_imagen", this.getDetachedCriteria());
 	}
 	
-	public MensajeDetachedCriteria createContiene_imagenCriteria() {
-		return new MensajeDetachedCriteria(createCriteria("ORM_contiene_imagen"));
+	public MensajeDetachedCriteria createMensaje_imagenCriteria() {
+		return new MensajeDetachedCriteria(createCriteria("ORM_mensaje_imagen"));
 	}
 	
 	public Imagen uniqueImagen(PersistentSession session) {

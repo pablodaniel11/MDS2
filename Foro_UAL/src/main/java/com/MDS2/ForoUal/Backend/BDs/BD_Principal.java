@@ -98,11 +98,11 @@ public class BD_Principal implements i_Usuario_No_Registrado {
 	}
 
 	public Tema Crear_Tema(String aTitulo, String aSubtitulo) {
-		throw new UnsupportedOperationException();
+		return _temas.Crear_Tema(aTitulo, aSubtitulo);
 	}
 
-	public void Cambiar_Estado(Long aId) {
-		throw new UnsupportedOperationException();
+	public void Cambiar_Estado(Tema t, Long aId) {
+		_temas.Cambiar_Estado(t,aId);
 	}
 
 	public void Cerrar_Tema(Long aId) {
@@ -138,19 +138,19 @@ public class BD_Principal implements i_Usuario_No_Registrado {
 	}
 
 	public Tema[] Cargar_Temas_No_Registrado(String aSeccion) {
-		throw new UnsupportedOperationException();
+		return _temas.Cargar_Temas_No_Registrado(aSeccion);
 	}
 
 	public Tema[] Cargar_Temas_Registrado(String aSeccion) {
-		throw new UnsupportedOperationException();
+		return _temas.Cargar_Temas_Registrado(aSeccion);
 	}
 
-	public Tema[] Cargar_Temas_Administrador(String aNombreSeccion) {
-		throw new UnsupportedOperationException();
+	public Tema[] Cargar_Temas_Administrador(String aSeccion) {
+		return _temas.Cargar_Temas_Administrador(aSeccion);
 	}
 
 	public Tema[] Cargar_Temas_Moderador(String aSeccion) {
-		throw new UnsupportedOperationException();
+		return _temas.Cargar_Temas_Moderador(aSeccion);
 	}
 
 	public Mensaje[] Ordenar_Mensajes(Mensaje[] aMensajes, String aOrden) {

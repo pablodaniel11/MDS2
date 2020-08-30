@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * Licensee: PABLO DANIEL(University of Almeria)
  * License Type: Academic
@@ -24,6 +23,12 @@ public class DeleteMDS1Data {
 			Usuario usuario = UsuarioDAO.loadUsuarioByQuery(null, null);
 			// Delete the persistent object
 			UsuarioDAO.delete(usuario);
+			Moderador moderador = ModeradorDAO.loadModeradorByQuery(null, null);
+			// Delete the persistent object
+			ModeradorDAO.delete(moderador);
+			Administrador administrador = AdministradorDAO.loadAdministradorByQuery(null, null);
+			// Delete the persistent object
+			AdministradorDAO.delete(administrador);
 			Media_ media_ = Media_DAO.loadMedia_ByQuery(null, null);
 			// Delete the persistent object
 			Media_DAO.delete(media_);
@@ -36,18 +41,6 @@ public class DeleteMDS1Data {
 			Ticket ticket = TicketDAO.loadTicketByQuery(null, null);
 			// Delete the persistent object
 			TicketDAO.delete(ticket);
-			Administrador administrador = AdministradorDAO.loadAdministradorByQuery(null, null);
-			// Delete the persistent object
-			AdministradorDAO.delete(administrador);
-			Moderadores moderadores = ModeradoresDAO.loadModeradoresByQuery(null, null);
-			// Delete the persistent object
-			ModeradoresDAO.delete(moderadores);
-			Moderador moderador = ModeradorDAO.loadModeradorByQuery(null, null);
-			// Delete the persistent object
-			ModeradorDAO.delete(moderador);
-			Administradores administradores = AdministradoresDAO.loadAdministradoresByQuery(null, null);
-			// Delete the persistent object
-			AdministradoresDAO.delete(administradores);
 			t.commit();
 		}
 		catch (Exception e) {

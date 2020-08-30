@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -21,13 +20,13 @@ import org.orm.criteria.*;
 public class VideoCriteria extends AbstractORMCriteria {
 	public final IntegerExpression IDmedia;
 	public final StringExpression url;
-	public final CollectionExpression contiene_video;
+	public final CollectionExpression mensaje_video;
 	
 	public VideoCriteria(Criteria criteria) {
 		super(criteria);
 		IDmedia = new IntegerExpression("IDmedia", this);
 		url = new StringExpression("url", this);
-		contiene_video = new CollectionExpression("ORM_contiene_video", this);
+		mensaje_video = new CollectionExpression("ORM_mensaje_video", this);
 	}
 	
 	public VideoCriteria(PersistentSession session) {
@@ -38,8 +37,8 @@ public class VideoCriteria extends AbstractORMCriteria {
 		this(MDS1PersistentManager.instance().getSession());
 	}
 	
-	public MensajeCriteria createContiene_videoCriteria() {
-		return new MensajeCriteria(createCriteria("ORM_contiene_video"));
+	public MensajeCriteria createMensaje_videoCriteria() {
+		return new MensajeCriteria(createCriteria("ORM_mensaje_video"));
 	}
 	
 	public Video uniqueVideo() {

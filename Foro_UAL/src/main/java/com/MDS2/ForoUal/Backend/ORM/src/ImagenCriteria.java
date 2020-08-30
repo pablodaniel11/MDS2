@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -22,14 +21,14 @@ public class ImagenCriteria extends AbstractORMCriteria {
 	public final IntegerExpression IDmedia;
 	public final StringExpression url;
 	public final IntegerExpression tamanoKB;
-	public final CollectionExpression contiene_imagen;
+	public final CollectionExpression mensaje_imagen;
 	
 	public ImagenCriteria(Criteria criteria) {
 		super(criteria);
 		IDmedia = new IntegerExpression("IDmedia", this);
 		url = new StringExpression("url", this);
 		tamanoKB = new IntegerExpression("tamanoKB", this);
-		contiene_imagen = new CollectionExpression("ORM_contiene_imagen", this);
+		mensaje_imagen = new CollectionExpression("ORM_mensaje_imagen", this);
 	}
 	
 	public ImagenCriteria(PersistentSession session) {
@@ -40,8 +39,8 @@ public class ImagenCriteria extends AbstractORMCriteria {
 		this(MDS1PersistentManager.instance().getSession());
 	}
 	
-	public MensajeCriteria createContiene_imagenCriteria() {
-		return new MensajeCriteria(createCriteria("ORM_contiene_imagen"));
+	public MensajeCriteria createMensaje_imagenCriteria() {
+		return new MensajeCriteria(createCriteria("ORM_mensaje_imagen"));
 	}
 	
 	public Imagen uniqueImagen() {

@@ -28,7 +28,6 @@ public class Crear_Seccion extends Crear_Seccion_Ventana {
 			
 			@Override
 			public void buttonClick(ClickEvent event) {
-				System.out.println("Continuar");
 				foroUI.db.Crear_Seccion(nombre.getValue(), descripcion.getValue());
 				UI c = UI.getCurrent();
 				Window w = (Window)c.getWindows().toArray()[c.getWindows().size()-1];

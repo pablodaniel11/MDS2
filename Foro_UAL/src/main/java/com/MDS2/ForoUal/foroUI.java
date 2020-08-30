@@ -1,6 +1,8 @@
 package com.MDS2.ForoUal;
 
 import com.MDS2.ForoUal.Backend.BDs.BD_Principal;
+import com.MDS2.ForoUal.Backend.ORM.src.Seccion;
+import com.MDS2.ForoUal.Backend.ORM.src.Tema;
 import com.MDS2.ForoUal.Backend.ORM.src.Usuario;
 import com.MDS2.ForoUal.Interfaz.*;
 import javax.servlet.annotation.WebServlet;
@@ -68,5 +70,29 @@ public class foroUI extends UI {
     @WebServlet(urlPatterns = "/*", name = "foroUIServlet", asyncSupported = true)
     @VaadinServletConfiguration(ui = foroUI.class, productionMode = false)
     public static class foroUIServlet extends VaadinServlet {
+    }
+    public void VisualizarSeccion(Seccion s) {
+    	if(user == null)
+    		setContent(new Visualizar_Temas_No_Reg(s));
+    	else {
+    		if(privilegios == Privilegios.administrador)
+    			setContent(new Visualizar_Temas_Administrador(s));
+    		else if(privilegios == Privilegios.moderador)
+    			setContent(new Visualizar_Temas_Mod(s,false));
+    		else
+    			setContent(new Visualizar_Temas_Registrado(s));
+    	}
+    }
+    public void VisualizarTema(Tema t) {
+    	if(user == null)
+    		setContent(new Visualizar_Mensaje_NoRegistrado(t));
+    	else {
+    		if(privilegios == Privilegios.administrador)
+    			setContent(new Visualizar_Mensajes_Administrador(t));
+    		else if(privilegios == Privilegios.moderador)
+    			setContent(new Visualizar_Mensajes_Mod(t));
+    		else
+    			setContent(new Visualizar_Mensajes_Registrado(t));
+    	}
     }
 }

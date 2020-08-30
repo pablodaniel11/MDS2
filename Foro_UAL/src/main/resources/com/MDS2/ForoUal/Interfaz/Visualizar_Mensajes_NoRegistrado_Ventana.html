@@ -6,9 +6,19 @@
   <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
-  <vaadin-absolute-layout caption="Ordenar Por Nombre">
-   <vaadin-panel width="80%" height="99%" _id="listaMensajes" :top="11%" :left="20%"></vaadin-panel>
-   <vaadin-panel height="10%" _id="panelSuperior"></vaadin-panel>
+  <vaadin-absolute-layout>
+   <vaadin-panel width="80%" height="99%" _id="listaMensajes" :top="115px" :left="205px"></vaadin-panel>
+   <vaadin-panel height="57px" _id="panelSuperior"></vaadin-panel>
+   <vaadin-panel width="80%" height="50px" :top="60px" :left="205px">
+    <vaadin-horizontal-layout size-full>
+     <vaadin-label style-name="large" plain-text _id="titulo" :middle :center>
+       Label 
+     </vaadin-label>
+     <vaadin-label plain-text _id="subtitulo" :middle :center>
+       Label 
+     </vaadin-label>
+    </vaadin-horizontal-layout>
+   </vaadin-panel>
   </vaadin-absolute-layout>
  </body>
 </html>

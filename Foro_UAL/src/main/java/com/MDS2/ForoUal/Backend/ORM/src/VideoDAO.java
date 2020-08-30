@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -323,9 +322,9 @@ public class VideoDAO {
 	
 	public static boolean deleteAndDissociate(Video video)throws PersistentException {
 		try {
-			Mensaje[] lContiene_videos = video.contiene_video.toArray();
-			for(int i = 0; i < lContiene_videos.length; i++) {
-				lContiene_videos[i].setVideos(null);
+			Mensaje[] lMensaje_videos = video.mensaje_video.toArray();
+			for(int i = 0; i < lMensaje_videos.length; i++) {
+				lMensaje_videos[i].setVideo(null);
 			}
 			return delete(video);
 		}
@@ -337,9 +336,9 @@ public class VideoDAO {
 	
 	public static boolean deleteAndDissociate(Video video, org.orm.PersistentSession session)throws PersistentException {
 		try {
-			Mensaje[] lContiene_videos = video.contiene_video.toArray();
-			for(int i = 0; i < lContiene_videos.length; i++) {
-				lContiene_videos[i].setVideos(null);
+			Mensaje[] lMensaje_videos = video.mensaje_video.toArray();
+			for(int i = 0; i < lMensaje_videos.length; i++) {
+				lMensaje_videos[i].setVideo(null);
 			}
 			try {
 				session.delete(video);

@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -20,21 +19,23 @@ import org.orm.criteria.*;
 
 public class TicketCriteria extends AbstractORMCriteria {
 	public final LongExpression idticket;
+	public final LongExpression moderadorId;
+	public final AssociationExpression moderador;
+	public final LongExpression usuario_ticketId;
+	public final AssociationExpression usuario_ticket;
 	public final StringExpression mensaje;
 	public final StringExpression nombreUsuario;
-	public final LongExpression enviaId;
-	public final AssociationExpression envia;
-	public final CollectionExpression tiene;
 	public final CollectionExpression recibe;
 	
 	public TicketCriteria(Criteria criteria) {
 		super(criteria);
 		idticket = new LongExpression("idticket", this);
+		moderadorId = new LongExpression("moderador.", this);
+		moderador = new AssociationExpression("moderador", this);
+		usuario_ticketId = new LongExpression("usuario_ticket.ID", this);
+		usuario_ticket = new AssociationExpression("usuario_ticket", this);
 		mensaje = new StringExpression("mensaje", this);
 		nombreUsuario = new StringExpression("nombreUsuario", this);
-		enviaId = new LongExpression("envia.", this);
-		envia = new AssociationExpression("envia", this);
-		tiene = new CollectionExpression("ORM_tiene", this);
 		recibe = new CollectionExpression("ORM_recibe", this);
 	}
 	
@@ -46,16 +47,16 @@ public class TicketCriteria extends AbstractORMCriteria {
 		this(MDS1PersistentManager.instance().getSession());
 	}
 	
-	public ModeradorCriteria createEnviaCriteria() {
-		return new ModeradorCriteria(createCriteria("envia"));
+	public ModeradorCriteria createModeradorCriteria() {
+		return new ModeradorCriteria(createCriteria("moderador"));
 	}
 	
-	public UsuarioCriteria createTieneCriteria() {
-		return new UsuarioCriteria(createCriteria("ORM_tiene"));
+	public UsuarioCriteria createUsuario_ticketCriteria() {
+		return new UsuarioCriteria(createCriteria("usuario_ticket"));
 	}
 	
-	public AdministradoresCriteria createRecibeCriteria() {
-		return new AdministradoresCriteria(createCriteria("ORM_recibe"));
+	public AdministradorCriteria createRecibeCriteria() {
+		return new AdministradorCriteria(createCriteria("ORM_recibe"));
 	}
 	
 	public Ticket uniqueTicket() {

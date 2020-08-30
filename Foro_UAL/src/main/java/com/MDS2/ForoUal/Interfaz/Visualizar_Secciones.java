@@ -16,10 +16,8 @@ public class Visualizar_Secciones extends Visualizar_Secciones_Ventana{
 	public void cargarSecciones() {
 		Seccion[] secciones = foroUI.db.Cargar_Secciones();
 		
-		System.out.println(secciones.length + "Seccion");
 		for(Seccion s : secciones) {
 			addComponent(new Ver_Seccion(s));
-			System.out.println("Seccion");
 		}
 		
 		}

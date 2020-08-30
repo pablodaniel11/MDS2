@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -19,11 +18,11 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class TemaDetachedCriteria extends AbstractORMDetachedCriteria {
-	public final LongExpression IDtema;
-	public final LongExpression crea_temasId;
-	public final AssociationExpression crea_temas;
-	public final LongExpression seccionId;
-	public final AssociationExpression seccion;
+	public final IntegerExpression ID;
+	public final LongExpression crea_temaId;
+	public final AssociationExpression crea_tema;
+	public final IntegerExpression contieneId;
+	public final AssociationExpression contiene;
 	public final IntegerExpression numeroMeGusta;
 	public final StringExpression nombreUsuario;
 	public final IntegerExpression tipoTema;
@@ -31,17 +30,16 @@ public class TemaDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final StringExpression subtitulo;
 	public final DateExpression fechaCreacion;
 	public final IntegerExpression numMensjes;
-	public final LongExpression ocultaId;
-	public final AssociationExpression oculta;
+	public final LongExpression idTema;
 	public final CollectionExpression compone;
 	
 	public TemaDetachedCriteria() {
 		super(Tema.class, TemaCriteria.class);
-		IDtema = new LongExpression("IDtema", this.getDetachedCriteria());
-		crea_temasId = new LongExpression("crea_temas.ID", this.getDetachedCriteria());
-		crea_temas = new AssociationExpression("crea_temas", this.getDetachedCriteria());
-		seccionId = new LongExpression("seccion.IDseccion", this.getDetachedCriteria());
-		seccion = new AssociationExpression("seccion", this.getDetachedCriteria());
+		ID = new IntegerExpression("ID", this.getDetachedCriteria());
+		crea_temaId = new LongExpression("crea_tema.ID", this.getDetachedCriteria());
+		crea_tema = new AssociationExpression("crea_tema", this.getDetachedCriteria());
+		contieneId = new IntegerExpression("contiene.ID", this.getDetachedCriteria());
+		contiene = new AssociationExpression("contiene", this.getDetachedCriteria());
 		numeroMeGusta = new IntegerExpression("numeroMeGusta", this.getDetachedCriteria());
 		nombreUsuario = new StringExpression("nombreUsuario", this.getDetachedCriteria());
 		tipoTema = new IntegerExpression("tipoTema", this.getDetachedCriteria());
@@ -49,18 +47,17 @@ public class TemaDetachedCriteria extends AbstractORMDetachedCriteria {
 		subtitulo = new StringExpression("subtitulo", this.getDetachedCriteria());
 		fechaCreacion = new DateExpression("fechaCreacion", this.getDetachedCriteria());
 		numMensjes = new IntegerExpression("numMensjes", this.getDetachedCriteria());
-		ocultaId = new LongExpression("oculta.", this.getDetachedCriteria());
-		oculta = new AssociationExpression("oculta", this.getDetachedCriteria());
+		idTema = new LongExpression("idTema", this.getDetachedCriteria());
 		compone = new CollectionExpression("ORM_compone", this.getDetachedCriteria());
 	}
 	
 	public TemaDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, TemaCriteria.class);
-		IDtema = new LongExpression("IDtema", this.getDetachedCriteria());
-		crea_temasId = new LongExpression("crea_temas.ID", this.getDetachedCriteria());
-		crea_temas = new AssociationExpression("crea_temas", this.getDetachedCriteria());
-		seccionId = new LongExpression("seccion.IDseccion", this.getDetachedCriteria());
-		seccion = new AssociationExpression("seccion", this.getDetachedCriteria());
+		ID = new IntegerExpression("ID", this.getDetachedCriteria());
+		crea_temaId = new LongExpression("crea_tema.ID", this.getDetachedCriteria());
+		crea_tema = new AssociationExpression("crea_tema", this.getDetachedCriteria());
+		contieneId = new IntegerExpression("contiene.ID", this.getDetachedCriteria());
+		contiene = new AssociationExpression("contiene", this.getDetachedCriteria());
 		numeroMeGusta = new IntegerExpression("numeroMeGusta", this.getDetachedCriteria());
 		nombreUsuario = new StringExpression("nombreUsuario", this.getDetachedCriteria());
 		tipoTema = new IntegerExpression("tipoTema", this.getDetachedCriteria());
@@ -68,21 +65,16 @@ public class TemaDetachedCriteria extends AbstractORMDetachedCriteria {
 		subtitulo = new StringExpression("subtitulo", this.getDetachedCriteria());
 		fechaCreacion = new DateExpression("fechaCreacion", this.getDetachedCriteria());
 		numMensjes = new IntegerExpression("numMensjes", this.getDetachedCriteria());
-		ocultaId = new LongExpression("oculta.", this.getDetachedCriteria());
-		oculta = new AssociationExpression("oculta", this.getDetachedCriteria());
+		idTema = new LongExpression("idTema", this.getDetachedCriteria());
 		compone = new CollectionExpression("ORM_compone", this.getDetachedCriteria());
 	}
 	
-	public UsuarioDetachedCriteria createCrea_temasCriteria() {
-		return new UsuarioDetachedCriteria(createCriteria("crea_temas"));
+	public UsuarioDetachedCriteria createCrea_temaCriteria() {
+		return new UsuarioDetachedCriteria(createCriteria("crea_tema"));
 	}
 	
-	public SeccionDetachedCriteria createSeccionCriteria() {
-		return new SeccionDetachedCriteria(createCriteria("seccion"));
-	}
-	
-	public ModeradorDetachedCriteria createOcultaCriteria() {
-		return new ModeradorDetachedCriteria(createCriteria("oculta"));
+	public SeccionDetachedCriteria createContieneCriteria() {
+		return new SeccionDetachedCriteria(createCriteria("contiene"));
 	}
 	
 	public MensajeDetachedCriteria createComponeCriteria() {

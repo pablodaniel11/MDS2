@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -20,38 +19,38 @@ import org.orm.criteria.*;
 
 public class ReporteDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression idReporte;
-	public final LongExpression es_reportadoId;
-	public final AssociationExpression es_reportado;
-	public final LongExpression usuarioId;
-	public final AssociationExpression usuario;
+	public final IntegerExpression mensaje_reporteId;
+	public final AssociationExpression mensaje_reporte;
+	public final LongExpression usuario_reporteId;
+	public final AssociationExpression usuario_reporte;
 	public final StringExpression motivo;
 	
 	public ReporteDetachedCriteria() {
 		super(Reporte.class, ReporteCriteria.class);
 		idReporte = new IntegerExpression("idReporte", this.getDetachedCriteria());
-		es_reportadoId = new LongExpression("es_reportado.idMensaje", this.getDetachedCriteria());
-		es_reportado = new AssociationExpression("es_reportado", this.getDetachedCriteria());
-		usuarioId = new LongExpression("usuario.ID", this.getDetachedCriteria());
-		usuario = new AssociationExpression("usuario", this.getDetachedCriteria());
+		mensaje_reporteId = new IntegerExpression("mensaje_reporte.ID", this.getDetachedCriteria());
+		mensaje_reporte = new AssociationExpression("mensaje_reporte", this.getDetachedCriteria());
+		usuario_reporteId = new LongExpression("usuario_reporte.ID", this.getDetachedCriteria());
+		usuario_reporte = new AssociationExpression("usuario_reporte", this.getDetachedCriteria());
 		motivo = new StringExpression("motivo", this.getDetachedCriteria());
 	}
 	
 	public ReporteDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, ReporteCriteria.class);
 		idReporte = new IntegerExpression("idReporte", this.getDetachedCriteria());
-		es_reportadoId = new LongExpression("es_reportado.idMensaje", this.getDetachedCriteria());
-		es_reportado = new AssociationExpression("es_reportado", this.getDetachedCriteria());
-		usuarioId = new LongExpression("usuario.ID", this.getDetachedCriteria());
-		usuario = new AssociationExpression("usuario", this.getDetachedCriteria());
+		mensaje_reporteId = new IntegerExpression("mensaje_reporte.ID", this.getDetachedCriteria());
+		mensaje_reporte = new AssociationExpression("mensaje_reporte", this.getDetachedCriteria());
+		usuario_reporteId = new LongExpression("usuario_reporte.ID", this.getDetachedCriteria());
+		usuario_reporte = new AssociationExpression("usuario_reporte", this.getDetachedCriteria());
 		motivo = new StringExpression("motivo", this.getDetachedCriteria());
 	}
 	
-	public MensajeDetachedCriteria createEs_reportadoCriteria() {
-		return new MensajeDetachedCriteria(createCriteria("es_reportado"));
+	public MensajeDetachedCriteria createMensaje_reporteCriteria() {
+		return new MensajeDetachedCriteria(createCriteria("mensaje_reporte"));
 	}
 	
-	public UsuarioDetachedCriteria createUsuarioCriteria() {
-		return new UsuarioDetachedCriteria(createCriteria("usuario"));
+	public UsuarioDetachedCriteria createUsuario_reporteCriteria() {
+		return new UsuarioDetachedCriteria(createCriteria("usuario_reporte"));
 	}
 	
 	public Reporte uniqueReporte(PersistentSession session) {

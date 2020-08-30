@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -323,15 +322,15 @@ public class TicketDAO {
 	
 	public static boolean deleteAndDissociate(Ticket ticket)throws PersistentException {
 		try {
-			if (ticket.getEnvia() != null) {
-				ticket.getEnvia().es_enviado.remove(ticket);
+			if (ticket.getModerador() != null) {
+				ticket.getModerador().tickets_moderador.remove(ticket);
 			}
 			
-			Usuario[] lTienes = ticket.tiene.toArray();
-			for(int i = 0; i < lTienes.length; i++) {
-				lTienes[i].setPertenece_a(null);
+			if (ticket.getUsuario_ticket() != null) {
+				ticket.getUsuario_ticket().tickets_usuario.remove(ticket);
 			}
-			Administradores[] lRecibes = ticket.recibe.toArray();
+			
+			Administrador[] lRecibes = ticket.recibe.toArray();
 			for(int i = 0; i < lRecibes.length; i++) {
 				lRecibes[i].son_recibidos.remove(ticket);
 			}
@@ -345,15 +344,15 @@ public class TicketDAO {
 	
 	public static boolean deleteAndDissociate(Ticket ticket, org.orm.PersistentSession session)throws PersistentException {
 		try {
-			if (ticket.getEnvia() != null) {
-				ticket.getEnvia().es_enviado.remove(ticket);
+			if (ticket.getModerador() != null) {
+				ticket.getModerador().tickets_moderador.remove(ticket);
 			}
 			
-			Usuario[] lTienes = ticket.tiene.toArray();
-			for(int i = 0; i < lTienes.length; i++) {
-				lTienes[i].setPertenece_a(null);
+			if (ticket.getUsuario_ticket() != null) {
+				ticket.getUsuario_ticket().tickets_usuario.remove(ticket);
 			}
-			Administradores[] lRecibes = ticket.recibe.toArray();
+			
+			Administrador[] lRecibes = ticket.recibe.toArray();
 			for(int i = 0; i < lRecibes.length; i++) {
 				lRecibes[i].son_recibidos.remove(ticket);
 			}

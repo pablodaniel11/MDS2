@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -21,24 +20,24 @@ import org.orm.criteria.*;
 public class VideoDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression IDmedia;
 	public final StringExpression url;
-	public final CollectionExpression contiene_video;
+	public final CollectionExpression mensaje_video;
 	
 	public VideoDetachedCriteria() {
 		super(Video.class, VideoCriteria.class);
 		IDmedia = new IntegerExpression("IDmedia", this.getDetachedCriteria());
 		url = new StringExpression("url", this.getDetachedCriteria());
-		contiene_video = new CollectionExpression("ORM_contiene_video", this.getDetachedCriteria());
+		mensaje_video = new CollectionExpression("ORM_mensaje_video", this.getDetachedCriteria());
 	}
 	
 	public VideoDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, VideoCriteria.class);
 		IDmedia = new IntegerExpression("IDmedia", this.getDetachedCriteria());
 		url = new StringExpression("url", this.getDetachedCriteria());
-		contiene_video = new CollectionExpression("ORM_contiene_video", this.getDetachedCriteria());
+		mensaje_video = new CollectionExpression("ORM_mensaje_video", this.getDetachedCriteria());
 	}
 	
-	public MensajeDetachedCriteria createContiene_videoCriteria() {
-		return new MensajeDetachedCriteria(createCriteria("ORM_contiene_video"));
+	public MensajeDetachedCriteria createMensaje_videoCriteria() {
+		return new MensajeDetachedCriteria(createCriteria("ORM_mensaje_video"));
 	}
 	
 	public Video uniqueVideo(PersistentSession session) {

@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -32,7 +31,7 @@ public class Seccion implements Serializable {
 	
 	private void this_setOwner(Object owner, int key) {
 		if (key == ORMConstants.KEY_SECCION_CREA) {
-			this.crea = (Administradores) owner;
+			this.crea = (Administrador) owner;
 		}
 	}
 	
@@ -48,10 +47,19 @@ public class Seccion implements Serializable {
 		
 	};
 	
-	@Column(name="`ID`", nullable=false, length=20)	
+	@Column(name="`ID`", nullable=false, length=10)	
 	@Id	
-	@GeneratedValue(generator="SECCION_IDSECCION_GENERATOR", strategy = GenerationType.IDENTITY)	
-	@org.hibernate.annotations.GenericGenerator(name="SECCION_IDSECCION_GENERATOR", strategy="identity")	
+	@GeneratedValue(generator="SECCION_ID_GENERATOR")	
+	@org.hibernate.annotations.GenericGenerator(name="SECCION_ID_GENERATOR", strategy="native")	
+	private int ID;
+	
+	@ManyToOne(targetEntity=Administrador.class, fetch=FetchType.LAZY)	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
+	@JoinColumns(value={ @JoinColumn(name="`AdministradorUsuarioID`", referencedColumnName="`UsuarioID`") }, foreignKey=@ForeignKey(name="FKSeccion97224"))	
+	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
+	private Administrador crea;
+	
+	@Column(name="`IDseccion`", nullable=false, length=20)	
 	private Long IDseccion;
 	
 	@Column(name="`Titulo`", nullable=true, length=255)	
@@ -67,31 +75,33 @@ public class Seccion implements Serializable {
 	@Column(name="`NumMensajes`", nullable=false, length=10)	
 	private int numMensajes;
 	
-	@ManyToOne(targetEntity=Administradores.class, fetch=FetchType.LAZY)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns(value={ @JoinColumn(name="`AdministradoresUsuarioID`", referencedColumnName="`UsuarioID`", nullable=false) }, foreignKey=@ForeignKey(name="FKSeccion561015"))	
-	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
-	private Administradores crea;
-	
-	@OneToMany(mappedBy="seccion", targetEntity=Tema.class)	
+	@OneToMany(mappedBy="contiene", targetEntity=Tema.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_temas = new java.util.HashSet();
 	
-	private void setIDseccion(long value) {
+	private void setID(int value) {
+		this.ID = value;
+	}
+	
+	public int getID() {
+		return ID;
+	}
+	
+	public int getORMID() {
+		return getID();
+	}
+	
+	public void setIDseccion(long value) {
 		setIDseccion(new Long(value));
 	}
 	
-	private void setIDseccion(Long value) {
+	public void setIDseccion(Long value) {
 		this.IDseccion = value;
 	}
 	
 	public Long getIDseccion() {
 		return IDseccion;
-	}
-	
-	public Long getORMID() {
-		return getIDseccion();
 	}
 	
 	public void setTitulo(String value) {
@@ -135,9 +145,9 @@ public class Seccion implements Serializable {
 	}
 	
 	@Transient	
-	public final TemaSetCollection temas = new TemaSetCollection(this, _ormAdapter, ORMConstants.KEY_SECCION_TEMAS, ORMConstants.KEY_TEMA_SECCION, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public final TemaSetCollection temas = new TemaSetCollection(this, _ormAdapter, ORMConstants.KEY_SECCION_TEMAS, ORMConstants.KEY_TEMA_CONTIENE, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
-	public void setCrea(Administradores value) {
+	public void setCrea(Administrador value) {
 		if (crea != null) {
 			crea.es_creada.remove(this);
 		}
@@ -146,23 +156,23 @@ public class Seccion implements Serializable {
 		}
 	}
 	
-	public Administradores getCrea() {
+	public Administrador getCrea() {
 		return crea;
 	}
 	
 	/**
 	 * This method is for internal use only.
 	 */
-	public void setORM_Crea(Administradores value) {
+	public void setORM_Crea(Administrador value) {
 		this.crea = value;
 	}
 	
-	private Administradores getORM_Crea() {
+	private Administrador getORM_Crea() {
 		return crea;
 	}
 	
 	public String toString() {
-		return String.valueOf(getIDseccion());
+		return String.valueOf(getID());
 	}
 	
 }

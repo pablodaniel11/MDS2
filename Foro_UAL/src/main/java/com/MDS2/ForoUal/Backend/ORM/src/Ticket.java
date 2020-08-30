@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -23,10 +22,7 @@ public class Ticket implements Serializable {
 	}
 	
 	private java.util.Set this_getSet (int key) {
-		if (key == ORMConstants.KEY_TICKET_TIENE) {
-			return ORM_tiene;
-		}
-		else if (key == ORMConstants.KEY_TICKET_RECIBE) {
+		if (key == ORMConstants.KEY_TICKET_RECIBE) {
 			return ORM_recibe;
 		}
 		
@@ -34,8 +30,12 @@ public class Ticket implements Serializable {
 	}
 	
 	private void this_setOwner(Object owner, int key) {
-		if (key == ORMConstants.KEY_TICKET_ENVIA) {
-			this.envia = (Moderador) owner;
+		if (key == ORMConstants.KEY_TICKET_USUARIO_TICKET) {
+			this.usuario_ticket = (Usuario) owner;
+		}
+		
+		else if (key == ORMConstants.KEY_TICKET_MODERADOR) {
+			this.moderador = (Moderador) owner;
 		}
 	}
 	
@@ -51,11 +51,23 @@ public class Ticket implements Serializable {
 		
 	};
 	
-	@Column(name="`ID`", nullable=false, length=20)	
+	@Column(name="`Idticket`", nullable=false, length=20)	
 	@Id	
 	@GeneratedValue(generator="TICKET_IDTICKET_GENERATOR")	
-	@org.hibernate.annotations.GenericGenerator(name="TICKET_IDTICKET_GENERATOR", strategy="identity")	
+	@org.hibernate.annotations.GenericGenerator(name="TICKET_IDTICKET_GENERATOR", strategy="native")	
 	private Long idticket;
+	
+	@ManyToOne(targetEntity=Moderador.class, fetch=FetchType.LAZY)	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
+	@JoinColumns(value={ @JoinColumn(name="`ModeradorUsuarioID`", referencedColumnName="`UsuarioID`") }, foreignKey=@ForeignKey(name="FKTicket110136"))	
+	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
+	private Moderador moderador;
+	
+	@ManyToOne(targetEntity=Usuario.class, fetch=FetchType.LAZY)	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
+	@JoinColumns(value={ @JoinColumn(name="`UsuarioID`", referencedColumnName="`ID`", nullable=false) }, foreignKey=@ForeignKey(name="FKTicket70742"))	
+	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
+	private Usuario usuario_ticket;
 	
 	@Column(name="`Mensaje`", nullable=true, length=255)	
 	private String mensaje;
@@ -63,18 +75,7 @@ public class Ticket implements Serializable {
 	@Column(name="`NombreUsuario`", nullable=true, length=255)	
 	private String nombreUsuario;
 	
-	@ManyToOne(targetEntity=Moderador.class, fetch=FetchType.LAZY)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns(value={ @JoinColumn(name="`ModeradorUsuarioID2`", referencedColumnName="`UsuarioID`", nullable=false) }, foreignKey=@ForeignKey(name="FKTicket984206"))	
-	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
-	private Moderador envia;
-	
-	@OneToMany(mappedBy="pertenece_a", targetEntity=Usuario.class)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM_tiene = new java.util.HashSet();
-	
-	@ManyToMany(mappedBy="ORM_son_recibidos", targetEntity=Administradores.class)	
+	@ManyToMany(mappedBy="ORM_son_recibidos", targetEntity=Administrador.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_recibe = new java.util.HashSet();
@@ -111,40 +112,29 @@ public class Ticket implements Serializable {
 		return nombreUsuario;
 	}
 	
-	public void setEnvia(Moderador value) {
-		if (envia != null) {
-			envia.es_enviado.remove(this);
+	public void setUsuario_ticket(Usuario value) {
+		if (usuario_ticket != null) {
+			usuario_ticket.tickets_usuario.remove(this);
 		}
 		if (value != null) {
-			value.es_enviado.add(this);
+			value.tickets_usuario.add(this);
 		}
 	}
 	
-	public Moderador getEnvia() {
-		return envia;
+	public Usuario getUsuario_ticket() {
+		return usuario_ticket;
 	}
 	
 	/**
 	 * This method is for internal use only.
 	 */
-	public void setORM_Envia(Moderador value) {
-		this.envia = value;
+	public void setORM_Usuario_ticket(Usuario value) {
+		this.usuario_ticket = value;
 	}
 	
-	private Moderador getORM_Envia() {
-		return envia;
+	private Usuario getORM_Usuario_ticket() {
+		return usuario_ticket;
 	}
-	
-	private void setORM_Tiene(java.util.Set value) {
-		this.ORM_tiene = value;
-	}
-	
-	private java.util.Set getORM_Tiene() {
-		return ORM_tiene;
-	}
-	
-	@Transient	
-	public final UsuarioSetCollection tiene = new UsuarioSetCollection(this, _ormAdapter, ORMConstants.KEY_TICKET_TIENE, ORMConstants.KEY_USUARIO_PERTENECE_A, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	private void setORM_Recibe(java.util.Set value) {
 		this.ORM_recibe = value;
@@ -155,7 +145,31 @@ public class Ticket implements Serializable {
 	}
 	
 	@Transient	
-	public final AdministradoresSetCollection recibe = new AdministradoresSetCollection(this, _ormAdapter, ORMConstants.KEY_TICKET_RECIBE, ORMConstants.KEY_ADMINISTRADORES_SON_RECIBIDOS, ORMConstants.KEY_MUL_MANY_TO_MANY);
+	public final AdministradorSetCollection recibe = new AdministradorSetCollection(this, _ormAdapter, ORMConstants.KEY_TICKET_RECIBE, ORMConstants.KEY_ADMINISTRADOR_SON_RECIBIDOS, ORMConstants.KEY_MUL_MANY_TO_MANY);
+	
+	public void setModerador(Moderador value) {
+		if (moderador != null) {
+			moderador.tickets_moderador.remove(this);
+		}
+		if (value != null) {
+			value.tickets_moderador.add(this);
+		}
+	}
+	
+	public Moderador getModerador() {
+		return moderador;
+	}
+	
+	/**
+	 * This method is for internal use only.
+	 */
+	public void setORM_Moderador(Moderador value) {
+		this.moderador = value;
+	}
+	
+	private Moderador getORM_Moderador() {
+		return moderador;
+	}
 	
 	public String toString() {
 		return String.valueOf(getIdticket());

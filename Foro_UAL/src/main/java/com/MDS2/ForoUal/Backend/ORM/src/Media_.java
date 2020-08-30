@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -23,10 +22,10 @@ public class Media_ implements Serializable {
 	public Media_() {
 	}
 	
-	@Column(name="`ID`", nullable=false, length=10)	
+	@Column(name="`IDmedia`", nullable=false, length=10)	
 	@Id	
-	@GeneratedValue(generator="MEDIA__IDMEDIA_GENERATOR", strategy = GenerationType.IDENTITY)	
-	@org.hibernate.annotations.GenericGenerator(name="MEDIA__IDMEDIA_GENERATOR", strategy="identity")	
+	@GeneratedValue(generator="MEDIA__IDMEDIA_GENERATOR")	
+	@org.hibernate.annotations.GenericGenerator(name="MEDIA__IDMEDIA_GENERATOR", strategy="native")	
 	private int IDmedia;
 	
 	@Column(name="`Url`", nullable=true, length=255)	

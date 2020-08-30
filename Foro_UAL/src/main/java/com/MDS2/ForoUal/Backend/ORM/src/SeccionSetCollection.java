@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -70,6 +69,7 @@ public class SeccionSetCollection extends org.orm.util.ORMSet {
 	/**
 	 * Return an sorted array containing all of the persistent objects in ORMSet
 	 * @param propertyName Name of the property for sorting:<ul>
+	 * <li>ID</li>
 	 * <li>IDseccion</li>
 	 * <li>Titulo</li>
 	 * <li>subtitulo</li>
@@ -85,6 +85,7 @@ public class SeccionSetCollection extends org.orm.util.ORMSet {
 	/**
 	 * Return an sorted array containing all of the persistent objects in ORMSet
 	 * @param propertyName Name of the property for sorting:<ul>
+	 * <li>ID</li>
 	 * <li>IDseccion</li>
 	 * <li>Titulo</li>
 	 * <li>subtitulo</li>

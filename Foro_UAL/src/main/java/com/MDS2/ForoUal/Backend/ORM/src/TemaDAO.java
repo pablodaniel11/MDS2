@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -19,10 +18,10 @@ import org.hibernate.LockMode;
 import java.util.List;
 
 public class TemaDAO {
-	public static Tema loadTemaByORMID(Long IDtema) throws PersistentException {
+	public static Tema loadTemaByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = MDS1PersistentManager.instance().getSession();
-			return loadTemaByORMID(session, IDtema);
+			return loadTemaByORMID(session, ID);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -30,10 +29,10 @@ public class TemaDAO {
 		}
 	}
 	
-	public static Tema getTemaByORMID(Long IDtema) throws PersistentException {
+	public static Tema getTemaByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = MDS1PersistentManager.instance().getSession();
-			return getTemaByORMID(session, IDtema);
+			return getTemaByORMID(session, ID);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -41,10 +40,10 @@ public class TemaDAO {
 		}
 	}
 	
-	public static Tema loadTemaByORMID(Long IDtema, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Tema loadTemaByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = MDS1PersistentManager.instance().getSession();
-			return loadTemaByORMID(session, IDtema, lockMode);
+			return loadTemaByORMID(session, ID, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -52,10 +51,10 @@ public class TemaDAO {
 		}
 	}
 	
-	public static Tema getTemaByORMID(Long IDtema, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Tema getTemaByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = MDS1PersistentManager.instance().getSession();
-			return getTemaByORMID(session, IDtema, lockMode);
+			return getTemaByORMID(session, ID, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -63,9 +62,9 @@ public class TemaDAO {
 		}
 	}
 	
-	public static Tema loadTemaByORMID(PersistentSession session, Long IDtema) throws PersistentException {
+	public static Tema loadTemaByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
-			return (Tema) session.load(Tema.class, IDtema);
+			return (Tema) session.load(Tema.class, new Integer(ID));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -73,9 +72,9 @@ public class TemaDAO {
 		}
 	}
 	
-	public static Tema getTemaByORMID(PersistentSession session, Long IDtema) throws PersistentException {
+	public static Tema getTemaByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
-			return (Tema) session.get(Tema.class, IDtema);
+			return (Tema) session.get(Tema.class, new Integer(ID));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -83,9 +82,9 @@ public class TemaDAO {
 		}
 	}
 	
-	public static Tema loadTemaByORMID(PersistentSession session, Long IDtema, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Tema loadTemaByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Tema) session.load(Tema.class, IDtema, lockMode);
+			return (Tema) session.load(Tema.class, new Integer(ID), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -93,9 +92,9 @@ public class TemaDAO {
 		}
 	}
 	
-	public static Tema getTemaByORMID(PersistentSession session, Long IDtema, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Tema getTemaByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Tema) session.get(Tema.class, IDtema, lockMode);
+			return (Tema) session.get(Tema.class, new Integer(ID), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -323,16 +322,12 @@ public class TemaDAO {
 	
 	public static boolean deleteAndDissociate(Tema tema)throws PersistentException {
 		try {
-			if (tema.getCrea_temas() != null) {
-				tema.getCrea_temas().es_creado.remove(tema);
+			if (tema.getCrea_tema() != null) {
+				tema.getCrea_tema().es_creado.remove(tema);
 			}
 			
-			if (tema.getSeccion() != null) {
-				tema.getSeccion().temas.remove(tema);
-			}
-			
-			if (tema.getOculta() != null) {
-				tema.getOculta().temas.remove(tema);
+			if (tema.getContiene() != null) {
+				tema.getContiene().temas.remove(tema);
 			}
 			
 			Mensaje[] lCompones = tema.compone.toArray();
@@ -349,16 +344,12 @@ public class TemaDAO {
 	
 	public static boolean deleteAndDissociate(Tema tema, org.orm.PersistentSession session)throws PersistentException {
 		try {
-			if (tema.getCrea_temas() != null) {
-				tema.getCrea_temas().es_creado.remove(tema);
+			if (tema.getCrea_tema() != null) {
+				tema.getCrea_tema().es_creado.remove(tema);
 			}
 			
-			if (tema.getSeccion() != null) {
-				tema.getSeccion().temas.remove(tema);
-			}
-			
-			if (tema.getOculta() != null) {
-				tema.getOculta().temas.remove(tema);
+			if (tema.getContiene() != null) {
+				tema.getContiene().temas.remove(tema);
 			}
 			
 			Mensaje[] lCompones = tema.compone.toArray();

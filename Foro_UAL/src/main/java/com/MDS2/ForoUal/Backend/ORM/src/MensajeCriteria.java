@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -19,39 +18,41 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class MensajeCriteria extends AbstractORMCriteria {
-	public final LongExpression idMensaje;
-	public final IntegerExpression videosId;
-	public final AssociationExpression videos;
-	public final LongExpression enviaId;
-	public final AssociationExpression envia;
-	public final LongExpression mensaje_Id;
+	public final IntegerExpression ID;
+	public final IntegerExpression videoId;
+	public final AssociationExpression video;
+	public final LongExpression envia_mensajeId;
+	public final AssociationExpression envia_mensaje;
+	public final IntegerExpression mensaje_Id;
 	public final AssociationExpression mensaje_;
+	public final LongExpression idMensaje;
 	public final StringExpression texto;
 	public final IntegerExpression numeroMeGusta;
 	public final StringExpression nombreUsuario;
 	public final BooleanExpression marcado;
-	public final CollectionExpression corresponden;
-	public final CollectionExpression imagen;
 	public final CollectionExpression respondido_por;
-	public final CollectionExpression mensajes;
+	public final CollectionExpression reportes_mensaje;
+	public final CollectionExpression imagens;
+	public final CollectionExpression respuesta_de;
 	
 	public MensajeCriteria(Criteria criteria) {
 		super(criteria);
-		idMensaje = new LongExpression("idMensaje", this);
-		videosId = new IntegerExpression("videos.", this);
-		videos = new AssociationExpression("videos", this);
-		enviaId = new LongExpression("envia.ID", this);
-		envia = new AssociationExpression("envia", this);
-		mensaje_Id = new LongExpression("mensaje_.IDtema", this);
+		ID = new IntegerExpression("ID", this);
+		videoId = new IntegerExpression("video.", this);
+		video = new AssociationExpression("video", this);
+		envia_mensajeId = new LongExpression("envia_mensaje.ID", this);
+		envia_mensaje = new AssociationExpression("envia_mensaje", this);
+		mensaje_Id = new IntegerExpression("mensaje_.ID", this);
 		mensaje_ = new AssociationExpression("mensaje_", this);
+		idMensaje = new LongExpression("idMensaje", this);
 		texto = new StringExpression("texto", this);
 		numeroMeGusta = new IntegerExpression("numeroMeGusta", this);
 		nombreUsuario = new StringExpression("nombreUsuario", this);
 		marcado = new BooleanExpression("marcado", this);
-		corresponden = new CollectionExpression("ORM_corresponden", this);
-		imagen = new CollectionExpression("ORM_imagen", this);
 		respondido_por = new CollectionExpression("ORM_respondido_por", this);
-		mensajes = new CollectionExpression("ORM_mensajes", this);
+		reportes_mensaje = new CollectionExpression("ORM_reportes_mensaje", this);
+		imagens = new CollectionExpression("ORM_imagens", this);
+		respuesta_de = new CollectionExpression("ORM_respuesta_de", this);
 	}
 	
 	public MensajeCriteria(PersistentSession session) {
@@ -62,32 +63,32 @@ public class MensajeCriteria extends AbstractORMCriteria {
 		this(MDS1PersistentManager.instance().getSession());
 	}
 	
-	public VideoCriteria createVideosCriteria() {
-		return new VideoCriteria(createCriteria("videos"));
+	public VideoCriteria createVideoCriteria() {
+		return new VideoCriteria(createCriteria("video"));
 	}
 	
-	public UsuarioCriteria createEnviaCriteria() {
-		return new UsuarioCriteria(createCriteria("envia"));
+	public UsuarioCriteria createEnvia_mensajeCriteria() {
+		return new UsuarioCriteria(createCriteria("envia_mensaje"));
 	}
 	
 	public TemaCriteria createMensaje_Criteria() {
 		return new TemaCriteria(createCriteria("mensaje_"));
 	}
 	
-	public ReporteCriteria createCorrespondenCriteria() {
-		return new ReporteCriteria(createCriteria("ORM_corresponden"));
-	}
-	
-	public ImagenCriteria createImagenCriteria() {
-		return new ImagenCriteria(createCriteria("ORM_imagen"));
-	}
-	
 	public MensajeCriteria createRespondido_porCriteria() {
 		return new MensajeCriteria(createCriteria("ORM_respondido_por"));
 	}
 	
-	public MensajeCriteria createMensajesCriteria() {
-		return new MensajeCriteria(createCriteria("ORM_mensajes"));
+	public ReporteCriteria createReportes_mensajeCriteria() {
+		return new ReporteCriteria(createCriteria("ORM_reportes_mensaje"));
+	}
+	
+	public ImagenCriteria createImagensCriteria() {
+		return new ImagenCriteria(createCriteria("ORM_imagens"));
+	}
+	
+	public MensajeCriteria createRespuesta_deCriteria() {
+		return new MensajeCriteria(createCriteria("ORM_respuesta_de"));
 	}
 	
 	public Mensaje uniqueMensaje() {

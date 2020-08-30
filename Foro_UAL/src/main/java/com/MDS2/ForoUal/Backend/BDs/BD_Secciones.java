@@ -7,8 +7,8 @@ import java.util.Vector;
 import org.orm.PersistentException;
 
 import com.MDS2.ForoUal.foroUI;
-import com.MDS2.ForoUal.Backend.ORM.src.Administradores;
-import com.MDS2.ForoUal.Backend.ORM.src.AdministradoresDAO;
+import com.MDS2.ForoUal.Backend.ORM.src.Administrador;
+import com.MDS2.ForoUal.Backend.ORM.src.AdministradorDAO;
 import com.MDS2.ForoUal.Backend.ORM.src.Seccion;
 import com.MDS2.ForoUal.Backend.ORM.src.SeccionDAO;
 
@@ -21,14 +21,17 @@ public class BD_Secciones {
 		s.setTitulo(aTitulo);
 		s.setSubtitulo(aSubtitulo);
 		s.setFechaCreacion(Time.from(Instant.now()));
-		Administradores a = null;
+		Administrador a = null;
 		try {
-			a = AdministradoresDAO.getAdministradoresByORMID(1);
+			a = AdministradorDAO.listAdministradorByQuery(null, null)[0];
+			s.setIDseccion(SeccionDAO.listSeccionByQuery(null,null).length+1);
+			s.setORM_Crea(a);
+			s.setCrea(a);
 		} catch (PersistentException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-			s.setCrea(a);
+		
 		
 		
 		try {

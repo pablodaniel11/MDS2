@@ -1,4 +1,4 @@
-package com.MDS2.ForoUal.Backend.ORM.src;
+package com.MDS2.ForoUal.Backend.BDs;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;

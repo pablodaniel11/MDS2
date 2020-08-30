@@ -17,7 +17,7 @@ public class BD_Medias {
 		m.setUrl(aUrl);
 		try {
 			Media_DAO.save(m);
-			return Media_DAO.listMedia_ByCriteria(new Media_Criteria()).length;
+			return m.getORMID();
 		} catch (PersistentException e) {
 			return -1;
 		}

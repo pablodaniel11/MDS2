@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -15,12 +14,12 @@ package com.MDS2.ForoUal.Backend.ORM.src;
  */
 import org.orm.*;
 
-public class AdministradoresSetCollection extends org.orm.util.ORMSet {
-	public AdministradoresSetCollection(Object owner, org.orm.util.ORMAdapter adapter, int ownerKey, int targetKey, int collType) {
+public class AdministradorSetCollection extends org.orm.util.ORMSet {
+	public AdministradorSetCollection(Object owner, org.orm.util.ORMAdapter adapter, int ownerKey, int targetKey, int collType) {
 		super(owner, adapter, ownerKey, targetKey, true, collType);
 	}
 	
-	public AdministradoresSetCollection(Object owner, org.orm.util.ORMAdapter adapter, int ownerKey, int collType) {
+	public AdministradorSetCollection(Object owner, org.orm.util.ORMAdapter adapter, int ownerKey, int collType) {
 		super(owner, adapter, ownerKey, -1, false, collType);
 	}
 	
@@ -36,7 +35,7 @@ public class AdministradoresSetCollection extends org.orm.util.ORMSet {
 	 * Add the specified persistent object to ORMSet
 	 * @param value the persistent object
 	 */
-	public void add(Administradores value) {
+	public void add(Administrador value) {
 		if (value != null) {
 			super.add(value, value._ormAdapter);
 		}
@@ -46,7 +45,7 @@ public class AdministradoresSetCollection extends org.orm.util.ORMSet {
 	 * Remove the specified persistent object from ORMSet
 	 * @param value the persistent object
 	 */
-	public void remove(Administradores value) {
+	public void remove(Administrador value) {
 		super.remove(value, value._ormAdapter);
 	}
 	
@@ -55,7 +54,7 @@ public class AdministradoresSetCollection extends org.orm.util.ORMSet {
 	 * @param value the persistent object
 	 * @return True if this contains the specified persistent object
 	 */
-	public boolean contains(Administradores value) {
+	public boolean contains(Administrador value) {
 		return super.contains(value);
 	}
 	
@@ -63,29 +62,31 @@ public class AdministradoresSetCollection extends org.orm.util.ORMSet {
 	 * Return an array containing all of the persistent objects in ORMSet
 	 * @return The persistent objects array
 	 */
-	public Administradores[] toArray() {
-		return (Administradores[]) super.toArray(new Administradores[size()]);
+	public Administrador[] toArray() {
+		return (Administrador[]) super.toArray(new Administrador[size()]);
 	}
 	
 	/**
 	 * Return an sorted array containing all of the persistent objects in ORMSet
 	 * @param propertyName Name of the property for sorting:<ul>
+	 * <li>idAdmin</li>
 	 * </ul>
 	 * @return The persistent objects sorted array
 	 */
-	public Administradores[] toArray(String propertyName) {
+	public Administrador[] toArray(String propertyName) {
 		return toArray(propertyName, true);
 	}
 	
 	/**
 	 * Return an sorted array containing all of the persistent objects in ORMSet
 	 * @param propertyName Name of the property for sorting:<ul>
+	 * <li>idAdmin</li>
 	 * </ul>
 	 * @param ascending true for ascending, false for descending
 	 * @return The persistent objects sorted array
 	 */
-	public Administradores[] toArray(String propertyName, boolean ascending) {
-		return (Administradores[]) super.toArray(new Administradores[size()], propertyName, ascending);
+	public Administrador[] toArray(String propertyName, boolean ascending) {
+		return (Administrador[]) super.toArray(new Administrador[size()], propertyName, ascending);
 	}
 	
 	protected PersistentManager getPersistentManager() throws PersistentException {

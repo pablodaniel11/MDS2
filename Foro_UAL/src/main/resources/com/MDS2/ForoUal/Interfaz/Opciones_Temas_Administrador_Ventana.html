@@ -6,13 +6,19 @@
   <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
-  <vaadin-vertical-layout margin-left="false" margin-right="false" margin-bottom="false">
-   <vaadin-button width="85%" plain-text :center>
+  <vaadin-vertical-layout margin="false">
+   <vaadin-button width="85%" plain-text _id="cambiarEstado" :center>
      Cambiar Estado 
    </vaadin-button>
-   <vaadin-button width="85%" plain-text :center>
+   <vaadin-label visible="false" style-name="colored" width="70%" plain-text _id="cambiarEstadoMnj" :middle :center>
+     elija el tema al que desea cambiar su estado 
+   </vaadin-label>
+   <vaadin-button width="85%" plain-text _id="cerrarTema" :center>
      Cerrar Tema 
    </vaadin-button>
+   <vaadin-label visible="false" style-name="colored" width="70%" plain-text _id="cerrarTemaMnj" :middle :center>
+     elija el tema que deseas cerrar 
+   </vaadin-label>
   </vaadin-vertical-layout>
  </body>
 </html>

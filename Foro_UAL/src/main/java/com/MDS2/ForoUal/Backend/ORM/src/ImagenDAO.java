@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -323,9 +322,9 @@ public class ImagenDAO {
 	
 	public static boolean deleteAndDissociate(Imagen imagen)throws PersistentException {
 		try {
-			Mensaje[] lContiene_imagens = imagen.contiene_imagen.toArray();
-			for(int i = 0; i < lContiene_imagens.length; i++) {
-				lContiene_imagens[i].imagen.remove(imagen);
+			Mensaje[] lMensaje_imagens = imagen.mensaje_imagen.toArray();
+			for(int i = 0; i < lMensaje_imagens.length; i++) {
+				lMensaje_imagens[i].imagens.remove(imagen);
 			}
 			return delete(imagen);
 		}
@@ -337,9 +336,9 @@ public class ImagenDAO {
 	
 	public static boolean deleteAndDissociate(Imagen imagen, org.orm.PersistentSession session)throws PersistentException {
 		try {
-			Mensaje[] lContiene_imagens = imagen.contiene_imagen.toArray();
-			for(int i = 0; i < lContiene_imagens.length; i++) {
-				lContiene_imagens[i].imagen.remove(imagen);
+			Mensaje[] lMensaje_imagens = imagen.mensaje_imagen.toArray();
+			for(int i = 0; i < lMensaje_imagens.length; i++) {
+				lMensaje_imagens[i].imagens.remove(imagen);
 			}
 			try {
 				session.delete(imagen);

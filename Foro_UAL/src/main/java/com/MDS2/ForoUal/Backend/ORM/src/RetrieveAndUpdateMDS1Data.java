@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * Licensee: PABLO DANIEL(University of Almeria)
  * License Type: Academic
@@ -24,6 +23,12 @@ public class RetrieveAndUpdateMDS1Data {
 			Usuario usuario = UsuarioDAO.loadUsuarioByQuery(null, null);
 			// Update the properties of the persistent object
 			UsuarioDAO.save(usuario);
+			Moderador moderador = ModeradorDAO.loadModeradorByQuery(null, null);
+			// Update the properties of the persistent object
+			ModeradorDAO.save(moderador);
+			Administrador administrador = AdministradorDAO.loadAdministradorByQuery(null, null);
+			// Update the properties of the persistent object
+			AdministradorDAO.save(administrador);
 			Media_ media_ = Media_DAO.loadMedia_ByQuery(null, null);
 			// Update the properties of the persistent object
 			Media_DAO.save(media_);
@@ -36,18 +41,6 @@ public class RetrieveAndUpdateMDS1Data {
 			Ticket ticket = TicketDAO.loadTicketByQuery(null, null);
 			// Update the properties of the persistent object
 			TicketDAO.save(ticket);
-			Administrador administrador = AdministradorDAO.loadAdministradorByQuery(null, null);
-			// Update the properties of the persistent object
-			AdministradorDAO.save(administrador);
-			Moderadores moderadores = ModeradoresDAO.loadModeradoresByQuery(null, null);
-			// Update the properties of the persistent object
-			ModeradoresDAO.save(moderadores);
-			Moderador moderador = ModeradorDAO.loadModeradorByQuery(null, null);
-			// Update the properties of the persistent object
-			ModeradorDAO.save(moderador);
-			Administradores administradores = AdministradoresDAO.loadAdministradoresByQuery(null, null);
-			// Update the properties of the persistent object
-			AdministradoresDAO.save(administradores);
 			t.commit();
 		}
 		catch (Exception e) {
@@ -66,19 +59,19 @@ public class RetrieveAndUpdateMDS1Data {
 		System.out.println("Retrieving Tema by TemaCriteria");
 		TemaCriteria temaCriteria = new TemaCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
-		//temaCriteria.IDtema.eq();
+		//temaCriteria.ID.eq();
 		System.out.println(temaCriteria.uniqueTema());
 		
 		System.out.println("Retrieving Seccion by SeccionCriteria");
 		SeccionCriteria seccionCriteria = new SeccionCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
-		//seccionCriteria.IDseccion.eq();
+		//seccionCriteria.ID.eq();
 		System.out.println(seccionCriteria.uniqueSeccion());
 		
 		System.out.println("Retrieving Mensaje by MensajeCriteria");
 		MensajeCriteria mensajeCriteria = new MensajeCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
-		//mensajeCriteria.idMensaje.eq();
+		//mensajeCriteria.ID.eq();
 		System.out.println(mensajeCriteria.uniqueMensaje());
 		
 		System.out.println("Retrieving Usuario by UsuarioCriteria");
@@ -86,6 +79,18 @@ public class RetrieveAndUpdateMDS1Data {
 		// Please uncomment the follow line and fill in parameter(s)
 		//usuarioCriteria.ID.eq();
 		System.out.println(usuarioCriteria.uniqueUsuario());
+		
+		System.out.println("Retrieving Moderador by ModeradorCriteria");
+		ModeradorCriteria moderadorCriteria = new ModeradorCriteria();
+		// Please uncomment the follow line and fill in parameter(s)
+		//moderadorCriteria.ID.eq();
+		System.out.println(moderadorCriteria.uniqueModerador());
+		
+		System.out.println("Retrieving Administrador by AdministradorCriteria");
+		AdministradorCriteria administradorCriteria = new AdministradorCriteria();
+		// Please uncomment the follow line and fill in parameter(s)
+		//administradorCriteria.ID.eq();
+		System.out.println(administradorCriteria.uniqueAdministrador());
 		
 		System.out.println("Retrieving Media_ by Media_Criteria");
 		Media_Criteria media_Criteria = new Media_Criteria();
@@ -110,29 +115,6 @@ public class RetrieveAndUpdateMDS1Data {
 		// Please uncomment the follow line and fill in parameter(s)
 		//ticketCriteria.idticket.eq();
 		System.out.println(ticketCriteria.uniqueTicket());
-		
-		System.out.println("Retrieving Administrador by AdministradorCriteria");
-		AdministradorCriteria administradorCriteria = new AdministradorCriteria();
-		// Please uncomment the follow line and fill in parameter(s)
-		System.out.println(administradorCriteria.uniqueAdministrador());
-		
-		System.out.println("Retrieving Moderadores by ModeradoresCriteria");
-		ModeradoresCriteria moderadoresCriteria = new ModeradoresCriteria();
-		// Please uncomment the follow line and fill in parameter(s)
-		//moderadoresCriteria.ID.eq();
-		System.out.println(moderadoresCriteria.uniqueModeradores());
-		
-		System.out.println("Retrieving Moderador by ModeradorCriteria");
-		ModeradorCriteria moderadorCriteria = new ModeradorCriteria();
-		// Please uncomment the follow line and fill in parameter(s)
-		//moderadorCriteria.ID.eq();
-		System.out.println(moderadorCriteria.uniqueModerador());
-		
-		System.out.println("Retrieving Administradores by AdministradoresCriteria");
-		AdministradoresCriteria administradoresCriteria = new AdministradoresCriteria();
-		// Please uncomment the follow line and fill in parameter(s)
-		//administradoresCriteria.ID.eq();
-		System.out.println(administradoresCriteria.uniqueAdministradores());
 		
 	}
 	

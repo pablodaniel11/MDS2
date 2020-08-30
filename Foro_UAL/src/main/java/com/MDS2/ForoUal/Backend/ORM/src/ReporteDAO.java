@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -323,12 +322,12 @@ public class ReporteDAO {
 	
 	public static boolean deleteAndDissociate(Reporte reporte)throws PersistentException {
 		try {
-			if (reporte.getEs_reportado() != null) {
-				reporte.getEs_reportado().corresponden.remove(reporte);
+			if (reporte.getMensaje_reporte() != null) {
+				reporte.getMensaje_reporte().reportes_mensaje.remove(reporte);
 			}
 			
-			if (reporte.getUsuario() != null) {
-				reporte.getUsuario().reportes.remove(reporte);
+			if (reporte.getUsuario_reporte() != null) {
+				reporte.getUsuario_reporte().reportes_usuario.remove(reporte);
 			}
 			
 			return delete(reporte);
@@ -341,12 +340,12 @@ public class ReporteDAO {
 	
 	public static boolean deleteAndDissociate(Reporte reporte, org.orm.PersistentSession session)throws PersistentException {
 		try {
-			if (reporte.getEs_reportado() != null) {
-				reporte.getEs_reportado().corresponden.remove(reporte);
+			if (reporte.getMensaje_reporte() != null) {
+				reporte.getMensaje_reporte().reportes_mensaje.remove(reporte);
 			}
 			
-			if (reporte.getUsuario() != null) {
-				reporte.getUsuario().reportes.remove(reporte);
+			if (reporte.getUsuario_reporte() != null) {
+				reporte.getUsuario_reporte().reportes_usuario.remove(reporte);
 			}
 			
 			try {

@@ -20,9 +20,9 @@ public class Opciones_Perfil extends Opciones_Perfil_Ventana{
 		
 		//Carga de Datos de Perfil
 		userName.setValue(u.getNombreUsuario());
-		realName.setValue(u.getDescripcion().split(" /// ")[0]);
+		realName.setValue(u.getNombreReal());
 		email.setValue(u.getEmail());
-		descpription.setValue(u.getDescripcion().split(" /// ")[1]);
+		descpription.setValue(u.getDescripcion());
 		fotoPerfil.setSource(new ExternalResource(foroUI.db.Cargar_Media(u.getFotoPerfil()).getUrl()));
 		
 	}

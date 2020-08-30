@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -20,8 +19,6 @@ import org.orm.criteria.*;
 
 public class UsuarioDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final LongExpression ID;
-	public final LongExpression pertenece_aId;
-	public final AssociationExpression pertenece_a;
 	public final StringExpression email;
 	public final StringExpression nombreUsuario;
 	public final IntegerExpression fotoPerfil;
@@ -30,17 +27,17 @@ public class UsuarioDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final BooleanExpression marcado;
 	public final BooleanExpression baneado;
 	public final LongExpression IDusuario;
-	public final CollectionExpression reportes;
+	public final StringExpression nombreReal;
+	public final CollectionExpression reportes_usuario;
 	public final CollectionExpression amigo_de;
 	public final CollectionExpression pertenece;
 	public final CollectionExpression usuarios;
 	public final CollectionExpression es_creado;
+	public final CollectionExpression tickets_usuario;
 	
 	public UsuarioDetachedCriteria() {
 		super(Usuario.class, UsuarioCriteria.class);
 		ID = new LongExpression("ID", this.getDetachedCriteria());
-		pertenece_aId = new LongExpression("pertenece_a.idticket", this.getDetachedCriteria());
-		pertenece_a = new AssociationExpression("pertenece_a", this.getDetachedCriteria());
 		email = new StringExpression("email", this.getDetachedCriteria());
 		nombreUsuario = new StringExpression("nombreUsuario", this.getDetachedCriteria());
 		fotoPerfil = new IntegerExpression("fotoPerfil", this.getDetachedCriteria());
@@ -49,18 +46,18 @@ public class UsuarioDetachedCriteria extends AbstractORMDetachedCriteria {
 		marcado = new BooleanExpression("marcado", this.getDetachedCriteria());
 		baneado = new BooleanExpression("baneado", this.getDetachedCriteria());
 		IDusuario = new LongExpression("IDusuario", this.getDetachedCriteria());
-		reportes = new CollectionExpression("ORM_reportes", this.getDetachedCriteria());
+		nombreReal = new StringExpression("nombreReal", this.getDetachedCriteria());
+		reportes_usuario = new CollectionExpression("ORM_reportes_usuario", this.getDetachedCriteria());
 		amigo_de = new CollectionExpression("ORM_amigo_de", this.getDetachedCriteria());
 		pertenece = new CollectionExpression("ORM_pertenece", this.getDetachedCriteria());
 		usuarios = new CollectionExpression("ORM_usuarios", this.getDetachedCriteria());
 		es_creado = new CollectionExpression("ORM_es_creado", this.getDetachedCriteria());
+		tickets_usuario = new CollectionExpression("ORM_tickets_usuario", this.getDetachedCriteria());
 	}
 	
 	public UsuarioDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, UsuarioCriteria.class);
 		ID = new LongExpression("ID", this.getDetachedCriteria());
-		pertenece_aId = new LongExpression("pertenece_a.idticket", this.getDetachedCriteria());
-		pertenece_a = new AssociationExpression("pertenece_a", this.getDetachedCriteria());
 		email = new StringExpression("email", this.getDetachedCriteria());
 		nombreUsuario = new StringExpression("nombreUsuario", this.getDetachedCriteria());
 		fotoPerfil = new IntegerExpression("fotoPerfil", this.getDetachedCriteria());
@@ -69,19 +66,17 @@ public class UsuarioDetachedCriteria extends AbstractORMDetachedCriteria {
 		marcado = new BooleanExpression("marcado", this.getDetachedCriteria());
 		baneado = new BooleanExpression("baneado", this.getDetachedCriteria());
 		IDusuario = new LongExpression("IDusuario", this.getDetachedCriteria());
-		reportes = new CollectionExpression("ORM_reportes", this.getDetachedCriteria());
+		nombreReal = new StringExpression("nombreReal", this.getDetachedCriteria());
+		reportes_usuario = new CollectionExpression("ORM_reportes_usuario", this.getDetachedCriteria());
 		amigo_de = new CollectionExpression("ORM_amigo_de", this.getDetachedCriteria());
 		pertenece = new CollectionExpression("ORM_pertenece", this.getDetachedCriteria());
 		usuarios = new CollectionExpression("ORM_usuarios", this.getDetachedCriteria());
 		es_creado = new CollectionExpression("ORM_es_creado", this.getDetachedCriteria());
+		tickets_usuario = new CollectionExpression("ORM_tickets_usuario", this.getDetachedCriteria());
 	}
 	
-	public TicketDetachedCriteria createPertenece_aCriteria() {
-		return new TicketDetachedCriteria(createCriteria("pertenece_a"));
-	}
-	
-	public ReporteDetachedCriteria createReportesCriteria() {
-		return new ReporteDetachedCriteria(createCriteria("ORM_reportes"));
+	public ReporteDetachedCriteria createReportes_usuarioCriteria() {
+		return new ReporteDetachedCriteria(createCriteria("ORM_reportes_usuario"));
 	}
 	
 	public UsuarioDetachedCriteria createAmigo_deCriteria() {
@@ -98,6 +93,10 @@ public class UsuarioDetachedCriteria extends AbstractORMDetachedCriteria {
 	
 	public TemaDetachedCriteria createEs_creadoCriteria() {
 		return new TemaDetachedCriteria(createCriteria("ORM_es_creado"));
+	}
+	
+	public TicketDetachedCriteria createTickets_usuarioCriteria() {
+		return new TicketDetachedCriteria(createCriteria("ORM_tickets_usuario"));
 	}
 	
 	public Usuario uniqueUsuario(PersistentSession session) {

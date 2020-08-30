@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -19,24 +18,26 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class SeccionCriteria extends AbstractORMCriteria {
+	public final IntegerExpression ID;
+	public final LongExpression creaId;
+	public final AssociationExpression crea;
 	public final LongExpression IDseccion;
 	public final StringExpression Titulo;
 	public final StringExpression subtitulo;
 	public final DateExpression fechaCreacion;
 	public final IntegerExpression numMensajes;
-	public final LongExpression creaId;
-	public final AssociationExpression crea;
 	public final CollectionExpression temas;
 	
 	public SeccionCriteria(Criteria criteria) {
 		super(criteria);
+		ID = new IntegerExpression("ID", this);
+		creaId = new LongExpression("crea.", this);
+		crea = new AssociationExpression("crea", this);
 		IDseccion = new LongExpression("IDseccion", this);
 		Titulo = new StringExpression("Titulo", this);
 		subtitulo = new StringExpression("subtitulo", this);
 		fechaCreacion = new DateExpression("fechaCreacion", this);
 		numMensajes = new IntegerExpression("numMensajes", this);
-		creaId = new LongExpression("crea.", this);
-		crea = new AssociationExpression("crea", this);
 		temas = new CollectionExpression("ORM_temas", this);
 	}
 	
@@ -48,8 +49,8 @@ public class SeccionCriteria extends AbstractORMCriteria {
 		this(MDS1PersistentManager.instance().getSession());
 	}
 	
-	public AdministradoresCriteria createCreaCriteria() {
-		return new AdministradoresCriteria(createCriteria("crea"));
+	public AdministradorCriteria createCreaCriteria() {
+		return new AdministradorCriteria(createCriteria("crea"));
 	}
 	
 	public TemaCriteria createTemasCriteria() {

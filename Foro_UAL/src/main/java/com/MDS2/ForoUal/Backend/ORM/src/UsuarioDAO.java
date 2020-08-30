@@ -1,5 +1,4 @@
 package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -327,13 +326,9 @@ public class UsuarioDAO {
 		}
 		
 		try {
-			if (usuario.getPertenece_a() != null) {
-				usuario.getPertenece_a().tiene.remove(usuario);
-			}
-			
-			Reporte[] lReportess = usuario.reportes.toArray();
-			for(int i = 0; i < lReportess.length; i++) {
-				lReportess[i].setUsuario(null);
+			Reporte[] lReportes_usuarios = usuario.reportes_usuario.toArray();
+			for(int i = 0; i < lReportes_usuarios.length; i++) {
+				lReportes_usuarios[i].setUsuario_reporte(null);
 			}
 			Usuario[] lAmigo_des = usuario.amigo_de.toArray();
 			for(int i = 0; i < lAmigo_des.length; i++) {
@@ -341,7 +336,7 @@ public class UsuarioDAO {
 			}
 			Mensaje[] lPerteneces = usuario.pertenece.toArray();
 			for(int i = 0; i < lPerteneces.length; i++) {
-				lPerteneces[i].setEnvia(null);
+				lPerteneces[i].setEnvia_mensaje(null);
 			}
 			Usuario[] lUsuarioss = usuario.usuarios.toArray();
 			for(int i = 0; i < lUsuarioss.length; i++) {
@@ -349,7 +344,11 @@ public class UsuarioDAO {
 			}
 			Tema[] lEs_creados = usuario.es_creado.toArray();
 			for(int i = 0; i < lEs_creados.length; i++) {
-				lEs_creados[i].setCrea_temas(null);
+				lEs_creados[i].setCrea_tema(null);
+			}
+			Ticket[] lTickets_usuarios = usuario.tickets_usuario.toArray();
+			for(int i = 0; i < lTickets_usuarios.length; i++) {
+				lTickets_usuarios[i].setUsuario_ticket(null);
 			}
 			return delete(usuario);
 		}
@@ -365,13 +364,9 @@ public class UsuarioDAO {
 		}
 		
 		try {
-			if (usuario.getPertenece_a() != null) {
-				usuario.getPertenece_a().tiene.remove(usuario);
-			}
-			
-			Reporte[] lReportess = usuario.reportes.toArray();
-			for(int i = 0; i < lReportess.length; i++) {
-				lReportess[i].setUsuario(null);
+			Reporte[] lReportes_usuarios = usuario.reportes_usuario.toArray();
+			for(int i = 0; i < lReportes_usuarios.length; i++) {
+				lReportes_usuarios[i].setUsuario_reporte(null);
 			}
 			Usuario[] lAmigo_des = usuario.amigo_de.toArray();
 			for(int i = 0; i < lAmigo_des.length; i++) {
@@ -379,7 +374,7 @@ public class UsuarioDAO {
 			}
 			Mensaje[] lPerteneces = usuario.pertenece.toArray();
 			for(int i = 0; i < lPerteneces.length; i++) {
-				lPerteneces[i].setEnvia(null);
+				lPerteneces[i].setEnvia_mensaje(null);
 			}
 			Usuario[] lUsuarioss = usuario.usuarios.toArray();
 			for(int i = 0; i < lUsuarioss.length; i++) {
@@ -387,7 +382,11 @@ public class UsuarioDAO {
 			}
 			Tema[] lEs_creados = usuario.es_creado.toArray();
 			for(int i = 0; i < lEs_creados.length; i++) {
-				lEs_creados[i].setCrea_temas(null);
+				lEs_creados[i].setCrea_tema(null);
+			}
+			Ticket[] lTickets_usuarios = usuario.tickets_usuario.toArray();
+			for(int i = 0; i < lTickets_usuarios.length; i++) {
+				lTickets_usuarios[i].setUsuario_ticket(null);
 			}
 			try {
 				session.delete(usuario);

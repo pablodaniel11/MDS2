@@ -4,10 +4,12 @@ import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import com.MDS2.ForoUal.foroUI;
 import com.MDS2.ForoUal.Backend.ORM.src.*;
+import com.MDS2.ForoUal.Interfaz.Ver_OtroPerfil;
 
 import org.orm.PersistentException;
 
@@ -20,15 +22,49 @@ public class BD_Usuarios {
 	public Vector<UsuarioDAO> _unnamed_Usuario_ = new Vector<UsuarioDAO>();
 
 	public void Banear(String aNombre) {
-		throw new UnsupportedOperationException();
+		Usuario u = null;
+		try {
+			u = UsuarioDAO.loadUsuarioByQuery("NombreUsuario = '"+aNombre+"'", null);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return;
+		}
+		u.setBaneado(true);
+		try {
+			UsuarioDAO.save(u);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void Desbanear(String aNombre) {
-		throw new UnsupportedOperationException();
+		Usuario u = null;
+		try {
+			u = UsuarioDAO.loadUsuarioByQuery("NombreUsuario = '"+aNombre+"'", null);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return;
+		}
+		u.setBaneado(false);
+		try {
+			UsuarioDAO.save(u);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-	public List Buscar_Amigo_PorNombre(String aNombre) {
-		throw new UnsupportedOperationException();
+	public Usuario[] Buscar_Amigo_PorNombre(String aNombre) {
+		try {
+			return UsuarioDAO.listUsuarioByQuery("NombreUsuario LIKE '%"+aNombre+"%' AND NombreUsuario != '"+foroUI.user.getNombreUsuario()+"'", null);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Usuario[] {};
+		}
 	}
 
 	public void Cargar_Usuario_Administrador(String aNombre) {
@@ -39,16 +75,58 @@ public class BD_Usuarios {
 		throw new UnsupportedOperationException();
 	}
 
-	public List Cargar_Amigos(String aNombre) {
-		throw new UnsupportedOperationException();
+	public Usuario[] Cargar_Amigos(String aNombre) {
+		Usuario u = null;
+		try {
+			u = UsuarioDAO.loadUsuarioByQuery("NombreUsuario = '"+aNombre+"'", null);
+			return u.amigo_de.toArray();
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Usuario[] {};
+		}
+		
 	}
 
 	public Mensaje[] Cargar_Ultimos_Mensajes(String aNombre) {
-		throw new UnsupportedOperationException();
+		Usuario u = null;
+		try {
+			u = UsuarioDAO.loadUsuarioByQuery("NombreUsuario = '"+aNombre+"'", null);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Mensaje[] {};
+		}
+		try {
+			Mensaje[] m2 = MensajeDAO.listMensajeByQuery("UsuarioID = "+u.getORMID(), "FechaCreacion");
+			Mensaje[] m = new Mensaje[Math.min(m2.length, Ver_OtroPerfil.messageLimit)];
+			
+			for(int i = 0; i < Math.min(m2.length, Ver_OtroPerfil.messageLimit); i++)
+				m[i] = m2[i];
+			
+			return m;
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Mensaje[] {};
+		}
 	}
 
 	public Mensaje[] Devolver_Ultimos_Mensajes(Usuario aUser, int aNummensajes) {
-		throw new UnsupportedOperationException();
+		
+		try {
+			Mensaje[] m2 = MensajeDAO.listMensajeByQuery("UsuarioID = "+aUser.getORMID(), "FechaCreacion");
+			Mensaje[] m = new Mensaje[Math.min(m2.length, Ver_OtroPerfil.messageLimit)];
+			
+			for(int i = 0; i < Math.min(m2.length, aNummensajes); i++)
+				m[i] = m2[i];
+			
+			return m;
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Mensaje[] {};
+		}
 	}
 
 	public boolean Darse_Baja(String aContrasenia, String aNombre) {
@@ -82,7 +160,15 @@ public class BD_Usuarios {
 	}
 
 	public void Eliminar_Amigo(String aNombre) {
-		throw new UnsupportedOperationException();
+		Usuario u;
+		try {
+			u = UsuarioDAO.loadUsuarioByQuery(String.format("NombreUsuario = '%s'",aNombre), null);
+			foroUI.user.amigo_de.remove(u);
+			UsuarioDAO.save(foroUI.user);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public boolean Iniciar_Sesion(String aNombre, String aContrasenia) {
@@ -127,11 +213,39 @@ public class BD_Usuarios {
 	}
 
 	public void Insertar_Amigo(String aNombre) {
-		throw new UnsupportedOperationException();
+		Usuario u;
+		try {
+			u = UsuarioDAO.loadUsuarioByQuery(String.format("NombreUsuario = '%s'",aNombre), null);
+			foroUI.user.amigo_de.add(u);
+			UsuarioDAO.save(foroUI.user);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	public boolean Modificar_Rol(String aNombre) {
-		throw new UnsupportedOperationException();
+		
+		try {
+			Usuario u = UsuarioDAO.loadUsuarioByQuery(String.format("NombreUsuario = '%s'",aNombre), null);
+			if(esModerador(aNombre)) {
+				Moderador m = ModeradorDAO.createModerador();
+				m.setIdMod(u.getORMID());
+				ModeradorDAO.save(m);
+				return true;
+			}
+			else {
+				Moderador m = ModeradorDAO.loadModeradorByQuery("UsuarioID = " + u.getORMID(), null);
+				ModeradorDAO.delete(m);
+				return true;
+			}
+			
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}		
 	}
 
 	public void Recuperar_Contrasenia_Perfil(String aNombre) {
@@ -157,6 +271,19 @@ public class BD_Usuarios {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
+		}
+	}
+	public boolean esModerador (String aNombre) {
+		try {
+			Usuario u = UsuarioDAO.loadUsuarioByQuery(String.format("NombreUsuario = '%s'",aNombre), null);
+			Moderador mod = ModeradorDAO.getModeradorByORMID(u.getID());
+			return(mod != null);
+			
+			
+		} catch (PersistentException e) {
+			e.printStackTrace();
+			return false;
+
 		}
 	}
 }

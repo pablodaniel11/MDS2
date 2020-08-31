@@ -1,5 +1,7 @@
 package com.MDS2.ForoUal.Backend.BDs;
 
+import java.util.ArrayList;
+
 import javax.print.attribute.standard.Media;
 
 import com.MDS2.ForoUal.Backend.Interfaces_BD.i_Usuario_No_Registrado;
@@ -10,6 +12,7 @@ import com.MDS2.ForoUal.Backend.ORM.src.Reporte;
 import com.MDS2.ForoUal.Backend.ORM.src.Seccion;
 import com.MDS2.ForoUal.Backend.ORM.src.Tema;
 import com.MDS2.ForoUal.Backend.ORM.src.Ticket;
+import com.MDS2.ForoUal.Backend.ORM.src.Usuario;
 
 import antlr.collections.List;
 
@@ -32,7 +35,7 @@ public class BD_Principal implements i_Usuario_No_Registrado {
 	public BD_Moderadores _bd_moderadores;
 
 	public void Banear(String aNombre) {
-		throw new UnsupportedOperationException();
+		_usuarios.Banear(aNombre);
 	}
 
 	public List Cargar_Usuario(String aNombre) {
@@ -43,12 +46,12 @@ public class BD_Principal implements i_Usuario_No_Registrado {
 		throw new UnsupportedOperationException();
 	}
 
-	public List Cargar_Amigos(String aNombre) {
-		throw new UnsupportedOperationException();
+	public Usuario[] Cargar_Amigos(String aNombre) {
+		return _usuarios.Cargar_Amigos(aNombre);
 	}
 
 	public Mensaje[] Cargar_Ultimos_Mensajes(String aNombre) {
-		throw new UnsupportedOperationException();
+		return _usuarios.Cargar_Ultimos_Mensajes(aNombre);
 	}
 
 	public boolean Registrar_Usuario(String aEmail, String aNombre, String aContrasenia, String aNombre_completo, String aFoto_perfil, String aDescripcion) {
@@ -70,7 +73,7 @@ public class BD_Principal implements i_Usuario_No_Registrado {
 	}
 
 	public boolean Modificar_Rol(String aNombre) {
-		throw new UnsupportedOperationException();
+		return _usuarios.Modificar_Rol(aNombre);
 	}
 
 	public int Insertar_Media(String aUrl) {
@@ -173,11 +176,11 @@ public class BD_Principal implements i_Usuario_No_Registrado {
 	}
 
 	public void Desbanear(String aNombre) {
-		throw new UnsupportedOperationException();
+		_usuarios.Desbanear(aNombre);
 	}
 
-	public List Buscar_Amigo_PorNombre(String aNombre) {
-		throw new UnsupportedOperationException();
+	public Usuario[] Buscar_Amigo_PorNombre(String aNombre) {
+		return _usuarios.Buscar_Amigo_PorNombre(aNombre);
 	}
 
 	public void Cargar_Usuario_Administrador(String aNombre) {
@@ -185,11 +188,11 @@ public class BD_Principal implements i_Usuario_No_Registrado {
 	}
 
 	public void Eliminar_Amigo(String aNombre) {
-		throw new UnsupportedOperationException();
+		_usuarios.Eliminar_Amigo(aNombre);
 	}
 
 	public void Insertar_Amigo(String aNombre) {
-		throw new UnsupportedOperationException();
+		_usuarios.Insertar_Amigo(aNombre);
 	}
 
 	public void Eliminar_Ticket(Long aId) {
@@ -197,12 +200,15 @@ public class BD_Principal implements i_Usuario_No_Registrado {
 	}
 
 	public Ticket Notificar_Admin(String aNombreUsuario, String aMensaje) {
-		throw new UnsupportedOperationException();
+		return _tickets.Notificar_Admin(aNombreUsuario, aMensaje);
 	}
 	public Media_ Cargar_Media (int aMedia) {
 		return _medias.Cargar_Media(aMedia);
 	}
 	public int GetSourceType (String s) {
 		return _medias.getType(s);
+	}
+	public boolean esModerador (String aNombre) {
+		return _usuarios.esModerador(aNombre);
 	}
 }

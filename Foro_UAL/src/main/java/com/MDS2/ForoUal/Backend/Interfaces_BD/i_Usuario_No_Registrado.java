@@ -3,6 +3,7 @@ package com.MDS2.ForoUal.Backend.Interfaces_BD;
 import com.MDS2.ForoUal.Backend.ORM.src.Mensaje;
 import com.MDS2.ForoUal.Backend.ORM.src.Seccion;
 import com.MDS2.ForoUal.Backend.ORM.src.Tema;
+import com.MDS2.ForoUal.Backend.ORM.src.Usuario;
 
 import antlr.collections.List;
 
@@ -16,7 +17,7 @@ public interface i_Usuario_No_Registrado {
 
 	public List Cargar_Usuarios_Busqueda();
 
-	public List Cargar_Amigos(String aNombre);
+	public Usuario[] Cargar_Amigos(String aNombre);
 
 	public Mensaje[] Cargar_Ultimos_Mensajes(String aNombre);
 

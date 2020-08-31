@@ -5,6 +5,7 @@ import com.MDS2.ForoUal.Backend.ORM.src.Usuario;
 public class Visualizar_OtroUsuario_Admininistrador extends Visualizar_OtroUsuario_Moderador {
 	public Visualizar_OtroUsuario_Admininistrador(Usuario u) {
 		super(u);
+		panelOpcionesLayout.addComponent(new Opciones_OtroUsuario_Administrador(u));
 		// TODO Auto-generated constructor stub
 	}
 

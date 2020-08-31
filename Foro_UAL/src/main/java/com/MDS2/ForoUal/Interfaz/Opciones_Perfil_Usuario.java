@@ -45,6 +45,7 @@ public class Opciones_Perfil_Usuario extends Opciones_Perfil_Usuario_Ventana{
 				// TODO Auto-generated method stub
 				Window pv = new Window("", new Buscar_Amigos());
 				pv.center();
+				pv.setClosable(false);
 				UI.getCurrent().addWindow(pv);
 			}
 		});

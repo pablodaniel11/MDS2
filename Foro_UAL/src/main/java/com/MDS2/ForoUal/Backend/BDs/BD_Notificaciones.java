@@ -2,8 +2,12 @@ package com.MDS2.ForoUal.Backend.BDs;
 
 import java.util.Vector;
 
+import org.orm.PersistentException;
+
 import com.MDS2.ForoUal.Backend.ORM.src.Ticket;
 import com.MDS2.ForoUal.Backend.ORM.src.TicketDAO;
+import com.MDS2.ForoUal.Backend.ORM.src.Usuario;
+import com.MDS2.ForoUal.Backend.ORM.src.UsuarioDAO;
 
 public class BD_Notificaciones {
 	public BD_Principal _bd_main_notificaciones;
@@ -14,6 +18,19 @@ public class BD_Notificaciones {
 	}
 
 	public Ticket Notificar_Admin(String aNombreUsuario, String aMensaje) {
-		throw new UnsupportedOperationException();
+		try {
+			Usuario u = UsuarioDAO.loadUsuarioByQuery(String.format("NombreUsuario = '%s'",aNombreUsuario), null);
+			u.setMarcado(true);
+			UsuarioDAO.save(u);
+			
+			Ticket t = TicketDAO.createTicket();
+			t.setMensaje(aMensaje);
+			TicketDAO.save(t);
+			return t;
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

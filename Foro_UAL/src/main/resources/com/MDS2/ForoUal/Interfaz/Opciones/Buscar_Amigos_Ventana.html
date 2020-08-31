@@ -10,16 +10,20 @@
    <vaadin-label width-full :right="35%" :left="35%">
     <h2><b>Buscar Amigos</b></h2>
    </vaadin-label>
-   <vaadin-text-field width-full value="Nombre" _id="nombre" :top="11%" :right="15%" :left="15%"></vaadin-text-field>
    <vaadin-image source="http://virtualdor.com/things/line.png" width-full :top="17%" :right="20%" :left="20%"></vaadin-image>
-   <vaadin-vertical-layout style-name="card" width="98%" height="88%" margin-top="false" margin-bottom="false" _id="amigos" :top="20%" :left="2%"></vaadin-vertical-layout>
+   <vaadin-vertical-layout style-name="card" spacing="false" width="98%" height="88%" margin="false" :top="20%" :left="2%">
+    <vaadin-vertical-layout margin-bottom="false" _id="amigos"></vaadin-vertical-layout>
+   </vaadin-vertical-layout>
    <vaadin-horizontal-layout size-full :top="90%">
     <vaadin-button width="60%" height="60%" plain-text _id="cancelar" :middle :center>
-      Cancelar 
+      Cerrar 
     </vaadin-button>
-    <vaadin-button width="60%" height="60%" plain-text _id="continuar" :middle :center>
+    <vaadin-button visible="false" width="60%" height="60%" plain-text _id="continuar" :middle :center>
       Continuar 
     </vaadin-button>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout width-full :top="11%" :right="15%" :left="15%">
+    <vaadin-text-field width-full value="Nombre" _id="nombre"></vaadin-text-field>
    </vaadin-horizontal-layout>
   </vaadin-absolute-layout>
  </body>

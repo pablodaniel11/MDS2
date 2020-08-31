@@ -5,6 +5,7 @@ import java.util.Vector;
 import com.MDS2.ForoUal.foroUI;
 import com.MDS2.ForoUal.Backend.ORM.src.Mensaje;
 import com.MDS2.ForoUal.Backend.ORM.src.Tema;
+import com.MDS2.ForoUal.Backend.ORM.src.Usuario;
 
 public class Visualizar_Mensajes extends Visualizar_Mensajes_Ventana{
 	public Visualizar_Mensaje_NoRegistrado _visualizar_Mensaje_NoRegistrado;
@@ -23,6 +24,15 @@ public class Visualizar_Mensajes extends Visualizar_Mensajes_Ventana{
 		Mensaje[] m = foroUI.db.Cargar_Mensajes(t);
 		
 		for(Mensaje m2 : m) {
+			if(foroUI.user == null || (foroUI.user != null && foroUI.privilegios == foroUI.Privilegios.usuario))
+				if(m2.getTexto().contains("<Ocultado>") || m2.getTexto().contains("<Borrado>")) continue;
+			if((foroUI.user != null && foroUI.privilegios == foroUI.Privilegios.usuario) && m2.getTexto().contains("<borrado>")) continue;
+			addComponent(new visualizar_Mensaje(m2));
+		}
+	}
+	public Visualizar_Mensajes(Usuario u) {
+		Mensaje[] me = foroUI.db.Cargar_Ultimos_Mensajes(u.getNombreUsuario());
+		for(Mensaje m2 : me) {
 			if(foroUI.user == null || (foroUI.user != null && foroUI.privilegios == foroUI.Privilegios.usuario))
 				if(m2.getTexto().contains("<Ocultado>") || m2.getTexto().contains("<Borrado>")) continue;
 			if((foroUI.user != null && foroUI.privilegios == foroUI.Privilegios.usuario) && m2.getTexto().contains("<borrado>")) continue;

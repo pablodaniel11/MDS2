@@ -1,6 +1,7 @@
 package com.MDS2.ForoUal.Interfaz;
 
 import com.MDS2.ForoUal.foroUI;
+import com.MDS2.ForoUal.Backend.ORM.src.Media_;
 import com.MDS2.ForoUal.Backend.ORM.src.Usuario;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.server.Resource;
@@ -16,14 +17,15 @@ public class Opciones_Perfil extends Opciones_Perfil_Ventana{
 	public Opciones_Perfil (Usuario u) {
 		panelSuperior.setContent(new panel_Superior_Registrado(true));
 		panelOpciones.setContent(new Opciones_Perfil_Usuario());
-		panelAmigos.setContent(new Ver_Amigos());
+		panelAmigos.setContent(new Ver_Amigos(u));
 		
 		//Carga de Datos de Perfil
 		userName.setValue(u.getNombreUsuario());
 		realName.setValue(u.getNombreReal());
 		email.setValue(u.getEmail());
 		descpription.setValue(u.getDescripcion());
-		fotoPerfil.setSource(new ExternalResource(foroUI.db.Cargar_Media(u.getFotoPerfil()).getUrl()));
-		
+		Media_ m = foroUI.db.Cargar_Media(u.getFotoPerfil());
+		if(m != null)
+			fotoPerfil.setSource(new ExternalResource(m.getUrl()));		
 	}
 }

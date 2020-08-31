@@ -56,21 +56,21 @@ public class Ver_Temas extends Ver_Temas_Ventanas{
 		        }
 			});
 			break;
-		case 1:
-			temas.sort(new Comparator<Tema>() {
-				@Override
-		        public int compare(Tema t1, Tema t2)
-		        {
-		            return  ((Integer)t1.getNumMensjes()).compareTo(t2.getNumMensjes());
-		        }
-			});
-			break;
 		case 2:
 			temas.sort(new Comparator<Tema>() {
 				@Override
 		        public int compare(Tema t1, Tema t2)
 		        {
-		            return  ((Integer)t1.getNumeroMeGusta()).compareTo(t2.getNumeroMeGusta());
+		            return  ((Integer)t2.getNumMensjes()).compareTo(t1.getNumMensjes());
+		        }
+			});
+			break;
+		case 1:
+			temas.sort(new Comparator<Tema>() {
+				@Override
+		        public int compare(Tema t1, Tema t2)
+		        {
+		            return  ((Integer)t2.getNumeroMeGusta()).compareTo(t1.getNumeroMeGusta());
 		        }
 			});
 			break;

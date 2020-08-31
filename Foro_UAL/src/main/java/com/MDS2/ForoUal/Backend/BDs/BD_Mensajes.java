@@ -12,10 +12,14 @@ import com.MDS2.ForoUal.Backend.ORM.src.ImagenDAO;
 import com.MDS2.ForoUal.Backend.ORM.src.Media_;
 import com.MDS2.ForoUal.Backend.ORM.src.Mensaje;
 import com.MDS2.ForoUal.Backend.ORM.src.MensajeDAO;
+import com.MDS2.ForoUal.Backend.ORM.src.Seccion;
+import com.MDS2.ForoUal.Backend.ORM.src.SeccionDAO;
 import com.MDS2.ForoUal.Backend.ORM.src.Tema;
+import com.MDS2.ForoUal.Backend.ORM.src.TemaDAO;
 import com.MDS2.ForoUal.Backend.ORM.src.Video;
 import com.MDS2.ForoUal.Backend.ORM.src.VideoDAO;
 import com.MDS2.ForoUal.Interfaz.Visualizar_Mensajes;
+import com.MDS2.ForoUal.Interfaz.Visualizar_Temas_Registrado;
 
 public class BD_Mensajes {
 	public BD_Principal _bd_main_mensajes;
@@ -26,7 +30,7 @@ public class BD_Mensajes {
 	}
 
 	public Mensaje[] Cargar_Mensajes_Registrado() {
-		throw new UnsupportedOperationException();
+		return null;
 	}
 
 	public Mensaje[] Cargar_Mensajes_Moderador() {
@@ -86,6 +90,13 @@ public class BD_Mensajes {
 		
 		try {
 			MensajeDAO.save(m);
+			Tema t = TemaDAO.getTemaByORMID(Visualizar_Mensajes.tema.getORMID());
+			t.setNumMensjes(t.getNumMensjes()+1);
+			TemaDAO.save(t);
+			Seccion s = SeccionDAO.getSeccionByORMID(Visualizar_Temas_Registrado.sec.getORMID());
+			s.setNumMensajes(s.getNumMensajes()+1); 
+			SeccionDAO.save(s);
+			
 			return m;
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block

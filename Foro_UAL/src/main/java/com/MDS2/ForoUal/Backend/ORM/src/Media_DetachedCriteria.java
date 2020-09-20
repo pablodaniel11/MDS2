@@ -1,5 +1,3 @@
-package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -19,19 +17,29 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class Media_DetachedCriteria extends AbstractORMDetachedCriteria {
-	public final IntegerExpression IDmedia;
+	public final LongExpression IDmedia;
+	public final IntegerExpression mensaje_mediaId;
+	public final AssociationExpression mensaje_media;
 	public final StringExpression url;
 	
 	public Media_DetachedCriteria() {
 		super(Media_.class, Media_Criteria.class);
-		IDmedia = new IntegerExpression("IDmedia", this.getDetachedCriteria());
+		IDmedia = new LongExpression("IDmedia", this.getDetachedCriteria());
+		mensaje_mediaId = new IntegerExpression("mensaje_media.ID", this.getDetachedCriteria());
+		mensaje_media = new AssociationExpression("mensaje_media", this.getDetachedCriteria());
 		url = new StringExpression("url", this.getDetachedCriteria());
 	}
 	
 	public Media_DetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, Media_Criteria.class);
-		IDmedia = new IntegerExpression("IDmedia", this.getDetachedCriteria());
+		IDmedia = new LongExpression("IDmedia", this.getDetachedCriteria());
+		mensaje_mediaId = new IntegerExpression("mensaje_media.ID", this.getDetachedCriteria());
+		mensaje_media = new AssociationExpression("mensaje_media", this.getDetachedCriteria());
 		url = new StringExpression("url", this.getDetachedCriteria());
+	}
+	
+	public MensajeDetachedCriteria createMensaje_mediaCriteria() {
+		return new MensajeDetachedCriteria(createCriteria("mensaje_media"));
 	}
 	
 	public Media_ uniqueMedia_(PersistentSession session) {

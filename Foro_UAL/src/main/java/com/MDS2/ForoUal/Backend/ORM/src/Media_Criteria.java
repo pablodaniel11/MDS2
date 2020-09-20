@@ -1,5 +1,3 @@
-package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -19,12 +17,16 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class Media_Criteria extends AbstractORMCriteria {
-	public final IntegerExpression IDmedia;
+	public final LongExpression IDmedia;
+	public final IntegerExpression mensaje_mediaId;
+	public final AssociationExpression mensaje_media;
 	public final StringExpression url;
 	
 	public Media_Criteria(Criteria criteria) {
 		super(criteria);
-		IDmedia = new IntegerExpression("IDmedia", this);
+		IDmedia = new LongExpression("IDmedia", this);
+		mensaje_mediaId = new IntegerExpression("mensaje_media.ID", this);
+		mensaje_media = new AssociationExpression("mensaje_media", this);
 		url = new StringExpression("url", this);
 	}
 	
@@ -34,6 +36,10 @@ public class Media_Criteria extends AbstractORMCriteria {
 	
 	public Media_Criteria() throws PersistentException {
 		this(MDS1PersistentManager.instance().getSession());
+	}
+	
+	public MensajeCriteria createMensaje_mediaCriteria() {
+		return new MensajeCriteria(createCriteria("mensaje_media"));
 	}
 	
 	public Media_ uniqueMedia_() {

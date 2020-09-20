@@ -1,5 +1,3 @@
-package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -19,11 +17,11 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class TemaCriteria extends AbstractORMCriteria {
-	public final LongExpression IDtema;
-	public final LongExpression crea_temasId;
-	public final AssociationExpression crea_temas;
-	public final LongExpression seccionId;
-	public final AssociationExpression seccion;
+	public final IntegerExpression ID;
+	public final LongExpression crea_temaId;
+	public final AssociationExpression crea_tema;
+	public final IntegerExpression contieneId;
+	public final AssociationExpression contiene;
 	public final IntegerExpression numeroMeGusta;
 	public final StringExpression nombreUsuario;
 	public final IntegerExpression tipoTema;
@@ -31,17 +29,17 @@ public class TemaCriteria extends AbstractORMCriteria {
 	public final StringExpression subtitulo;
 	public final DateExpression fechaCreacion;
 	public final IntegerExpression numMensjes;
-	public final LongExpression ocultaId;
-	public final AssociationExpression oculta;
+	public final LongExpression idTema;
 	public final CollectionExpression compone;
+	public final CollectionExpression gustaTema;
 	
 	public TemaCriteria(Criteria criteria) {
 		super(criteria);
-		IDtema = new LongExpression("IDtema", this);
-		crea_temasId = new LongExpression("crea_temas.ID", this);
-		crea_temas = new AssociationExpression("crea_temas", this);
-		seccionId = new LongExpression("seccion.IDseccion", this);
-		seccion = new AssociationExpression("seccion", this);
+		ID = new IntegerExpression("ID", this);
+		crea_temaId = new LongExpression("crea_tema.ID", this);
+		crea_tema = new AssociationExpression("crea_tema", this);
+		contieneId = new IntegerExpression("contiene.ID", this);
+		contiene = new AssociationExpression("contiene", this);
 		numeroMeGusta = new IntegerExpression("numeroMeGusta", this);
 		nombreUsuario = new StringExpression("nombreUsuario", this);
 		tipoTema = new IntegerExpression("tipoTema", this);
@@ -49,9 +47,9 @@ public class TemaCriteria extends AbstractORMCriteria {
 		subtitulo = new StringExpression("subtitulo", this);
 		fechaCreacion = new DateExpression("fechaCreacion", this);
 		numMensjes = new IntegerExpression("numMensjes", this);
-		ocultaId = new LongExpression("oculta.", this);
-		oculta = new AssociationExpression("oculta", this);
+		idTema = new LongExpression("idTema", this);
 		compone = new CollectionExpression("ORM_compone", this);
+		gustaTema = new CollectionExpression("ORM_gustaTema", this);
 	}
 	
 	public TemaCriteria(PersistentSession session) {
@@ -62,20 +60,20 @@ public class TemaCriteria extends AbstractORMCriteria {
 		this(MDS1PersistentManager.instance().getSession());
 	}
 	
-	public UsuarioCriteria createCrea_temasCriteria() {
-		return new UsuarioCriteria(createCriteria("crea_temas"));
+	public UsuarioCriteria createCrea_temaCriteria() {
+		return new UsuarioCriteria(createCriteria("crea_tema"));
 	}
 	
-	public SeccionCriteria createSeccionCriteria() {
-		return new SeccionCriteria(createCriteria("seccion"));
-	}
-	
-	public ModeradorCriteria createOcultaCriteria() {
-		return new ModeradorCriteria(createCriteria("oculta"));
+	public SeccionCriteria createContieneCriteria() {
+		return new SeccionCriteria(createCriteria("contiene"));
 	}
 	
 	public MensajeCriteria createComponeCriteria() {
 		return new MensajeCriteria(createCriteria("ORM_compone"));
+	}
+	
+	public UsuarioCriteria createGustaTemaCriteria() {
+		return new UsuarioCriteria(createCriteria("ORM_gustaTema"));
 	}
 	
 	public Tema uniqueTema() {

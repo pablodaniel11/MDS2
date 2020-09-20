@@ -1,5 +1,3 @@
-package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -19,7 +17,7 @@ import org.hibernate.LockMode;
 import java.util.List;
 
 public class Media_DAO {
-	public static Media_ loadMedia_ByORMID(int IDmedia) throws PersistentException {
+	public static Media_ loadMedia_ByORMID(Long IDmedia) throws PersistentException {
 		try {
 			PersistentSession session = MDS1PersistentManager.instance().getSession();
 			return loadMedia_ByORMID(session, IDmedia);
@@ -30,7 +28,7 @@ public class Media_DAO {
 		}
 	}
 	
-	public static Media_ getMedia_ByORMID(int IDmedia) throws PersistentException {
+	public static Media_ getMedia_ByORMID(Long IDmedia) throws PersistentException {
 		try {
 			PersistentSession session = MDS1PersistentManager.instance().getSession();
 			return getMedia_ByORMID(session, IDmedia);
@@ -41,7 +39,7 @@ public class Media_DAO {
 		}
 	}
 	
-	public static Media_ loadMedia_ByORMID(int IDmedia, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Media_ loadMedia_ByORMID(Long IDmedia, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = MDS1PersistentManager.instance().getSession();
 			return loadMedia_ByORMID(session, IDmedia, lockMode);
@@ -52,7 +50,7 @@ public class Media_DAO {
 		}
 	}
 	
-	public static Media_ getMedia_ByORMID(int IDmedia, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Media_ getMedia_ByORMID(Long IDmedia, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = MDS1PersistentManager.instance().getSession();
 			return getMedia_ByORMID(session, IDmedia, lockMode);
@@ -63,9 +61,9 @@ public class Media_DAO {
 		}
 	}
 	
-	public static Media_ loadMedia_ByORMID(PersistentSession session, int IDmedia) throws PersistentException {
+	public static Media_ loadMedia_ByORMID(PersistentSession session, Long IDmedia) throws PersistentException {
 		try {
-			return (Media_) session.load(Media_.class, new Integer(IDmedia));
+			return (Media_) session.load(Media_.class, IDmedia);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -73,9 +71,9 @@ public class Media_DAO {
 		}
 	}
 	
-	public static Media_ getMedia_ByORMID(PersistentSession session, int IDmedia) throws PersistentException {
+	public static Media_ getMedia_ByORMID(PersistentSession session, Long IDmedia) throws PersistentException {
 		try {
-			return (Media_) session.get(Media_.class, new Integer(IDmedia));
+			return (Media_) session.get(Media_.class, IDmedia);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -83,9 +81,9 @@ public class Media_DAO {
 		}
 	}
 	
-	public static Media_ loadMedia_ByORMID(PersistentSession session, int IDmedia, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Media_ loadMedia_ByORMID(PersistentSession session, Long IDmedia, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Media_) session.load(Media_.class, new Integer(IDmedia), lockMode);
+			return (Media_) session.load(Media_.class, IDmedia, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -93,9 +91,9 @@ public class Media_DAO {
 		}
 	}
 	
-	public static Media_ getMedia_ByORMID(PersistentSession session, int IDmedia, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Media_ getMedia_ByORMID(PersistentSession session, Long IDmedia, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Media_) session.get(Media_.class, new Integer(IDmedia), lockMode);
+			return (Media_) session.get(Media_.class, IDmedia, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -316,6 +314,39 @@ public class Media_DAO {
 			return true;
 		}
 		catch (Exception e) {
+			e.printStackTrace();
+			throw new PersistentException(e);
+		}
+	}
+	
+	public static boolean deleteAndDissociate(Media_ media_)throws PersistentException {
+		try {
+			if (media_.getMensaje_media() != null) {
+				media_.getMensaje_media().media_mensaje.remove(media_);
+			}
+			
+			return delete(media_);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			throw new PersistentException(e);
+		}
+	}
+	
+	public static boolean deleteAndDissociate(Media_ media_, org.orm.PersistentSession session)throws PersistentException {
+		try {
+			if (media_.getMensaje_media() != null) {
+				media_.getMensaje_media().media_mensaje.remove(media_);
+			}
+			
+			try {
+				session.delete(media_);
+				return true;
+			} catch (Exception e) {
+				return false;
+			}
+		}
+		catch(Exception e) {
 			e.printStackTrace();
 			throw new PersistentException(e);
 		}

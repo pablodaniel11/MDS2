@@ -1,5 +1,3 @@
-package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * Licensee: PABLO DANIEL(University of Almeria)
  * License Type: Academic
@@ -57,27 +55,11 @@ public class ListMDS1Data {
 		}
 		System.out.println(length + " record(s) retrieved.");
 		
-		System.out.println("Listing Video...");
-		Video[] videos = VideoDAO.listVideoByQuery(null, null);
-		length = Math.min(videos.length, ROW_COUNT);
+		System.out.println("Listing Notificacion...");
+		Notificacion[] notificacions = NotificacionDAO.listNotificacionByQuery(null, null);
+		length = Math.min(notificacions.length, ROW_COUNT);
 		for (int i = 0; i < length; i++) {
-			System.out.println(videos[i]);
-		}
-		System.out.println(length + " record(s) retrieved.");
-		
-		System.out.println("Listing Imagen...");
-		Imagen[] imagens = ImagenDAO.listImagenByQuery(null, null);
-		length = Math.min(imagens.length, ROW_COUNT);
-		for (int i = 0; i < length; i++) {
-			System.out.println(imagens[i]);
-		}
-		System.out.println(length + " record(s) retrieved.");
-		
-		System.out.println("Listing Ticket...");
-		Ticket[] tickets = TicketDAO.listTicketByQuery(null, null);
-		length = Math.min(tickets.length, ROW_COUNT);
-		for (int i = 0; i < length; i++) {
-			System.out.println(tickets[i]);
+			System.out.println(notificacions[i]);
 		}
 		System.out.println(length + " record(s) retrieved.");
 		
@@ -86,30 +68,6 @@ public class ListMDS1Data {
 		length = Math.min(administradors.length, ROW_COUNT);
 		for (int i = 0; i < length; i++) {
 			System.out.println(administradors[i]);
-		}
-		System.out.println(length + " record(s) retrieved.");
-		
-		System.out.println("Listing Moderadores...");
-		Moderadores[] moderadoreses = ModeradoresDAO.listModeradoresByQuery(null, null);
-		length = Math.min(moderadoreses.length, ROW_COUNT);
-		for (int i = 0; i < length; i++) {
-			System.out.println(moderadoreses[i]);
-		}
-		System.out.println(length + " record(s) retrieved.");
-		
-		System.out.println("Listing Moderador...");
-		Moderador[] moderadors = ModeradorDAO.listModeradorByQuery(null, null);
-		length = Math.min(moderadors.length, ROW_COUNT);
-		for (int i = 0; i < length; i++) {
-			System.out.println(moderadors[i]);
-		}
-		System.out.println(length + " record(s) retrieved.");
-		
-		System.out.println("Listing Administradores...");
-		Administradores[] administradoreses = AdministradoresDAO.listAdministradoresByQuery(null, null);
-		length = Math.min(administradoreses.length, ROW_COUNT);
-		for (int i = 0; i < length; i++) {
-			System.out.println(administradoreses[i]);
 		}
 		System.out.println(length + " record(s) retrieved.");
 		
@@ -131,7 +89,7 @@ public class ListMDS1Data {
 		System.out.println("Listing Tema by Criteria...");
 		TemaCriteria temaCriteria = new TemaCriteria();
 		// Please uncomment the follow line and fill in parameter(s) 
-		//temaCriteria.IDtema.eq();
+		//temaCriteria.ID.eq();
 		temaCriteria.setMaxResults(ROW_COUNT);
 		Tema[] temas = temaCriteria.listTema();
 		length =temas== null ? 0 : Math.min(temas.length, ROW_COUNT); 
@@ -143,7 +101,7 @@ public class ListMDS1Data {
 		System.out.println("Listing Seccion by Criteria...");
 		SeccionCriteria seccionCriteria = new SeccionCriteria();
 		// Please uncomment the follow line and fill in parameter(s) 
-		//seccionCriteria.IDseccion.eq();
+		//seccionCriteria.ID.eq();
 		seccionCriteria.setMaxResults(ROW_COUNT);
 		Seccion[] seccions = seccionCriteria.listSeccion();
 		length =seccions== null ? 0 : Math.min(seccions.length, ROW_COUNT); 
@@ -155,7 +113,7 @@ public class ListMDS1Data {
 		System.out.println("Listing Mensaje by Criteria...");
 		MensajeCriteria mensajeCriteria = new MensajeCriteria();
 		// Please uncomment the follow line and fill in parameter(s) 
-		//mensajeCriteria.idMensaje.eq();
+		//mensajeCriteria.ID.eq();
 		mensajeCriteria.setMaxResults(ROW_COUNT);
 		Mensaje[] mensajes = mensajeCriteria.listMensaje();
 		length =mensajes== null ? 0 : Math.min(mensajes.length, ROW_COUNT); 
@@ -188,45 +146,22 @@ public class ListMDS1Data {
 		}
 		System.out.println(length + " Media_ record(s) retrieved."); 
 		
-		System.out.println("Listing Video by Criteria...");
-		VideoCriteria videoCriteria = new VideoCriteria();
+		System.out.println("Listing Notificacion by Criteria...");
+		NotificacionCriteria notificacionCriteria = new NotificacionCriteria();
 		// Please uncomment the follow line and fill in parameter(s) 
-		//videoCriteria.IDmedia.eq();
-		videoCriteria.setMaxResults(ROW_COUNT);
-		Video[] videos = videoCriteria.listVideo();
-		length =videos== null ? 0 : Math.min(videos.length, ROW_COUNT); 
+		//notificacionCriteria.idnotificacion.eq();
+		notificacionCriteria.setMaxResults(ROW_COUNT);
+		Notificacion[] notificacions = notificacionCriteria.listNotificacion();
+		length =notificacions== null ? 0 : Math.min(notificacions.length, ROW_COUNT); 
 		for (int i = 0; i < length; i++) {
-			 System.out.println(videos[i]);
+			 System.out.println(notificacions[i]);
 		}
-		System.out.println(length + " Video record(s) retrieved."); 
-		
-		System.out.println("Listing Imagen by Criteria...");
-		ImagenCriteria imagenCriteria = new ImagenCriteria();
-		// Please uncomment the follow line and fill in parameter(s) 
-		//imagenCriteria.IDmedia.eq();
-		imagenCriteria.setMaxResults(ROW_COUNT);
-		Imagen[] imagens = imagenCriteria.listImagen();
-		length =imagens== null ? 0 : Math.min(imagens.length, ROW_COUNT); 
-		for (int i = 0; i < length; i++) {
-			 System.out.println(imagens[i]);
-		}
-		System.out.println(length + " Imagen record(s) retrieved."); 
-		
-		System.out.println("Listing Ticket by Criteria...");
-		TicketCriteria ticketCriteria = new TicketCriteria();
-		// Please uncomment the follow line and fill in parameter(s) 
-		//ticketCriteria.idticket.eq();
-		ticketCriteria.setMaxResults(ROW_COUNT);
-		Ticket[] tickets = ticketCriteria.listTicket();
-		length =tickets== null ? 0 : Math.min(tickets.length, ROW_COUNT); 
-		for (int i = 0; i < length; i++) {
-			 System.out.println(tickets[i]);
-		}
-		System.out.println(length + " Ticket record(s) retrieved."); 
+		System.out.println(length + " Notificacion record(s) retrieved."); 
 		
 		System.out.println("Listing Administrador by Criteria...");
 		AdministradorCriteria administradorCriteria = new AdministradorCriteria();
 		// Please uncomment the follow line and fill in parameter(s) 
+		//administradorCriteria.ID.eq();
 		administradorCriteria.setMaxResults(ROW_COUNT);
 		Administrador[] administradors = administradorCriteria.listAdministrador();
 		length =administradors== null ? 0 : Math.min(administradors.length, ROW_COUNT); 
@@ -234,42 +169,6 @@ public class ListMDS1Data {
 			 System.out.println(administradors[i]);
 		}
 		System.out.println(length + " Administrador record(s) retrieved."); 
-		
-		System.out.println("Listing Moderadores by Criteria...");
-		ModeradoresCriteria moderadoresCriteria = new ModeradoresCriteria();
-		// Please uncomment the follow line and fill in parameter(s) 
-		//moderadoresCriteria.ID.eq();
-		moderadoresCriteria.setMaxResults(ROW_COUNT);
-		Moderadores[] moderadoreses = moderadoresCriteria.listModeradores();
-		length =moderadoreses== null ? 0 : Math.min(moderadoreses.length, ROW_COUNT); 
-		for (int i = 0; i < length; i++) {
-			 System.out.println(moderadoreses[i]);
-		}
-		System.out.println(length + " Moderadores record(s) retrieved."); 
-		
-		System.out.println("Listing Moderador by Criteria...");
-		ModeradorCriteria moderadorCriteria = new ModeradorCriteria();
-		// Please uncomment the follow line and fill in parameter(s) 
-		//moderadorCriteria.ID.eq();
-		moderadorCriteria.setMaxResults(ROW_COUNT);
-		Moderador[] moderadors = moderadorCriteria.listModerador();
-		length =moderadors== null ? 0 : Math.min(moderadors.length, ROW_COUNT); 
-		for (int i = 0; i < length; i++) {
-			 System.out.println(moderadors[i]);
-		}
-		System.out.println(length + " Moderador record(s) retrieved."); 
-		
-		System.out.println("Listing Administradores by Criteria...");
-		AdministradoresCriteria administradoresCriteria = new AdministradoresCriteria();
-		// Please uncomment the follow line and fill in parameter(s) 
-		//administradoresCriteria.ID.eq();
-		administradoresCriteria.setMaxResults(ROW_COUNT);
-		Administradores[] administradoreses = administradoresCriteria.listAdministradores();
-		length =administradoreses== null ? 0 : Math.min(administradoreses.length, ROW_COUNT); 
-		for (int i = 0; i < length; i++) {
-			 System.out.println(administradoreses[i]);
-		}
-		System.out.println(length + " Administradores record(s) retrieved."); 
 		
 	}
 	

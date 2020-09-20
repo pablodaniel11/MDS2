@@ -1,5 +1,3 @@
-package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -19,41 +17,47 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class SeccionDetachedCriteria extends AbstractORMDetachedCriteria {
+	public final IntegerExpression ID;
+	public final LongExpression creaId;
+	public final AssociationExpression crea;
 	public final LongExpression IDseccion;
 	public final StringExpression Titulo;
 	public final StringExpression subtitulo;
 	public final DateExpression fechaCreacion;
 	public final IntegerExpression numMensajes;
-	public final LongExpression creaId;
-	public final AssociationExpression crea;
+	public final BooleanExpression marcado;
 	public final CollectionExpression temas;
 	
 	public SeccionDetachedCriteria() {
 		super(Seccion.class, SeccionCriteria.class);
+		ID = new IntegerExpression("ID", this.getDetachedCriteria());
+		creaId = new LongExpression("crea.", this.getDetachedCriteria());
+		crea = new AssociationExpression("crea", this.getDetachedCriteria());
 		IDseccion = new LongExpression("IDseccion", this.getDetachedCriteria());
 		Titulo = new StringExpression("Titulo", this.getDetachedCriteria());
 		subtitulo = new StringExpression("subtitulo", this.getDetachedCriteria());
 		fechaCreacion = new DateExpression("fechaCreacion", this.getDetachedCriteria());
 		numMensajes = new IntegerExpression("numMensajes", this.getDetachedCriteria());
-		creaId = new LongExpression("crea.", this.getDetachedCriteria());
-		crea = new AssociationExpression("crea", this.getDetachedCriteria());
+		marcado = new BooleanExpression("marcado", this.getDetachedCriteria());
 		temas = new CollectionExpression("ORM_temas", this.getDetachedCriteria());
 	}
 	
 	public SeccionDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, SeccionCriteria.class);
+		ID = new IntegerExpression("ID", this.getDetachedCriteria());
+		creaId = new LongExpression("crea.", this.getDetachedCriteria());
+		crea = new AssociationExpression("crea", this.getDetachedCriteria());
 		IDseccion = new LongExpression("IDseccion", this.getDetachedCriteria());
 		Titulo = new StringExpression("Titulo", this.getDetachedCriteria());
 		subtitulo = new StringExpression("subtitulo", this.getDetachedCriteria());
 		fechaCreacion = new DateExpression("fechaCreacion", this.getDetachedCriteria());
 		numMensajes = new IntegerExpression("numMensajes", this.getDetachedCriteria());
-		creaId = new LongExpression("crea.", this.getDetachedCriteria());
-		crea = new AssociationExpression("crea", this.getDetachedCriteria());
+		marcado = new BooleanExpression("marcado", this.getDetachedCriteria());
 		temas = new CollectionExpression("ORM_temas", this.getDetachedCriteria());
 	}
 	
-	public AdministradoresDetachedCriteria createCreaCriteria() {
-		return new AdministradoresDetachedCriteria(createCriteria("crea"));
+	public AdministradorDetachedCriteria createCreaCriteria() {
+		return new AdministradorDetachedCriteria(createCriteria("crea"));
 	}
 	
 	public TemaDetachedCriteria createTemasCriteria() {

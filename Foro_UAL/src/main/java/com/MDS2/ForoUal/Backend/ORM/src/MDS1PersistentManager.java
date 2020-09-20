@@ -1,5 +1,3 @@
-package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -19,7 +17,6 @@ import org.hibernate.*;
 import java.util.Properties;
 import org.hibernate.cfg.*;
 import org.hibernate.boot.MetadataSources;
-import com.MDS2.ForoUal.*;
 
 public class MDS1PersistentManager extends PersistentManager {
 	private static final String PROJECT_NAME = "MDS1";
@@ -44,13 +41,8 @@ public class MDS1PersistentManager extends PersistentManager {
 		aMetadataSources.addAnnotatedClass(Mensaje.class);
 		aMetadataSources.addAnnotatedClass(Usuario.class);
 		aMetadataSources.addAnnotatedClass(Media_.class);
-		aMetadataSources.addAnnotatedClass(Video.class);
-		aMetadataSources.addAnnotatedClass(Imagen.class);
-		aMetadataSources.addAnnotatedClass(Ticket.class);
+		aMetadataSources.addAnnotatedClass(Notificacion.class);
 		aMetadataSources.addAnnotatedClass(Administrador.class);
-		aMetadataSources.addAnnotatedClass(Moderadores.class);
-		aMetadataSources.addAnnotatedClass(Moderador.class);
-		aMetadataSources.addAnnotatedClass(Administradores.class);
 	}
 	
 	public String getProjectName() {

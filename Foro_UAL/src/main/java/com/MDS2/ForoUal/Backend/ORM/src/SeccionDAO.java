@@ -1,5 +1,3 @@
-package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -19,10 +17,10 @@ import org.hibernate.LockMode;
 import java.util.List;
 
 public class SeccionDAO {
-	public static Seccion loadSeccionByORMID(Long IDseccion) throws PersistentException {
+	public static Seccion loadSeccionByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = MDS1PersistentManager.instance().getSession();
-			return loadSeccionByORMID(session, IDseccion);
+			return loadSeccionByORMID(session, ID);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -30,10 +28,10 @@ public class SeccionDAO {
 		}
 	}
 	
-	public static Seccion getSeccionByORMID(Long IDseccion) throws PersistentException {
+	public static Seccion getSeccionByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = MDS1PersistentManager.instance().getSession();
-			return getSeccionByORMID(session, IDseccion);
+			return getSeccionByORMID(session, ID);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -41,10 +39,10 @@ public class SeccionDAO {
 		}
 	}
 	
-	public static Seccion loadSeccionByORMID(Long IDseccion, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Seccion loadSeccionByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = MDS1PersistentManager.instance().getSession();
-			return loadSeccionByORMID(session, IDseccion, lockMode);
+			return loadSeccionByORMID(session, ID, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -52,10 +50,10 @@ public class SeccionDAO {
 		}
 	}
 	
-	public static Seccion getSeccionByORMID(Long IDseccion, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Seccion getSeccionByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = MDS1PersistentManager.instance().getSession();
-			return getSeccionByORMID(session, IDseccion, lockMode);
+			return getSeccionByORMID(session, ID, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -63,9 +61,9 @@ public class SeccionDAO {
 		}
 	}
 	
-	public static Seccion loadSeccionByORMID(PersistentSession session, Long IDseccion) throws PersistentException {
+	public static Seccion loadSeccionByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
-			return (Seccion) session.load(Seccion.class, IDseccion);
+			return (Seccion) session.load(Seccion.class, new Integer(ID));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -73,9 +71,9 @@ public class SeccionDAO {
 		}
 	}
 	
-	public static Seccion getSeccionByORMID(PersistentSession session, Long IDseccion) throws PersistentException {
+	public static Seccion getSeccionByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
-			return (Seccion) session.get(Seccion.class, IDseccion);
+			return (Seccion) session.get(Seccion.class, new Integer(ID));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -83,9 +81,9 @@ public class SeccionDAO {
 		}
 	}
 	
-	public static Seccion loadSeccionByORMID(PersistentSession session, Long IDseccion, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Seccion loadSeccionByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Seccion) session.load(Seccion.class, IDseccion, lockMode);
+			return (Seccion) session.load(Seccion.class, new Integer(ID), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -93,9 +91,9 @@ public class SeccionDAO {
 		}
 	}
 	
-	public static Seccion getSeccionByORMID(PersistentSession session, Long IDseccion, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Seccion getSeccionByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Seccion) session.get(Seccion.class, IDseccion, lockMode);
+			return (Seccion) session.get(Seccion.class, new Integer(ID), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -329,7 +327,7 @@ public class SeccionDAO {
 			
 			Tema[] lTemass = seccion.temas.toArray();
 			for(int i = 0; i < lTemass.length; i++) {
-				lTemass[i].setSeccion(null);
+				lTemass[i].setContiene(null);
 			}
 			return delete(seccion);
 		}
@@ -347,7 +345,7 @@ public class SeccionDAO {
 			
 			Tema[] lTemass = seccion.temas.toArray();
 			for(int i = 0; i < lTemass.length; i++) {
-				lTemass[i].setSeccion(null);
+				lTemass[i].setContiene(null);
 			}
 			try {
 				session.delete(seccion);

@@ -1,5 +1,3 @@
-package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -19,10 +17,10 @@ import org.hibernate.LockMode;
 import java.util.List;
 
 public class MensajeDAO {
-	public static Mensaje loadMensajeByORMID(Long idMensaje) throws PersistentException {
+	public static Mensaje loadMensajeByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = MDS1PersistentManager.instance().getSession();
-			return loadMensajeByORMID(session, idMensaje);
+			return loadMensajeByORMID(session, ID);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -30,10 +28,10 @@ public class MensajeDAO {
 		}
 	}
 	
-	public static Mensaje getMensajeByORMID(Long idMensaje) throws PersistentException {
+	public static Mensaje getMensajeByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = MDS1PersistentManager.instance().getSession();
-			return getMensajeByORMID(session, idMensaje);
+			return getMensajeByORMID(session, ID);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -41,10 +39,10 @@ public class MensajeDAO {
 		}
 	}
 	
-	public static Mensaje loadMensajeByORMID(Long idMensaje, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Mensaje loadMensajeByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = MDS1PersistentManager.instance().getSession();
-			return loadMensajeByORMID(session, idMensaje, lockMode);
+			return loadMensajeByORMID(session, ID, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -52,10 +50,10 @@ public class MensajeDAO {
 		}
 	}
 	
-	public static Mensaje getMensajeByORMID(Long idMensaje, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Mensaje getMensajeByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = MDS1PersistentManager.instance().getSession();
-			return getMensajeByORMID(session, idMensaje, lockMode);
+			return getMensajeByORMID(session, ID, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -63,9 +61,9 @@ public class MensajeDAO {
 		}
 	}
 	
-	public static Mensaje loadMensajeByORMID(PersistentSession session, Long idMensaje) throws PersistentException {
+	public static Mensaje loadMensajeByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
-			return (Mensaje) session.load(Mensaje.class, idMensaje);
+			return (Mensaje) session.load(Mensaje.class, new Integer(ID));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -73,9 +71,9 @@ public class MensajeDAO {
 		}
 	}
 	
-	public static Mensaje getMensajeByORMID(PersistentSession session, Long idMensaje) throws PersistentException {
+	public static Mensaje getMensajeByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
-			return (Mensaje) session.get(Mensaje.class, idMensaje);
+			return (Mensaje) session.get(Mensaje.class, new Integer(ID));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -83,9 +81,9 @@ public class MensajeDAO {
 		}
 	}
 	
-	public static Mensaje loadMensajeByORMID(PersistentSession session, Long idMensaje, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Mensaje loadMensajeByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Mensaje) session.load(Mensaje.class, idMensaje, lockMode);
+			return (Mensaje) session.load(Mensaje.class, new Integer(ID), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -93,9 +91,9 @@ public class MensajeDAO {
 		}
 	}
 	
-	public static Mensaje getMensajeByORMID(PersistentSession session, Long idMensaje, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Mensaje getMensajeByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Mensaje) session.get(Mensaje.class, idMensaje, lockMode);
+			return (Mensaje) session.get(Mensaje.class, new Integer(ID), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -323,33 +321,33 @@ public class MensajeDAO {
 	
 	public static boolean deleteAndDissociate(Mensaje mensaje)throws PersistentException {
 		try {
-			if (mensaje.getVideos() != null) {
-				mensaje.getVideos().contiene_video.remove(mensaje);
-			}
-			
-			if (mensaje.getEnvia() != null) {
-				mensaje.getEnvia().pertenece.remove(mensaje);
+			if (mensaje.getEnvia_mensaje() != null) {
+				mensaje.getEnvia_mensaje().pertenece.remove(mensaje);
 			}
 			
 			if (mensaje.getMensaje_() != null) {
 				mensaje.getMensaje_().compone.remove(mensaje);
 			}
 			
-			Reporte[] lCorrespondens = mensaje.corresponden.toArray();
-			for(int i = 0; i < lCorrespondens.length; i++) {
-				lCorrespondens[i].setEs_reportado(null);
-			}
-			Imagen[] lImagens = mensaje.imagen.toArray();
-			for(int i = 0; i < lImagens.length; i++) {
-				lImagens[i].contiene_imagen.remove(mensaje);
-			}
 			Mensaje[] lRespondido_pors = mensaje.respondido_por.toArray();
 			for(int i = 0; i < lRespondido_pors.length; i++) {
-				lRespondido_pors[i].mensajes.remove(mensaje);
+				lRespondido_pors[i].respuesta_de.remove(mensaje);
 			}
-			Mensaje[] lMensajess = mensaje.mensajes.toArray();
-			for(int i = 0; i < lMensajess.length; i++) {
-				lMensajess[i].respondido_por.remove(mensaje);
+			Reporte[] lReportes_mensajes = mensaje.reportes_mensaje.toArray();
+			for(int i = 0; i < lReportes_mensajes.length; i++) {
+				lReportes_mensajes[i].setMensaje_reporte(null);
+			}
+			Media_[] lMedia_mensajes = mensaje.media_mensaje.toArray();
+			for(int i = 0; i < lMedia_mensajes.length; i++) {
+				lMedia_mensajes[i].setMensaje_media(null);
+			}
+			Usuario[] lGustaMensajes = mensaje.gustaMensaje.toArray();
+			for(int i = 0; i < lGustaMensajes.length; i++) {
+				lGustaMensajes[i].megusta.remove(mensaje);
+			}
+			Mensaje[] lRespuesta_des = mensaje.respuesta_de.toArray();
+			for(int i = 0; i < lRespuesta_des.length; i++) {
+				lRespuesta_des[i].respondido_por.remove(mensaje);
 			}
 			return delete(mensaje);
 		}
@@ -361,33 +359,33 @@ public class MensajeDAO {
 	
 	public static boolean deleteAndDissociate(Mensaje mensaje, org.orm.PersistentSession session)throws PersistentException {
 		try {
-			if (mensaje.getVideos() != null) {
-				mensaje.getVideos().contiene_video.remove(mensaje);
-			}
-			
-			if (mensaje.getEnvia() != null) {
-				mensaje.getEnvia().pertenece.remove(mensaje);
+			if (mensaje.getEnvia_mensaje() != null) {
+				mensaje.getEnvia_mensaje().pertenece.remove(mensaje);
 			}
 			
 			if (mensaje.getMensaje_() != null) {
 				mensaje.getMensaje_().compone.remove(mensaje);
 			}
 			
-			Reporte[] lCorrespondens = mensaje.corresponden.toArray();
-			for(int i = 0; i < lCorrespondens.length; i++) {
-				lCorrespondens[i].setEs_reportado(null);
-			}
-			Imagen[] lImagens = mensaje.imagen.toArray();
-			for(int i = 0; i < lImagens.length; i++) {
-				lImagens[i].contiene_imagen.remove(mensaje);
-			}
 			Mensaje[] lRespondido_pors = mensaje.respondido_por.toArray();
 			for(int i = 0; i < lRespondido_pors.length; i++) {
-				lRespondido_pors[i].mensajes.remove(mensaje);
+				lRespondido_pors[i].respuesta_de.remove(mensaje);
 			}
-			Mensaje[] lMensajess = mensaje.mensajes.toArray();
-			for(int i = 0; i < lMensajess.length; i++) {
-				lMensajess[i].respondido_por.remove(mensaje);
+			Reporte[] lReportes_mensajes = mensaje.reportes_mensaje.toArray();
+			for(int i = 0; i < lReportes_mensajes.length; i++) {
+				lReportes_mensajes[i].setMensaje_reporte(null);
+			}
+			Media_[] lMedia_mensajes = mensaje.media_mensaje.toArray();
+			for(int i = 0; i < lMedia_mensajes.length; i++) {
+				lMedia_mensajes[i].setMensaje_media(null);
+			}
+			Usuario[] lGustaMensajes = mensaje.gustaMensaje.toArray();
+			for(int i = 0; i < lGustaMensajes.length; i++) {
+				lGustaMensajes[i].megusta.remove(mensaje);
+			}
+			Mensaje[] lRespuesta_des = mensaje.respuesta_de.toArray();
+			for(int i = 0; i < lRespuesta_des.length; i++) {
+				lRespuesta_des[i].respondido_por.remove(mensaje);
 			}
 			try {
 				session.delete(mensaje);

@@ -1,5 +1,3 @@
-package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -19,7 +17,7 @@ import org.hibernate.LockMode;
 import java.util.List;
 
 public class ReporteDAO {
-	public static Reporte loadReporteByORMID(int idReporte) throws PersistentException {
+	public static Reporte loadReporteByORMID(Long idReporte) throws PersistentException {
 		try {
 			PersistentSession session = MDS1PersistentManager.instance().getSession();
 			return loadReporteByORMID(session, idReporte);
@@ -30,7 +28,7 @@ public class ReporteDAO {
 		}
 	}
 	
-	public static Reporte getReporteByORMID(int idReporte) throws PersistentException {
+	public static Reporte getReporteByORMID(Long idReporte) throws PersistentException {
 		try {
 			PersistentSession session = MDS1PersistentManager.instance().getSession();
 			return getReporteByORMID(session, idReporte);
@@ -41,7 +39,7 @@ public class ReporteDAO {
 		}
 	}
 	
-	public static Reporte loadReporteByORMID(int idReporte, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Reporte loadReporteByORMID(Long idReporte, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = MDS1PersistentManager.instance().getSession();
 			return loadReporteByORMID(session, idReporte, lockMode);
@@ -52,7 +50,7 @@ public class ReporteDAO {
 		}
 	}
 	
-	public static Reporte getReporteByORMID(int idReporte, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Reporte getReporteByORMID(Long idReporte, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = MDS1PersistentManager.instance().getSession();
 			return getReporteByORMID(session, idReporte, lockMode);
@@ -63,9 +61,9 @@ public class ReporteDAO {
 		}
 	}
 	
-	public static Reporte loadReporteByORMID(PersistentSession session, int idReporte) throws PersistentException {
+	public static Reporte loadReporteByORMID(PersistentSession session, Long idReporte) throws PersistentException {
 		try {
-			return (Reporte) session.load(Reporte.class, new Integer(idReporte));
+			return (Reporte) session.load(Reporte.class, idReporte);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -73,9 +71,9 @@ public class ReporteDAO {
 		}
 	}
 	
-	public static Reporte getReporteByORMID(PersistentSession session, int idReporte) throws PersistentException {
+	public static Reporte getReporteByORMID(PersistentSession session, Long idReporte) throws PersistentException {
 		try {
-			return (Reporte) session.get(Reporte.class, new Integer(idReporte));
+			return (Reporte) session.get(Reporte.class, idReporte);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -83,9 +81,9 @@ public class ReporteDAO {
 		}
 	}
 	
-	public static Reporte loadReporteByORMID(PersistentSession session, int idReporte, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Reporte loadReporteByORMID(PersistentSession session, Long idReporte, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Reporte) session.load(Reporte.class, new Integer(idReporte), lockMode);
+			return (Reporte) session.load(Reporte.class, idReporte, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -93,9 +91,9 @@ public class ReporteDAO {
 		}
 	}
 	
-	public static Reporte getReporteByORMID(PersistentSession session, int idReporte, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Reporte getReporteByORMID(PersistentSession session, Long idReporte, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Reporte) session.get(Reporte.class, new Integer(idReporte), lockMode);
+			return (Reporte) session.get(Reporte.class, idReporte, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -323,12 +321,12 @@ public class ReporteDAO {
 	
 	public static boolean deleteAndDissociate(Reporte reporte)throws PersistentException {
 		try {
-			if (reporte.getEs_reportado() != null) {
-				reporte.getEs_reportado().corresponden.remove(reporte);
+			if (reporte.getMensaje_reporte() != null) {
+				reporte.getMensaje_reporte().reportes_mensaje.remove(reporte);
 			}
 			
-			if (reporte.getUsuario() != null) {
-				reporte.getUsuario().reportes.remove(reporte);
+			if (reporte.getUsuario_reporte() != null) {
+				reporte.getUsuario_reporte().reportes_usuario.remove(reporte);
 			}
 			
 			return delete(reporte);
@@ -341,12 +339,12 @@ public class ReporteDAO {
 	
 	public static boolean deleteAndDissociate(Reporte reporte, org.orm.PersistentSession session)throws PersistentException {
 		try {
-			if (reporte.getEs_reportado() != null) {
-				reporte.getEs_reportado().corresponden.remove(reporte);
+			if (reporte.getMensaje_reporte() != null) {
+				reporte.getMensaje_reporte().reportes_mensaje.remove(reporte);
 			}
 			
-			if (reporte.getUsuario() != null) {
-				reporte.getUsuario().reportes.remove(reporte);
+			if (reporte.getUsuario_reporte() != null) {
+				reporte.getUsuario_reporte().reportes_usuario.remove(reporte);
 			}
 			
 			try {

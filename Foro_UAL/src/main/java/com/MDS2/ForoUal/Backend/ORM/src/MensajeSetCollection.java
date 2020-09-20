@@ -1,5 +1,3 @@
-package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -70,11 +68,13 @@ public class MensajeSetCollection extends org.orm.util.ORMSet {
 	/**
 	 * Return an sorted array containing all of the persistent objects in ORMSet
 	 * @param propertyName Name of the property for sorting:<ul>
+	 * <li>ID</li>
 	 * <li>idMensaje</li>
 	 * <li>texto</li>
 	 * <li>numeroMeGusta</li>
 	 * <li>nombreUsuario</li>
 	 * <li>marcado</li>
+	 * <li>fechaCreacion</li>
 	 * </ul>
 	 * @return The persistent objects sorted array
 	 */
@@ -85,11 +85,13 @@ public class MensajeSetCollection extends org.orm.util.ORMSet {
 	/**
 	 * Return an sorted array containing all of the persistent objects in ORMSet
 	 * @param propertyName Name of the property for sorting:<ul>
+	 * <li>ID</li>
 	 * <li>idMensaje</li>
 	 * <li>texto</li>
 	 * <li>numeroMeGusta</li>
 	 * <li>nombreUsuario</li>
 	 * <li>marcado</li>
+	 * <li>fechaCreacion</li>
 	 * </ul>
 	 * @param ascending true for ascending, false for descending
 	 * @return The persistent objects sorted array

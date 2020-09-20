@@ -1,5 +1,3 @@
-package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -24,8 +22,8 @@ public class Usuario implements Serializable {
 	}
 	
 	private java.util.Set this_getSet (int key) {
-		if (key == ORMConstants.KEY_USUARIO_REPORTES) {
-			return ORM_reportes;
+		if (key == ORMConstants.KEY_USUARIO_REPORTES_USUARIO) {
+			return ORM_reportes_usuario;
 		}
 		else if (key == ORMConstants.KEY_USUARIO_AMIGO_DE) {
 			return ORM_amigo_de;
@@ -39,14 +37,17 @@ public class Usuario implements Serializable {
 		else if (key == ORMConstants.KEY_USUARIO_ES_CREADO) {
 			return ORM_es_creado;
 		}
+		else if (key == ORMConstants.KEY_USUARIO_NOTIFICACION_USUARIO) {
+			return ORM_notificacion_usuario;
+		}
+		else if (key == ORMConstants.KEY_USUARIO_MEGUSTA) {
+			return ORM_megusta;
+		}
+		else if (key == ORMConstants.KEY_USUARIO_MEGUSTA_TEMA) {
+			return ORM_megusta_tema;
+		}
 		
 		return null;
-	}
-	
-	private void this_setOwner(Object owner, int key) {
-		if (key == ORMConstants.KEY_USUARIO_PERTENECE_A) {
-			this.pertenece_a = (Ticket) owner;
-		}
 	}
 	
 	@Transient	
@@ -55,60 +56,56 @@ public class Usuario implements Serializable {
 			return this_getSet(key);
 		}
 		
-		public void setOwner(Object owner, int key) {
-			this_setOwner(owner, key);
-		}
-		
 	};
 	
 	@Column(name="`ID`", nullable=false, length=20)	
 	@Id	
-	@GeneratedValue(generator="USUARIO_ID_GENERATOR", strategy = GenerationType.IDENTITY)	
-	@org.hibernate.annotations.GenericGenerator(name="USUARIO_ID_GENERATOR", strategy="identity")	
+	@GeneratedValue(generator="USUARIO_ID_GENERATOR")	
+	@org.hibernate.annotations.GenericGenerator(name="USUARIO_ID_GENERATOR", strategy="native")	
 	private long ID;
 	
-	@ManyToOne(targetEntity=Ticket.class, fetch=FetchType.LAZY)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns(value={ @JoinColumn(name="`TicketID`", referencedColumnName="`ID`") }, foreignKey=@ForeignKey(name="FKUsuario730539"))	
-	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
-	private Ticket pertenece_a;
-	
-	@Column(name="`Email`", nullable=true, length=255)	
+	@Column(name="`Email`", nullable=false, length=255)	
 	private String email;
 	
-	@Column(name="`NombreUsuario`", nullable=true, length=255)	
+	@Column(name="`NombreUsuario`", nullable=false, length=255)	
 	private String nombreUsuario;
 	
-	@Column(name="`FotoPerfil`", nullable=true, length=10)	
-	private Integer fotoPerfil;
+	@Column(name="`FotoPerfil`", nullable=true, length=255)	
+	private String fotoPerfil;
 	
-	@Column(name="`Descripcion`", nullable=true, length=255)	
+	@Column(name="`Descripcion`", nullable=false, length=255)	
 	private String descripcion;
 	
-	@Column(name="`Contrasenia`", nullable=true, length=255)	
+	@Column(name="`Contrasenia`", nullable=false, length=255)	
 	private String contrasenia;
 	
-	@Column(name="`Marcado`", nullable=false, length=1)	
+	@Column(name="`Marcado`", nullable=true, length=1)	
 	private boolean marcado;
 	
-	@Column(name="`Baneado`", nullable=false, length=1)	
+	@Column(name="`Baneado`", nullable=true, length=1)	
 	private boolean baneado;
 	
 	@Column(name="`IDusuario`", nullable=true, length=20)	
 	private Long IDusuario;
 	
-	@OneToMany(mappedBy="usuario", targetEntity=Reporte.class)	
+	@Column(name="`NombreReal`", nullable=false, length=255)	
+	private String nombreReal;
+	
+	@Column(name="`EsModerador`", nullable=false, length=1)	
+	private boolean esModerador;
+	
+	@OneToMany(mappedBy="usuario_reporte", targetEntity=Reporte.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM_reportes = new java.util.HashSet();
+	private java.util.Set ORM_reportes_usuario = new java.util.HashSet();
 	
 	@ManyToMany(targetEntity=Usuario.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinTable(name="`usuario_usuario`", joinColumns={ @JoinColumn(name="`UsuarioID2`") }, inverseJoinColumns={ @JoinColumn(name="`UsuarioID`") })	
+	@JoinTable(name="`Usuario_Usuario`", joinColumns={ @JoinColumn(name="`UsuarioID2`") }, inverseJoinColumns={ @JoinColumn(name="`UsuarioID`") })	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_amigo_de = new java.util.HashSet();
 	
-	@OneToMany(mappedBy="envia", targetEntity=Mensaje.class)	
+	@OneToMany(mappedBy="envia_mensaje", targetEntity=Mensaje.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_pertenece = new java.util.HashSet();
@@ -118,10 +115,25 @@ public class Usuario implements Serializable {
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_usuarios = new java.util.HashSet();
 	
-	@OneToMany(mappedBy="crea_temas", targetEntity=Tema.class)	
+	@OneToMany(mappedBy="crea_tema", targetEntity=Tema.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_es_creado = new java.util.HashSet();
+	
+	@OneToMany(mappedBy="usuario_ticket", targetEntity=Notificacion.class)	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
+	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
+	private java.util.Set ORM_notificacion_usuario = new java.util.HashSet();
+	
+	@ManyToMany(mappedBy="ORM_gustaMensaje", targetEntity=Mensaje.class)	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
+	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
+	private java.util.Set ORM_megusta = new java.util.HashSet();
+	
+	@ManyToMany(mappedBy="ORM_gustaTema", targetEntity=Tema.class)	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
+	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
+	private java.util.Set ORM_megusta_tema = new java.util.HashSet();
 	
 	public void setEmail(String value) {
 		this.email = value;
@@ -139,15 +151,11 @@ public class Usuario implements Serializable {
 		return nombreUsuario;
 	}
 	
-	public void setFotoPerfil(int value) {
-		setFotoPerfil(new Integer(value));
-	}
-	
-	public void setFotoPerfil(Integer value) {
+	public void setFotoPerfil(String value) {
 		this.fotoPerfil = value;
 	}
 	
-	public Integer getFotoPerfil() {
+	public String getFotoPerfil() {
 		return fotoPerfil;
 	}
 	
@@ -207,16 +215,32 @@ public class Usuario implements Serializable {
 		return getID();
 	}
 	
-	private void setORM_Reportes(java.util.Set value) {
-		this.ORM_reportes = value;
+	public void setNombreReal(String value) {
+		this.nombreReal = value;
 	}
 	
-	private java.util.Set getORM_Reportes() {
-		return ORM_reportes;
+	public String getNombreReal() {
+		return nombreReal;
+	}
+	
+	public void setEsModerador(boolean value) {
+		this.esModerador = value;
+	}
+	
+	public boolean getEsModerador() {
+		return esModerador;
+	}
+	
+	private void setORM_Reportes_usuario(java.util.Set value) {
+		this.ORM_reportes_usuario = value;
+	}
+	
+	private java.util.Set getORM_Reportes_usuario() {
+		return ORM_reportes_usuario;
 	}
 	
 	@Transient	
-	public final ReporteSetCollection reportes = new ReporteSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_REPORTES, ORMConstants.KEY_REPORTE_USUARIO, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public final ReporteSetCollection reportes_usuario = new ReporteSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_REPORTES_USUARIO, ORMConstants.KEY_REPORTE_USUARIO_REPORTE, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	private void setORM_Amigo_de(java.util.Set value) {
 		this.ORM_amigo_de = value;
@@ -229,30 +253,6 @@ public class Usuario implements Serializable {
 	@Transient	
 	public final UsuarioSetCollection amigo_de = new UsuarioSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_AMIGO_DE, ORMConstants.KEY_USUARIO_USUARIOS, ORMConstants.KEY_MUL_MANY_TO_MANY);
 	
-	public void setPertenece_a(Ticket value) {
-		if (pertenece_a != null) {
-			pertenece_a.tiene.remove(this);
-		}
-		if (value != null) {
-			value.tiene.add(this);
-		}
-	}
-	
-	public Ticket getPertenece_a() {
-		return pertenece_a;
-	}
-	
-	/**
-	 * This method is for internal use only.
-	 */
-	public void setORM_Pertenece_a(Ticket value) {
-		this.pertenece_a = value;
-	}
-	
-	private Ticket getORM_Pertenece_a() {
-		return pertenece_a;
-	}
-	
 	private void setORM_Pertenece(java.util.Set value) {
 		this.ORM_pertenece = value;
 	}
@@ -262,7 +262,7 @@ public class Usuario implements Serializable {
 	}
 	
 	@Transient	
-	public final MensajeSetCollection pertenece = new MensajeSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_PERTENECE, ORMConstants.KEY_MENSAJE_ENVIA, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public final MensajeSetCollection pertenece = new MensajeSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_PERTENECE, ORMConstants.KEY_MENSAJE_ENVIA_MENSAJE, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	private void setORM_Usuarios(java.util.Set value) {
 		this.ORM_usuarios = value;
@@ -284,7 +284,40 @@ public class Usuario implements Serializable {
 	}
 	
 	@Transient	
-	public final TemaSetCollection es_creado = new TemaSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_ES_CREADO, ORMConstants.KEY_TEMA_CREA_TEMAS, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public final TemaSetCollection es_creado = new TemaSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_ES_CREADO, ORMConstants.KEY_TEMA_CREA_TEMA, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	
+	private void setORM_Notificacion_usuario(java.util.Set value) {
+		this.ORM_notificacion_usuario = value;
+	}
+	
+	private java.util.Set getORM_Notificacion_usuario() {
+		return ORM_notificacion_usuario;
+	}
+	
+	@Transient	
+	public final NotificacionSetCollection notificacion_usuario = new NotificacionSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_NOTIFICACION_USUARIO, ORMConstants.KEY_NOTIFICACION_USUARIO_TICKET, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	
+	private void setORM_Megusta(java.util.Set value) {
+		this.ORM_megusta = value;
+	}
+	
+	private java.util.Set getORM_Megusta() {
+		return ORM_megusta;
+	}
+	
+	@Transient	
+	public final MensajeSetCollection megusta = new MensajeSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_MEGUSTA, ORMConstants.KEY_MENSAJE_GUSTAMENSAJE, ORMConstants.KEY_MUL_MANY_TO_MANY);
+	
+	private void setORM_Megusta_tema(java.util.Set value) {
+		this.ORM_megusta_tema = value;
+	}
+	
+	private java.util.Set getORM_Megusta_tema() {
+		return ORM_megusta_tema;
+	}
+	
+	@Transient	
+	public final TemaSetCollection megusta_tema = new TemaSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_MEGUSTA_TEMA, ORMConstants.KEY_TEMA_GUSTATEMA, ORMConstants.KEY_MUL_MANY_TO_MANY);
 	
 	public String toString() {
 		return String.valueOf(getID());

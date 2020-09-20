@@ -1,5 +1,3 @@
-package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -70,7 +68,7 @@ public class TemaSetCollection extends org.orm.util.ORMSet {
 	/**
 	 * Return an sorted array containing all of the persistent objects in ORMSet
 	 * @param propertyName Name of the property for sorting:<ul>
-	 * <li>IDtema</li>
+	 * <li>ID</li>
 	 * <li>numeroMeGusta</li>
 	 * <li>nombreUsuario</li>
 	 * <li>tipoTema</li>
@@ -78,6 +76,7 @@ public class TemaSetCollection extends org.orm.util.ORMSet {
 	 * <li>subtitulo</li>
 	 * <li>fechaCreacion</li>
 	 * <li>numMensjes</li>
+	 * <li>idTema</li>
 	 * </ul>
 	 * @return The persistent objects sorted array
 	 */
@@ -88,7 +87,7 @@ public class TemaSetCollection extends org.orm.util.ORMSet {
 	/**
 	 * Return an sorted array containing all of the persistent objects in ORMSet
 	 * @param propertyName Name of the property for sorting:<ul>
-	 * <li>IDtema</li>
+	 * <li>ID</li>
 	 * <li>numeroMeGusta</li>
 	 * <li>nombreUsuario</li>
 	 * <li>tipoTema</li>
@@ -96,6 +95,7 @@ public class TemaSetCollection extends org.orm.util.ORMSet {
 	 * <li>subtitulo</li>
 	 * <li>fechaCreacion</li>
 	 * <li>numMensjes</li>
+	 * <li>idTema</li>
 	 * </ul>
 	 * @param ascending true for ascending, false for descending
 	 * @return The persistent objects sorted array

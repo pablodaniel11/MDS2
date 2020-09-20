@@ -1,5 +1,3 @@
-package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -79,6 +77,8 @@ public class UsuarioSetCollection extends org.orm.util.ORMSet {
 	 * <li>marcado</li>
 	 * <li>baneado</li>
 	 * <li>IDusuario</li>
+	 * <li>nombreReal</li>
+	 * <li>esModerador</li>
 	 * </ul>
 	 * @return The persistent objects sorted array
 	 */
@@ -98,6 +98,8 @@ public class UsuarioSetCollection extends org.orm.util.ORMSet {
 	 * <li>marcado</li>
 	 * <li>baneado</li>
 	 * <li>IDusuario</li>
+	 * <li>nombreReal</li>
+	 * <li>esModerador</li>
 	 * </ul>
 	 * @param ascending true for ascending, false for descending
 	 * @return The persistent objects sorted array

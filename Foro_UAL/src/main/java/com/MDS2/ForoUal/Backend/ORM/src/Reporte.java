@@ -1,5 +1,3 @@
-package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -23,12 +21,12 @@ public class Reporte implements Serializable {
 	}
 	
 	private void this_setOwner(Object owner, int key) {
-		if (key == ORMConstants.KEY_REPORTE_USUARIO) {
-			this.usuario = (Usuario) owner;
+		if (key == ORMConstants.KEY_REPORTE_USUARIO_REPORTE) {
+			this.usuario_reporte = (Usuario) owner;
 		}
 		
-		else if (key == ORMConstants.KEY_REPORTE_ES_REPORTADO) {
-			this.es_reportado = (Mensaje) owner;
+		else if (key == ORMConstants.KEY_REPORTE_MENSAJE_REPORTE) {
+			this.mensaje_reporte = (Mensaje) owner;
 		}
 	}
 	
@@ -40,36 +38,40 @@ public class Reporte implements Serializable {
 		
 	};
 	
-	@Column(name="`ID`", nullable=false, length=10)	
+	@Column(name="`IdReporte`", nullable=false, length=20)	
 	@Id	
 	@GeneratedValue(generator="REPORTE_IDREPORTE_GENERATOR")	
-	@org.hibernate.annotations.GenericGenerator(name="REPORTE_IDREPORTE_GENERATOR", strategy="identity")	
-	private int idReporte;
+	@org.hibernate.annotations.GenericGenerator(name="REPORTE_IDREPORTE_GENERATOR", strategy="native")	
+	private Long idReporte;
 	
 	@ManyToOne(targetEntity=Mensaje.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns(value={ @JoinColumn(name="`MensajeID`", referencedColumnName="`ID`") }, foreignKey=@ForeignKey(name="FKReporte746593"))	
 	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
-	private Mensaje es_reportado;
+	private Mensaje mensaje_reporte;
 	
 	@ManyToOne(targetEntity=Usuario.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns(value={ @JoinColumn(name="`UsuarioID`", referencedColumnName="`ID`", nullable=false) }, foreignKey=@ForeignKey(name="FKReporte687794"))	
+	@JoinColumns(value={ @JoinColumn(name="`UsuarioID`", referencedColumnName="`ID`") }, foreignKey=@ForeignKey(name="FKReporte687794"))	
 	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
-	private Usuario usuario;
+	private Usuario usuario_reporte;
 	
-	@Column(name="`Motivo`", nullable=true, length=255)	
+	@Column(name="`Motivo`", nullable=false, length=255)	
 	private String motivo;
 	
-	private void setIdReporte(int value) {
+	private void setIdReporte(long value) {
+		setIdReporte(new Long(value));
+	}
+	
+	private void setIdReporte(Long value) {
 		this.idReporte = value;
 	}
 	
-	public int getIdReporte() {
+	public Long getIdReporte() {
 		return idReporte;
 	}
 	
-	public int getORMID() {
+	public Long getORMID() {
 		return getIdReporte();
 	}
 	
@@ -81,52 +83,52 @@ public class Reporte implements Serializable {
 		return motivo;
 	}
 	
-	public void setUsuario(Usuario value) {
-		if (usuario != null) {
-			usuario.reportes.remove(this);
+	public void setUsuario_reporte(Usuario value) {
+		if (usuario_reporte != null) {
+			usuario_reporte.reportes_usuario.remove(this);
 		}
 		if (value != null) {
-			value.reportes.add(this);
+			value.reportes_usuario.add(this);
 		}
 	}
 	
-	public Usuario getUsuario() {
-		return usuario;
+	public Usuario getUsuario_reporte() {
+		return usuario_reporte;
 	}
 	
 	/**
 	 * This method is for internal use only.
 	 */
-	public void setORM_Usuario(Usuario value) {
-		this.usuario = value;
+	public void setORM_Usuario_reporte(Usuario value) {
+		this.usuario_reporte = value;
 	}
 	
-	private Usuario getORM_Usuario() {
-		return usuario;
+	private Usuario getORM_Usuario_reporte() {
+		return usuario_reporte;
 	}
 	
-	public void setEs_reportado(Mensaje value) {
-		if (es_reportado != null) {
-			es_reportado.corresponden.remove(this);
+	public void setMensaje_reporte(Mensaje value) {
+		if (mensaje_reporte != null) {
+			mensaje_reporte.reportes_mensaje.remove(this);
 		}
 		if (value != null) {
-			value.corresponden.add(this);
+			value.reportes_mensaje.add(this);
 		}
 	}
 	
-	public Mensaje getEs_reportado() {
-		return es_reportado;
+	public Mensaje getMensaje_reporte() {
+		return mensaje_reporte;
 	}
 	
 	/**
 	 * This method is for internal use only.
 	 */
-	public void setORM_Es_reportado(Mensaje value) {
-		this.es_reportado = value;
+	public void setORM_Mensaje_reporte(Mensaje value) {
+		this.mensaje_reporte = value;
 	}
 	
-	private Mensaje getORM_Es_reportado() {
-		return es_reportado;
+	private Mensaje getORM_Mensaje_reporte() {
+		return mensaje_reporte;
 	}
 	
 	public String toString() {

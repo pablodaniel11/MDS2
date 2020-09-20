@@ -2,13 +2,13 @@
 
 <Model quotesql="2" tablecharset="" mysql_version="504" mssql_version="2005" derby_version="106" ingres_version="9">
   <Entity name="Reporte" Unlogged="false" PKClustered="0">
-    <Column name="ID">
+    <Column name="IdReporte">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>false</ForeignKey>
-      <Type>9</Type>
-      <Length>10</Length>
+      <Type>16</Type>
+      <Length>20</Length>
       <Nullable>false</Nullable>
-      <IDGenerator>identity</IDGenerator>
+      <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
       <UserTypes/>
@@ -17,8 +17,8 @@
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
       <ReferencedColumn>Mensaje.ID</ReferencedColumn>
-      <Type>16</Type>
-      <Length>20</Length>
+      <Type>9</Type>
+      <Length>10</Length>
       <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
@@ -31,7 +31,7 @@
       <ReferencedColumn>Usuario.ID</ReferencedColumn>
       <Type>16</Type>
       <Length>20</Length>
-      <Nullable>false</Nullable>
+      <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -42,7 +42,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -53,30 +53,8 @@
     <Column name="ID">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>false</ForeignKey>
-      <Type>16</Type>
-      <Length>20</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>identity</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="ModeradorID">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>16</Type>
-      <Length>20</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="ModeradorUsuarioID">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>16</Type>
-      <Length>20</Length>
+      <Type>9</Type>
+      <Length>10</Length>
       <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
@@ -89,7 +67,7 @@
       <ReferencedColumn>Usuario.ID</ReferencedColumn>
       <Type>16</Type>
       <Length>20</Length>
-      <Nullable>false</Nullable>
+      <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -99,8 +77,8 @@
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
       <ReferencedColumn>Seccion.ID</ReferencedColumn>
-      <Type>16</Type>
-      <Length>20</Length>
+      <Type>9</Type>
+      <Length>10</Length>
       <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
@@ -112,7 +90,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>9</Type>
       <Length>10</Length>
-      <Nullable>false</Nullable>
+      <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -145,7 +123,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -156,7 +134,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -178,19 +156,18 @@
       <ForeignKey>false</ForeignKey>
       <Type>9</Type>
       <Length>10</Length>
-      <Nullable>false</Nullable>
+      <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="ModeradorUsuarioID2">
+    <Column name="IdTema">
       <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Moderador.UsuarioID</ReferencedColumn>
+      <ForeignKey>false</ForeignKey>
       <Type>16</Type>
       <Length>20</Length>
-      <Nullable>false</Nullable>
+      <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -201,19 +178,8 @@
     <Column name="ID">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>false</ForeignKey>
-      <Type>16</Type>
-      <Length>20</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>identity</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="AdministradorID">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>16</Type>
-      <Length>20</Length>
+      <Type>9</Type>
+      <Length>10</Length>
       <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
@@ -222,10 +188,22 @@
     </Column>
     <Column name="AdministradorUsuarioID">
       <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>Administrador.UsuarioID</ReferencedColumn>
+      <Type>16</Type>
+      <Length>20</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="IDseccion">
+      <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>16</Type>
       <Length>20</Length>
-      <Nullable>false</Nullable>
+      <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -236,7 +214,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -247,7 +225,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -269,19 +247,18 @@
       <ForeignKey>false</ForeignKey>
       <Type>9</Type>
       <Length>10</Length>
-      <Nullable>false</Nullable>
+      <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="AdministradoresUsuarioID">
+    <Column name="Marcado">
       <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Administradores.UsuarioID</ReferencedColumn>
-      <Type>16</Type>
-      <Length>20</Length>
-      <Nullable>false</Nullable>
+      <ForeignKey>false</ForeignKey>
+      <Type>1</Type>
+      <Length>1</Length>
+      <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -292,21 +269,9 @@
     <Column name="ID">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>false</ForeignKey>
-      <Type>16</Type>
-      <Length>20</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>identity</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="VideoMediaID">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Video.MediaID</ReferencedColumn>
       <Type>9</Type>
       <Length>10</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -318,7 +283,7 @@
       <ReferencedColumn>Usuario.ID</ReferencedColumn>
       <Type>16</Type>
       <Length>20</Length>
-      <Nullable>false</Nullable>
+      <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -328,9 +293,20 @@
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
       <ReferencedColumn>Tema.ID</ReferencedColumn>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="IdMensaje">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
       <Type>16</Type>
       <Length>20</Length>
-      <Nullable>false</Nullable>
+      <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -341,7 +317,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -352,7 +328,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>9</Type>
       <Length>10</Length>
-      <Nullable>false</Nullable>
+      <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -374,7 +350,18 @@
       <ForeignKey>false</ForeignKey>
       <Type>1</Type>
       <Length>1</Length>
-      <Nullable>false</Nullable>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="FechaCreacion">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>17</Type>
+      <Length>0</Length>
+      <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -388,18 +375,6 @@
       <Type>16</Type>
       <Length>20</Length>
       <Nullable>false</Nullable>
-      <IDGenerator>identity</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="TicketID">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Ticket.ID</ReferencedColumn>
-      <Type>16</Type>
-      <Length>20</Length>
-      <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -410,7 +385,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -421,7 +396,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -430,8 +405,8 @@
     <Column name="FotoPerfil">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
-      <Type>9</Type>
-      <Length>10</Length>
+      <Type>27</Type>
+      <Length>255</Length>
       <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
@@ -443,7 +418,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -454,7 +429,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -465,7 +440,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>1</Type>
       <Length>1</Length>
-      <Nullable>false</Nullable>
+      <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -476,7 +451,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>1</Type>
       <Length>1</Length>
-      <Nullable>false</Nullable>
+      <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -493,15 +468,49 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
+    <Column name="NombreReal">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>255</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="EsModerador">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>1</Type>
+      <Length>1</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
   </Entity>
   <Entity name="Media_" Unlogged="false" PKClustered="0">
-    <Column name="ID">
+    <Column name="IDmedia">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>false</ForeignKey>
+      <Type>16</Type>
+      <Length>20</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="MensajeID">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>Mensaje.ID</ReferencedColumn>
       <Type>9</Type>
       <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>identity</IDGenerator>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
       <UserTypes/>
@@ -511,81 +520,32 @@
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+  </Entity>
+  <Entity name="Notificacion" Unlogged="false" PKClustered="0">
+    <Column name="Idnotificacion">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>16</Type>
+      <Length>20</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="UsuarioID">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>Usuario.ID</ReferencedColumn>
+      <Type>16</Type>
+      <Length>20</Length>
       <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-  </Entity>
-  <Entity name="Video" Unlogged="false" PKClustered="0">
-    <Column name="MediaID">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Media_.ID</ReferencedColumn>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>assigned</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-  </Entity>
-  <Entity name="Imagen" Unlogged="false" PKClustered="0">
-    <Column name="TamanoKB">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="MediaID">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Media_.ID</ReferencedColumn>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>assigned</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-  </Entity>
-  <Entity name="Ticket" Unlogged="false" PKClustered="0">
-    <Column name="ID">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>16</Type>
-      <Length>20</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>identity</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="ModeradorID">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>16</Type>
-      <Length>20</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="ModeradorUsuarioID">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>16</Type>
-      <Length>20</Length>
-      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -596,29 +556,6 @@
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="NombreUsuario">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>27</Type>
-      <Length>255</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="ModeradorUsuarioID2">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Moderador.UsuarioID</ReferencedColumn>
-      <Type>16</Type>
-      <Length>20</Length>
       <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
@@ -627,27 +564,13 @@
     </Column>
   </Entity>
   <Entity name="Administrador" Unlogged="false" PKClustered="0">
-    <Column name="UsuarioID">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Usuario.ID</ReferencedColumn>
-      <Type>16</Type>
-      <Length>20</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>assigned</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-  </Entity>
-  <Entity name="moderadorbd" Unlogged="false" PKClustered="0">
-    <Column name="ID">
-      <PrimaryKey>true</PrimaryKey>
+    <Column name="IdAdmin">
+      <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>16</Type>
       <Length>20</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>assigned</IDGenerator>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
       <UserTypes/>
@@ -659,45 +582,19 @@
       <Type>16</Type>
       <Length>20</Length>
       <Nullable>false</Nullable>
-      <IDGenerator>assigned</IDGenerator>
+      <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
       <UserTypes/>
     </Column>
   </Entity>
-  <Entity name="imagen_mensaje" Unlogged="false" PKClustered="0">
-    <Column name="ImagenMediaID">
+  <Entity name="Mensaje_Mensaje" Unlogged="false" PKClustered="0">
+    <Column name="MensajeID">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Imagen.MediaID</ReferencedColumn>
+      <ReferencedColumn>Mensaje.ID</ReferencedColumn>
       <Type>9</Type>
       <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>assigned</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="MensajeID">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Mensaje.ID</ReferencedColumn>
-      <Type>16</Type>
-      <Length>20</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>assigned</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-  </Entity>
-  <Entity name="mensaje_mensaje" Unlogged="false" PKClustered="0">
-    <Column name="MensajeID">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Mensaje.ID</ReferencedColumn>
-      <Type>16</Type>
-      <Length>20</Length>
       <Nullable>false</Nullable>
       <IDGenerator>assigned</IDGenerator>
       <Unique>false</Unique>
@@ -708,8 +605,8 @@
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>true</ForeignKey>
       <ReferencedColumn>Mensaje.ID</ReferencedColumn>
-      <Type>16</Type>
-      <Length>20</Length>
+      <Type>9</Type>
+      <Length>10</Length>
       <Nullable>false</Nullable>
       <IDGenerator>assigned</IDGenerator>
       <Unique>false</Unique>
@@ -717,7 +614,7 @@
       <UserTypes/>
     </Column>
   </Entity>
-  <Entity name="usuario_usuario" Unlogged="false" PKClustered="0">
+  <Entity name="Usuario_Usuario" Unlogged="false" PKClustered="0">
     <Column name="UsuarioID">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>true</ForeignKey>
@@ -743,20 +640,7 @@
       <UserTypes/>
     </Column>
   </Entity>
-  <Entity name="ticket_administrador" Unlogged="false" PKClustered="0">
-    <Column name="AdministradorID">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>16</Type>
-      <Length>20</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>assigned</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-  </Entity>
-  <Entity name="Moderador" Unlogged="false" PKClustered="0">
+  <Entity name="Usuario_Tema" Unlogged="false" PKClustered="0">
     <Column name="UsuarioID">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>true</ForeignKey>
@@ -764,13 +648,25 @@
       <Type>16</Type>
       <Length>20</Length>
       <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
+      <IDGenerator>assigned</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="TemaID">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>Tema.ID</ReferencedColumn>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>assigned</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
       <UserTypes/>
     </Column>
   </Entity>
-  <Entity name="Administradores" Unlogged="false" PKClustered="0">
+  <Entity name="Usuario_Mensaje" Unlogged="false" PKClustered="0">
     <Column name="UsuarioID">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>true</ForeignKey>
@@ -778,31 +674,17 @@
       <Type>16</Type>
       <Length>20</Length>
       <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-  </Entity>
-  <Entity name="Ticket_Administradores" Unlogged="false" PKClustered="0">
-    <Column name="TicketID">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Ticket.ID</ReferencedColumn>
-      <Type>16</Type>
-      <Length>20</Length>
-      <Nullable>false</Nullable>
       <IDGenerator>assigned</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="AdministradoresUsuarioID">
+    <Column name="MensajeID">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Administradores.UsuarioID</ReferencedColumn>
-      <Type>16</Type>
-      <Length>20</Length>
+      <ReferencedColumn>Mensaje.ID</ReferencedColumn>
+      <Type>9</Type>
+      <Length>10</Length>
       <Nullable>false</Nullable>
       <IDGenerator>assigned</IDGenerator>
       <Unique>false</Unique>
@@ -810,38 +692,8 @@
       <UserTypes/>
     </Column>
   </Entity>
-  <ForeignKey name="FKVideo670179">
-    <ReferenceTable>Video</ReferenceTable>
-    <ReferencedTable>Media_</ReferencedTable>
-    <Columns>
-      <Column>MediaID</Column>
-    </Columns>
-    <RefColumns>
-      <Column>ID</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="FKImagen265491">
-    <ReferenceTable>Imagen</ReferenceTable>
-    <ReferencedTable>Media_</ReferencedTable>
-    <Columns>
-      <Column>MediaID</Column>
-    </Columns>
-    <RefColumns>
-      <Column>ID</Column>
-    </RefColumns>
-  </ForeignKey>
   <ForeignKey name="FKAdministra741035">
     <ReferenceTable>Administrador</ReferenceTable>
-    <ReferencedTable>Usuario</ReferencedTable>
-    <Columns>
-      <Column>UsuarioID</Column>
-    </Columns>
-    <RefColumns>
-      <Column>ID</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="FKModerador273168">
-    <ReferenceTable>moderadorbd</ReferenceTable>
     <ReferencedTable>Usuario</ReferencedTable>
     <Columns>
       <Column>UsuarioID</Column>
@@ -890,48 +742,8 @@
       <Column>ID</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKReporte746593">
-    <ReferenceTable>Reporte</ReferenceTable>
-    <ReferencedTable>Mensaje</ReferencedTable>
-    <Columns>
-      <Column>MensajeID</Column>
-    </Columns>
-    <RefColumns>
-      <Column>ID</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="FKMensaje9803">
-    <ReferenceTable>Mensaje</ReferenceTable>
-    <ReferencedTable>Video</ReferencedTable>
-    <Columns>
-      <Column>VideoMediaID</Column>
-    </Columns>
-    <RefColumns>
-      <Column>MediaID</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="FKImagen_Men119392">
-    <ReferenceTable>imagen_mensaje</ReferenceTable>
-    <ReferencedTable>Imagen</ReferencedTable>
-    <Columns>
-      <Column>ImagenMediaID</Column>
-    </Columns>
-    <RefColumns>
-      <Column>MediaID</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="FKImagen_Men322283">
-    <ReferenceTable>imagen_mensaje</ReferenceTable>
-    <ReferencedTable>Mensaje</ReferencedTable>
-    <Columns>
-      <Column>MensajeID</Column>
-    </Columns>
-    <RefColumns>
-      <Column>ID</Column>
-    </RefColumns>
-  </ForeignKey>
   <ForeignKey name="FKMensaje_Me824533">
-    <ReferenceTable>mensaje_mensaje</ReferenceTable>
+    <ReferenceTable>Mensaje_Mensaje</ReferenceTable>
     <ReferencedTable>Mensaje</ReferencedTable>
     <Columns>
       <Column>MensajeID</Column>
@@ -941,7 +753,7 @@
     </RefColumns>
   </ForeignKey>
   <ForeignKey name="FKMensaje_Me294684">
-    <ReferenceTable>mensaje_mensaje</ReferenceTable>
+    <ReferenceTable>Mensaje_Mensaje</ReferenceTable>
     <ReferencedTable>Mensaje</ReferencedTable>
     <Columns>
       <Column>MensajeID2</Column>
@@ -951,7 +763,7 @@
     </RefColumns>
   </ForeignKey>
   <ForeignKey name="FKUsuario_Us927530">
-    <ReferenceTable>usuario_usuario</ReferenceTable>
+    <ReferenceTable>Usuario_Usuario</ReferenceTable>
     <ReferencedTable>Usuario</ReferencedTable>
     <Columns>
       <Column>UsuarioID</Column>
@@ -961,7 +773,7 @@
     </RefColumns>
   </ForeignKey>
   <ForeignKey name="FKUsuario_Us65805">
-    <ReferenceTable>usuario_usuario</ReferenceTable>
+    <ReferenceTable>Usuario_Usuario</ReferenceTable>
     <ReferencedTable>Usuario</ReferencedTable>
     <Columns>
       <Column>UsuarioID2</Column>
@@ -970,31 +782,11 @@
       <Column>ID</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKUsuario730539">
-    <ReferenceTable>Usuario</ReferenceTable>
-    <ReferencedTable>Ticket</ReferencedTable>
-    <Columns>
-      <Column>TicketID</Column>
-    </Columns>
-    <RefColumns>
-      <Column>ID</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="FKSeccion561015">
+  <ForeignKey name="FKSeccion97224">
     <ReferenceTable>Seccion</ReferenceTable>
-    <ReferencedTable>Administradores</ReferencedTable>
+    <ReferencedTable>Administrador</ReferencedTable>
     <Columns>
-      <Column>AdministradoresUsuarioID</Column>
-    </Columns>
-    <RefColumns>
-      <Column>UsuarioID</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="FKTicket984206">
-    <ReferenceTable>Ticket</ReferenceTable>
-    <ReferencedTable>Moderador</ReferencedTable>
-    <Columns>
-      <Column>ModeradorUsuarioID2</Column>
+      <Column>AdministradorUsuarioID</Column>
     </Columns>
     <RefColumns>
       <Column>UsuarioID</Column>
@@ -1010,18 +802,18 @@
       <Column>ID</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKTema714090">
-    <ReferenceTable>Tema</ReferenceTable>
-    <ReferencedTable>Moderador</ReferencedTable>
+  <ForeignKey name="FKReporte746593">
+    <ReferenceTable>Reporte</ReferenceTable>
+    <ReferencedTable>Mensaje</ReferencedTable>
     <Columns>
-      <Column>ModeradorUsuarioID2</Column>
+      <Column>MensajeID</Column>
     </Columns>
     <RefColumns>
-      <Column>UsuarioID</Column>
+      <Column>ID</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKModerador273169">
-    <ReferenceTable>Moderador</ReferenceTable>
+  <ForeignKey name="FKNotificaci72175">
+    <ReferenceTable>Notificacion</ReferenceTable>
     <ReferencedTable>Usuario</ReferencedTable>
     <Columns>
       <Column>UsuarioID</Column>
@@ -1030,8 +822,18 @@
       <Column>ID</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKAdministra513052">
-    <ReferenceTable>Administradores</ReferenceTable>
+  <ForeignKey name="FKMedia_293025">
+    <ReferenceTable>Media_</ReferenceTable>
+    <ReferencedTable>Mensaje</ReferencedTable>
+    <Columns>
+      <Column>MensajeID</Column>
+    </Columns>
+    <RefColumns>
+      <Column>ID</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKUsuario_Te172074">
+    <ReferenceTable>Usuario_Tema</ReferenceTable>
     <ReferencedTable>Usuario</ReferencedTable>
     <Columns>
       <Column>UsuarioID</Column>
@@ -1040,24 +842,34 @@
       <Column>ID</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKTicket_Adm779468">
-    <ReferenceTable>Ticket_Administradores</ReferenceTable>
-    <ReferencedTable>Ticket</ReferencedTable>
+  <ForeignKey name="FKUsuario_Te749200">
+    <ReferenceTable>Usuario_Tema</ReferenceTable>
+    <ReferencedTable>Tema</ReferencedTable>
     <Columns>
-      <Column>TicketID</Column>
+      <Column>TemaID</Column>
     </Columns>
     <RefColumns>
       <Column>ID</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKTicket_Adm119969">
-    <ReferenceTable>Ticket_Administradores</ReferenceTable>
-    <ReferencedTable>Administradores</ReferencedTable>
+  <ForeignKey name="FKUsuario_Me80919">
+    <ReferenceTable>Usuario_Mensaje</ReferenceTable>
+    <ReferencedTable>Usuario</ReferencedTable>
     <Columns>
-      <Column>AdministradoresUsuarioID</Column>
+      <Column>UsuarioID</Column>
     </Columns>
     <RefColumns>
-      <Column>UsuarioID</Column>
+      <Column>ID</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKUsuario_Me456283">
+    <ReferenceTable>Usuario_Mensaje</ReferenceTable>
+    <ReferencedTable>Mensaje</ReferencedTable>
+    <Columns>
+      <Column>MensajeID</Column>
+    </Columns>
+    <RefColumns>
+      <Column>ID</Column>
     </RefColumns>
   </ForeignKey>
 </Model>

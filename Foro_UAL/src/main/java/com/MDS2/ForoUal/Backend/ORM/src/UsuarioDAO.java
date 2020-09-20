@@ -1,5 +1,3 @@
-package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
  * 
@@ -322,18 +320,14 @@ public class UsuarioDAO {
 	}
 	
 	public static boolean deleteAndDissociate(Usuario usuario)throws PersistentException {
-		if (usuario instanceof Moderador) {
-			return ModeradorDAO.deleteAndDissociate((Moderador) usuario);
+		if (usuario instanceof Administrador) {
+			return AdministradorDAO.deleteAndDissociate((Administrador) usuario);
 		}
 		
 		try {
-			if (usuario.getPertenece_a() != null) {
-				usuario.getPertenece_a().tiene.remove(usuario);
-			}
-			
-			Reporte[] lReportess = usuario.reportes.toArray();
-			for(int i = 0; i < lReportess.length; i++) {
-				lReportess[i].setUsuario(null);
+			Reporte[] lReportes_usuarios = usuario.reportes_usuario.toArray();
+			for(int i = 0; i < lReportes_usuarios.length; i++) {
+				lReportes_usuarios[i].setUsuario_reporte(null);
 			}
 			Usuario[] lAmigo_des = usuario.amigo_de.toArray();
 			for(int i = 0; i < lAmigo_des.length; i++) {
@@ -341,7 +335,7 @@ public class UsuarioDAO {
 			}
 			Mensaje[] lPerteneces = usuario.pertenece.toArray();
 			for(int i = 0; i < lPerteneces.length; i++) {
-				lPerteneces[i].setEnvia(null);
+				lPerteneces[i].setEnvia_mensaje(null);
 			}
 			Usuario[] lUsuarioss = usuario.usuarios.toArray();
 			for(int i = 0; i < lUsuarioss.length; i++) {
@@ -349,7 +343,19 @@ public class UsuarioDAO {
 			}
 			Tema[] lEs_creados = usuario.es_creado.toArray();
 			for(int i = 0; i < lEs_creados.length; i++) {
-				lEs_creados[i].setCrea_temas(null);
+				lEs_creados[i].setCrea_tema(null);
+			}
+			Notificacion[] lNotificacion_usuarios = usuario.notificacion_usuario.toArray();
+			for(int i = 0; i < lNotificacion_usuarios.length; i++) {
+				lNotificacion_usuarios[i].setUsuario_ticket(null);
+			}
+			Mensaje[] lMegustas = usuario.megusta.toArray();
+			for(int i = 0; i < lMegustas.length; i++) {
+				lMegustas[i].gustaMensaje.remove(usuario);
+			}
+			Tema[] lMegusta_temas = usuario.megusta_tema.toArray();
+			for(int i = 0; i < lMegusta_temas.length; i++) {
+				lMegusta_temas[i].gustaTema.remove(usuario);
 			}
 			return delete(usuario);
 		}
@@ -360,18 +366,14 @@ public class UsuarioDAO {
 	}
 	
 	public static boolean deleteAndDissociate(Usuario usuario, org.orm.PersistentSession session)throws PersistentException {
-		if (usuario instanceof Moderador) {
-			return ModeradorDAO.deleteAndDissociate((Moderador) usuario, session);
+		if (usuario instanceof Administrador) {
+			return AdministradorDAO.deleteAndDissociate((Administrador) usuario, session);
 		}
 		
 		try {
-			if (usuario.getPertenece_a() != null) {
-				usuario.getPertenece_a().tiene.remove(usuario);
-			}
-			
-			Reporte[] lReportess = usuario.reportes.toArray();
-			for(int i = 0; i < lReportess.length; i++) {
-				lReportess[i].setUsuario(null);
+			Reporte[] lReportes_usuarios = usuario.reportes_usuario.toArray();
+			for(int i = 0; i < lReportes_usuarios.length; i++) {
+				lReportes_usuarios[i].setUsuario_reporte(null);
 			}
 			Usuario[] lAmigo_des = usuario.amigo_de.toArray();
 			for(int i = 0; i < lAmigo_des.length; i++) {
@@ -379,7 +381,7 @@ public class UsuarioDAO {
 			}
 			Mensaje[] lPerteneces = usuario.pertenece.toArray();
 			for(int i = 0; i < lPerteneces.length; i++) {
-				lPerteneces[i].setEnvia(null);
+				lPerteneces[i].setEnvia_mensaje(null);
 			}
 			Usuario[] lUsuarioss = usuario.usuarios.toArray();
 			for(int i = 0; i < lUsuarioss.length; i++) {
@@ -387,7 +389,19 @@ public class UsuarioDAO {
 			}
 			Tema[] lEs_creados = usuario.es_creado.toArray();
 			for(int i = 0; i < lEs_creados.length; i++) {
-				lEs_creados[i].setCrea_temas(null);
+				lEs_creados[i].setCrea_tema(null);
+			}
+			Notificacion[] lNotificacion_usuarios = usuario.notificacion_usuario.toArray();
+			for(int i = 0; i < lNotificacion_usuarios.length; i++) {
+				lNotificacion_usuarios[i].setUsuario_ticket(null);
+			}
+			Mensaje[] lMegustas = usuario.megusta.toArray();
+			for(int i = 0; i < lMegustas.length; i++) {
+				lMegustas[i].gustaMensaje.remove(usuario);
+			}
+			Tema[] lMegusta_temas = usuario.megusta_tema.toArray();
+			for(int i = 0; i < lMegusta_temas.length; i++) {
+				lMegusta_temas[i].gustaTema.remove(usuario);
 			}
 			try {
 				session.delete(usuario);

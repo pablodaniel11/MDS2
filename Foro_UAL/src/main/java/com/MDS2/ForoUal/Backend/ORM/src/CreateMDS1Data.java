@@ -1,5 +1,3 @@
-package com.MDS2.ForoUal.Backend.ORM.src;
-
 /**
  * Licensee: PABLO DANIEL(University of Almeria)
  * License Type: Academic
@@ -9,21 +7,30 @@ public class CreateMDS1Data {
 	public void createTestData() throws PersistentException {
 		PersistentTransaction t = MDS1PersistentManager.instance().getSession().beginTransaction();
 		try {
-
+			Reporte reporte = ReporteDAO.createReporte();
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : motivo
+			ReporteDAO.save(reporte);
+			Tema tema = TemaDAO.createTema();
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : gustaTema, subtitulo, Titulo
+			TemaDAO.save(tema);
+			Seccion seccion = SeccionDAO.createSeccion();
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : subtitulo, Titulo
+			SeccionDAO.save(seccion);
+			Mensaje mensaje = MensajeDAO.createMensaje();
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : respuesta_de, gustaMensaje, respondido_por, texto
+			MensajeDAO.save(mensaje);
 			Usuario usuario = UsuarioDAO.createUsuario();
-			usuario.setNombreUsuario("Administrador");
-			usuario.setEmail("Administrador");
-			usuario.setContrasenia("K/9U+4TkxY8XxvNOV2Jb6jIE82JO22dNX4eGcXr4arY=");
-			usuario.setDescripcion("Administrador /// Administrador del sistema");
-			usuario.setFotoPerfil(1);
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : megusta_tema, megusta, usuarios, amigo_de, esModerador, nombreReal, contrasenia, descripcion, nombreUsuario, email
 			UsuarioDAO.save(usuario);
 			Media_ media_ = Media_DAO.createMedia_();
-			media_.setUrl("https://ih1.redbubble.net/image.508671606.9093/st,small,507x507-pad,600x600,f8f8f8.jpg");
-			// Initialize the properties of the persistent object here
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : url
 			Media_DAO.save(media_);
-			Administradores administradores = AdministradoresDAO.createAdministradores();
-			administradores.setIDusuario(0);
-			AdministradoresDAO.save(administradores);
+			Notificacion notificacion = NotificacionDAO.createNotificacion();
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : mensaje
+			NotificacionDAO.save(notificacion);
+			Administrador administrador = AdministradorDAO.createAdministrador();
+			// Initialize the properties of the persistent object here
+			AdministradorDAO.save(administrador);
 			t.commit();
 		}
 		catch (Exception e) {
